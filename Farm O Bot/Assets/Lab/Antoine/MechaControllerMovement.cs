@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class MechaControllerMovement : MonoBehaviour
 {
     public float speed;
     public float turnTime;
     private float turnVelocity;
+
     private Vector2 inputMovement;
+    private Vector2 inputLook;
 
     //References
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private Camera cam;
+    public CinemachineFreeLook Cinecam;
     private MechaAnimation mechaAnimationScript;
 
     private void Start()
@@ -28,8 +32,10 @@ public class MechaControllerMovement : MonoBehaviour
     private void Update()
     {
         inputMovement = playerActions.Player.Move.ReadValue<Vector2>();
+        inputLook = playerActions.Player.Look.ReadValue<Vector2>();
 
         MechaMovement();
+        MechaLook();
     }
 
     private void MechaMovement()
@@ -47,11 +53,22 @@ public class MechaControllerMovement : MonoBehaviour
             Vector3 directionForward = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             rb.velocity = directionForward.normalized * speed * Time.deltaTime;
             mechaAnimationScript.WalkAnimation(true);
+            Cinecam.m_RecenterToTargetHeading.m_enabled = true;
         }
         else
         {
             rb.velocity = Vector3.zero;
             mechaAnimationScript.WalkAnimation(false);
+        }
+    }
+
+    private void MechaLook()
+    {
+        Vector3 look = new Vector3(inputLook.x, 0f, inputLook.y).normalized;
+
+        if (look.magnitude > 0f)
+        {
+            Cinecam.m_RecenterToTargetHeading.m_enabled = false;
         }
     }
 }
