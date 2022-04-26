@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public Transform playerPos;
+    public Transform playerTransform;
 
     private void Awake()
     {

@@ -9,6 +9,8 @@ public class EnemySysteme : MonoBehaviour
 
     private void Update()
     {
-        selfAgent.SetDestination(GameManager.instance.playerPos.position);
+        //selfAgent.SetDestination(GameManager.instance.playerTransform.position);
+
+        
     }
 }
