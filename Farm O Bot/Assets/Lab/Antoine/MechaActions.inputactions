@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "LeftFire",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "d31d5a50-f130-4dd1-9cf7-50018975aab1",
                     "expectedControlType": "Button",
                     "processors": "",
