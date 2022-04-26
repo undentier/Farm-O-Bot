@@ -27,10 +27,14 @@ public class GlobalWeapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (canShoot)
+        if (canShoot == true)
         {
-            //GameObject bullet = Instantiate(bulletPrefab, startingPoint.position, startingPoint.rotation);
-            Debug.Log(name + "FIRE");
+            GameObject bullet = Instantiate(bulletPrefab, startingPoint.position, startingPoint.rotation);
+
+            bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
+            bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;
+            bullet.GetComponent<Rigidbody>().velocity = (startingPoint.forward * (bulletSpeed*500) * Time.deltaTime);
+
             canShoot = false;
 
             StartCoroutine(weaponCooldown());
@@ -40,7 +44,7 @@ public class GlobalWeapon : MonoBehaviour
 
     IEnumerator weaponCooldown()
     {
-        yield return new WaitForSeconds(weaponFireRate * Time.deltaTime);
+        yield return new WaitForSeconds(weaponFireRate);
         canShoot = true;
     }
 }
