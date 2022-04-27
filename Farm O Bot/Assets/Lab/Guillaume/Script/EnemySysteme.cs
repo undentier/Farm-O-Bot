@@ -6,11 +6,22 @@ using UnityEngine.AI;
 public class EnemySysteme : MonoBehaviour
 {
     public NavMeshAgent selfAgent;
+    public float hp;
 
-    private void Update()
+
+    public void TakeDamage(float damageAmount)
     {
-        //selfAgent.SetDestination(GameManager.instance.playerTransform.position);
+        hp -= damageAmount;
 
-        
+        if (hp <= 0)
+        {
+            Die();
+        }
     }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
 }
