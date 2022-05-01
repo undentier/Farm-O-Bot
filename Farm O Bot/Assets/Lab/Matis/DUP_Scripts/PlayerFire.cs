@@ -9,16 +9,18 @@ public class PlayerFire : MonoBehaviour
     public List<GlobalWeapon> rightWeapons;
 
     public InputActionReference leftFire;
-    public InputAction rightFire;
+    public InputActionReference rightFire;
 
     private void Update()
     {
-        Debug.Log(leftFire.action.phase);
         if (leftFire.action.phase == InputActionPhase.Performed)
         {
             FireLeft();
         }
-
+        if (rightFire.action.phase == InputActionPhase.Performed)
+        {
+            FireRight();
+        }
     }
 
 

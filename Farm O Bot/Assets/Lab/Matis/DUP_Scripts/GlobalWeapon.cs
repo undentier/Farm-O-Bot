@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlobalWeapon : MonoBehaviour
 {
-    public string name;
+    public string weaponName;
 
 
     [Header("Weapon")]
@@ -13,6 +13,7 @@ public class GlobalWeapon : MonoBehaviour
     public int weaponDamages = 1;
     public float weaponFireRate = 0.5f;
     public float weaponRange = 10;
+    public float weaponDispersion = 0;
 
 
     [Header("Bullet")]
@@ -33,12 +34,29 @@ public class GlobalWeapon : MonoBehaviour
 
             bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
             bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;
-            bullet.GetComponent<Rigidbody>().velocity = (startingPoint.forward * (bulletSpeed*500) * Time.deltaTime);
+
+            Vector3 bulletWay = BulletSpread(startingPoint);
+
+            bullet.GetComponent<Rigidbody>().velocity = (bulletWay * (bulletSpeed*500) * Time.deltaTime);
 
             canShoot = false;
 
             StartCoroutine(weaponCooldown());
         }
+    }
+
+    Vector3 BulletSpread(Transform originPoint)
+    {
+        Vector3 spread = originPoint.forward;
+
+        float deviation = Random.Range(0, weaponDispersion);
+        float angle = Random.Range(0, 360f);
+
+        spread = Quaternion.AngleAxis(deviation, originPoint.up) * originPoint.forward;
+        spread = Quaternion.AngleAxis(angle, originPoint.forward) * spread;
+        //spread = startingPoint.rotation * spread;
+
+        return spread;
     }
 
 
