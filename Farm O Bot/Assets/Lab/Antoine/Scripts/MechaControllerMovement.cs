@@ -8,7 +8,9 @@ public class MechaControllerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
-    public float rotationSpeedLegs;
+    //public float rotationSpeedLegs;
+    public float turnTime;
+    private float turnVelocity;
     public Transform legs;
     private float legsRotationX;
 
@@ -55,9 +57,9 @@ public class MechaControllerMovement : MonoBehaviour
 
     private void RotateMechaDownBody()
     {
-        legsRotationX += inputMovement.x * rotationSpeedLegs * Time.deltaTime;
+        //legsRotationX += inputMovement.x * rotationSpeedLegs * Time.deltaTime;
 
-        legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, legsRotationX + 180f, legs.rotation.eulerAngles.z);
+        //legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, legsRotationX + 180f, legs.rotation.eulerAngles.z);
     }
 
     private void RotateMechaUpBody()
@@ -74,7 +76,7 @@ public class MechaControllerMovement : MonoBehaviour
 
     private void MoveMecha()
     {
-        Vector3 movement = -chest.forward * -inputMovement.y;
+        /*Vector3 movement = -chest.forward * -inputMovement.y;
 
         if (movement.magnitude > 0.3f) 
         {
@@ -84,6 +86,22 @@ public class MechaControllerMovement : MonoBehaviour
         else
         {
             mechaAnimationScript.WalkAnimation(false);
+        }*/
+
+        Vector3 movementDirection = new Vector3(inputMovement.x, 0f, inputMovement.y).normalized;
+
+        if (movementDirection.magnitude >= 0.2f)
+        {
+            //Rotate smoothly to direction
+            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + chest.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            //Mecha movement
+            Vector3 directionForward = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            rb.MovePosition(rb.position + directionForward.normalized * speed * Time.deltaTime);
+            mechaAnimationScript.WalkAnimation(true);
         }
+        else mechaAnimationScript.WalkAnimation(false);
     }
 }
