@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalWeapon : MonoBehaviour
 {
     public string weaponName;
+    public GameObject associatedCross;
 
 
     [Header("Weapon")]
@@ -14,6 +15,10 @@ public class GlobalWeapon : MonoBehaviour
     public float weaponFireRate = 0.5f;
     public float weaponRange = 10;
     public float weaponDispersion = 0;
+
+    [Header("CrossHit")]
+    public float scaleForce = 1;
+    public float scaleSpeed = 1;
 
 
     [Header("Bullet")]
@@ -26,11 +31,12 @@ public class GlobalWeapon : MonoBehaviour
     bool canShoot = true;
 
 
-    public void Shoot()
+    public void Shoot(CanvasManager _canvas)
     {
         if (canShoot == true)
         {
             GameObject bullet = Instantiate(bulletPrefab, startingPoint.position, startingPoint.rotation);
+            _canvas.CrossSpreadScale(associatedCross, scaleForce, scaleSpeed);
 
             bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
             bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;

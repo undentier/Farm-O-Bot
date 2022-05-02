@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerFire : MonoBehaviour
 {
+    public CanvasManager canvas;
+
     public List<GlobalWeapon> leftWeapons;
     public List<GlobalWeapon> rightWeapons;
 
@@ -28,14 +30,14 @@ public class PlayerFire : MonoBehaviour
     {
         for (int i = 0; i < leftWeapons.Count; i++)
         {
-            leftWeapons[i].Shoot();
+            leftWeapons[i].Shoot(canvas);
         }    
     }
     public void FireRight()
     {
         for (int i = 0; i < rightWeapons.Count; i++)
         {
-            rightWeapons[i].Shoot();
+            rightWeapons[i].Shoot(canvas);          
         }
     }
 }
