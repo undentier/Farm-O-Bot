@@ -14,8 +14,9 @@ public class MechaControllerMovement : MonoBehaviour
 
     [Header("Aim")]
     public float rotationSpeedChest;
-    public bool clampChestRotation = false;
+    public bool clampChestRotationHorizontal = false;
     public Vector2 clampAngleHorizontal;
+    public bool clampChestRotationVertical = false;
     public Vector2 clampAngleVertical;
     private float chestRotationX;
     private float chestRotationY;
@@ -64,18 +65,16 @@ public class MechaControllerMovement : MonoBehaviour
         chestRotationX += inputLook.x * rotationSpeedChest * Time.deltaTime;
         chestRotationY += -inputLook.y * rotationSpeedChest * Time.deltaTime;
 
-        if (clampChestRotation)
-        {
-            chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y);
-            chestRotationY = Mathf.Clamp(chestRotationY, clampAngleVertical.x, clampAngleVertical.y);
-        }
+        if (clampChestRotationHorizontal) chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y);
+        if (clampChestRotationVertical) chestRotationY = Mathf.Clamp(chestRotationY, clampAngleVertical.x, clampAngleVertical.y);
 
-        chest.rotation = Quaternion.Euler(chestRotationY, legsRotationX + chestRotationX, 0);
+        //chest.rotation = Quaternion.Euler(chestRotationY, legsRotationX + chestRotationX, 0);
+        chest.rotation = Quaternion.Euler(chestRotationY, chestRotationX, 0);
     }
 
     private void MoveMecha()
     {
-        Vector3 movement = legs.forward * -inputMovement.y;
+        Vector3 movement = -chest.forward * -inputMovement.y;
 
         if (movement.magnitude > 0.3f) 
         {
