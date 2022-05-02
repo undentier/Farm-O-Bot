@@ -303,6 +303,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &512757535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512757537}
+  - component: {fileID: 512757536}
+  m_Layer: 0
+  m_Name: Right Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &512757536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512757535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c241997ba466efb4fa19eb5a547da959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Assault Gun
+  associatedCross: {fileID: 0}
+  startingPoint: {fileID: 512757537}
+  weaponDamages: 1
+  weaponFireRate: 0.05
+  weaponRange: 50
+  weaponDispersion: 1
+  scaleForce: 1
+  scaleSpeed: 0.1
+  bulletPrefab: {fileID: 2277501788416071358, guid: 5e9b39f193c40f44e804514726e2ab6a,
+    type: 3}
+  bulletSpeed: 40
+--- !u!4 &512757537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512757535}
+  m_LocalRotation: {x: -0.00000029802322, y: 0.00000016391277, z: 0.00000011920929,
+    w: 1}
+  m_LocalPosition: {x: -0.009769235, y: 0.014808357, z: 0.03351856}
+  m_LocalScale: {x: 0.007692308, y: 0.0076923063, z: 0.0076923072}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 552268794}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &530530402
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +670,8 @@ Transform:
   m_Children:
   - {fileID: 2565152206273394126}
   - {fileID: 1066523953}
+  - {fileID: 1173757298}
+  - {fileID: 512757537}
   m_Father: {fileID: 2565152206273394068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
@@ -965,6 +1024,63 @@ Transform:
   m_Father: {fileID: 552268794}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.405, y: 0, z: 0}
+--- !u!1 &1173757296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173757298}
+  - component: {fileID: 1173757297}
+  m_Layer: 0
+  m_Name: Left Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1173757297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173757296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c241997ba466efb4fa19eb5a547da959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Sniper
+  associatedCross: {fileID: 0}
+  startingPoint: {fileID: 1173757298}
+  weaponDamages: 1
+  weaponFireRate: 1
+  weaponRange: 100
+  weaponDispersion: 0
+  scaleForce: 2
+  scaleSpeed: 0.5
+  bulletPrefab: {fileID: 2277501788416071358, guid: 5e9b39f193c40f44e804514726e2ab6a,
+    type: 3}
+  bulletSpeed: 10
+--- !u!4 &1173757298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173757296}
+  m_LocalRotation: {x: -0.00000029802322, y: 0.00000016391277, z: 0.00000011920929,
+    w: 1}
+  m_LocalPosition: {x: 0.009769216, y: 0.014808375, z: 0.033518553}
+  m_LocalScale: {x: 0.007692308, y: 0.0076923063, z: 0.0076923072}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 552268794}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289277694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1836,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017123707}
   m_CullTransparentMesh: 1
+--- !u!1 &2131055581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2131055584}
+  - component: {fileID: 2131055583}
+  - component: {fileID: 2131055582}
+  m_Layer: 0
+  m_Name: DebugAimPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &2131055582
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131055581}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 764fcb585f1f34a6da8ae3fca76c1261, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2131055583
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131055581}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2131055584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131055581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.55, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2565152206263867966
 Animator:
   serializedVersion: 4
@@ -2079,6 +2278,7 @@ GameObject:
   - component: {fileID: 2565152206273394162}
   - component: {fileID: 2565152206273394169}
   - component: {fileID: 2565152206273394173}
+  - component: {fileID: 2565152206273394175}
   - component: {fileID: 2565152206273394171}
   - component: {fileID: 2565152206273394163}
   - component: {fileID: 2565152206263867966}
@@ -3564,11 +3764,35 @@ MonoBehaviour:
     m_ActionId: a936c830-e572-4860-a7c2-9c3447b6da00
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2565152206273394175}
+        m_TargetAssemblyTypeName: PlayerFire, Assembly-CSharp
+        m_MethodName: FireLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_ActionId: d31d5a50-f130-4dd1-9cf7-50018975aab1
     m_ActionName: Player/LeftFire[/XInputControllerWindows/leftTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2565152206273394175}
+        m_TargetAssemblyTypeName: PlayerFire, Assembly-CSharp
+        m_MethodName: FireRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_ActionId: 7d5959fe-d0ec-4dba-b247-db17e02898d2
     m_ActionName: Player/RightFire[/XInputControllerWindows/rightTrigger,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -3732,9 +3956,12 @@ MonoBehaviour:
   aimColliderLayer:
     serializedVersion: 2
     m_Bits: 1
-  displayDebug: 1
   distanceIfNoCollision: 50
-  debugColliderPoint: {fileID: 390923626}
+  adjustTime: 1
+  aimAdjustTime: 0.2
+  displayDebug: 1
+  colliderPoint: {fileID: 390923626}
+  aimPoint: {fileID: 2131055584}
 --- !u!4 &2565152206273394174
 Transform:
   m_ObjectHideFlags: 0
@@ -3751,3 +3978,24 @@ Transform:
   m_Father: {fileID: 2565152206273394156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 2.443032, y: -85.94271, z: -93.48086}
+--- !u!114 &2565152206273394175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565152206273358224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec64d0afb44c43449316a2383666550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  leftWeapons:
+  - {fileID: 1173757297}
+  rightWeapons:
+  - {fileID: 512757536}
+  leftFire: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
+    type: 3}
+  rightFire: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
+    type: 3}

@@ -26,24 +26,21 @@ public class GlobalWeapon : MonoBehaviour
 
     public float bulletSpeed;
 
-
-
     bool canShoot = true;
 
-
-    public void Shoot(CanvasManager _canvas)
+    public void Shoot(Vector3 aimPoint)
     {
         if (canShoot == true)
         {
-            GameObject bullet = Instantiate(bulletPrefab, startingPoint.position, startingPoint.rotation);
-            _canvas.CrossSpreadScale(associatedCross, scaleForce, scaleSpeed);
+            Vector3 aimDirection = (aimPoint - startingPoint.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, startingPoint.position, Quaternion.LookRotation(aimDirection, Vector3.up));
 
             bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
             bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;
 
             Vector3 bulletWay = BulletSpread(startingPoint);
 
-            bullet.GetComponent<Rigidbody>().velocity = (bulletWay * (bulletSpeed*500) * Time.deltaTime);
+            bullet.GetComponent<Rigidbody>().velocity = (bulletWay + bullet.transform.forward * (bulletSpeed * 500) * Time.deltaTime);
 
             canShoot = false;
 

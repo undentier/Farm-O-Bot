@@ -13,6 +13,13 @@ public class PlayerFire : MonoBehaviour
     public InputActionReference leftFire;
     public InputActionReference rightFire;
 
+    private MechaAiming aimScript;
+
+    private void Start()
+    {
+        aimScript = GetComponent<MechaAiming>();
+    }
+
     private void Update()
     {
         if (leftFire.action.phase == InputActionPhase.Performed)
@@ -30,14 +37,14 @@ public class PlayerFire : MonoBehaviour
     {
         for (int i = 0; i < leftWeapons.Count; i++)
         {
-            leftWeapons[i].Shoot(canvas);
+            leftWeapons[i].Shoot(aimScript.aimPoint.position);
         }    
     }
     public void FireRight()
     {
         for (int i = 0; i < rightWeapons.Count; i++)
         {
-            rightWeapons[i].Shoot(canvas);          
+            rightWeapons[i].Shoot(aimScript.aimPoint.position);          
         }
     }
 }
