@@ -11,11 +11,17 @@ public class EnemySysteme : MonoBehaviour
     public float hp;
     public Transform target;
 
-    private Vector3 lastWayPoint;
-    private NavMeshPath pathToFollow;
+    [Header("Feedback")]
+    public GameObject deathParticleObj;
 
+    [Header ("AI")]
+    public NavMeshAgent selfAgent;
     public float cooldown;
+
+    private NavMeshPath pathToFollow;
     private float actualCooldown;
+
+    #endregion
 
     private void Start()
     {
@@ -27,27 +33,20 @@ public class EnemySysteme : MonoBehaviour
 
     private void Update()
     {
-        if (actualCooldown < cooldown)
-        {
-            actualCooldown += Time.deltaTime;
-        }
-        else
+        if (actualCooldown > cooldown)
         {
             actualCooldown = 0f;
             RefreshPath();
         }
+        else
+        {
+            actualCooldown += Time.deltaTime;
+        }
         //selfAgent.SetDestination(target.position);
     }
 
-    [Header("Feedback")]
-    public GameObject deathParticleObj;
 
-    [Header ("Unity Setup")]
-    public NavMeshAgent selfAgent;
-
-    #endregion
-
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player Bullet")
@@ -55,7 +54,7 @@ public class EnemySysteme : MonoBehaviour
             //TakeDamage(Récupérer les dégats)
         }
     }
-
+    */
 
 
     public void TakeDamage(float damageAmount)

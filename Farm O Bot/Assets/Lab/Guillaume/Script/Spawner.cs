@@ -30,6 +30,8 @@ public class Spawner : MonoBehaviour
     {
         if (actualTimer > spawnRate)
         {
+            actualTimer = 0f;
+
             for (int i = 0; i < numOfEnemy; i++)
             {
                 int random = Random.Range(0, spawnPoints.Length - 1);
@@ -39,8 +41,6 @@ public class Spawner : MonoBehaviour
                 //Debug.Log(numOfEnemy);
             }
 
-            Debug.Log("je rentre");
-            actualTimer = 0f;
 
         }
         else

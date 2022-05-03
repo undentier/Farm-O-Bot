@@ -119,5 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9046d77a09d95194796f5d283e85454e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfAgent: {fileID: 1563629211}
   hp: 2
+  target: {fileID: 0}
+  deathParticleObj: {fileID: 2590925167941556976, guid: fadb1e1f05a1dda4d98f035931b3da0b,
+    type: 3}
+  selfAgent: {fileID: 1563629211}
+  cooldown: 1
