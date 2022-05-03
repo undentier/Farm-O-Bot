@@ -64,8 +64,10 @@ public class MechaControllerMovement : MonoBehaviour
 
     private void RotateMechaUpBody()
     {
-        chestRotationX += inputLook.x * rotationSpeedChest * Time.deltaTime;
-        chestRotationY += -inputLook.y * rotationSpeedChest * Time.deltaTime;
+        Vector3 lookDirection = new Vector2(inputLook.x, inputLook.y).normalized;
+
+        chestRotationX += lookDirection.x * rotationSpeedChest * Time.deltaTime;
+        chestRotationY += -lookDirection.y * rotationSpeedChest * Time.deltaTime;
 
         if (clampChestRotationHorizontal) chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y);
         if (clampChestRotationVertical) chestRotationY = Mathf.Clamp(chestRotationY, clampAngleVertical.x, clampAngleVertical.y);
@@ -88,18 +90,18 @@ public class MechaControllerMovement : MonoBehaviour
             mechaAnimationScript.WalkAnimation(false);
         }*/
 
-        Vector3 movementDirection = new Vector3(inputMovement.x, 0f, inputMovement.y).normalized;
+        Vector3 movementDirection = inputMovement.y * chest.forward + inputMovement.x * chest.right;
 
         if (movementDirection.magnitude >= 0.2f)
         {
             //Rotate smoothly to direction
-            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + chest.eulerAngles.y;
+            /*float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + chest.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);*/
 
             //Mecha movement
-            Vector3 directionForward = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            rb.MovePosition(rb.position + directionForward.normalized * speed * Time.deltaTime);
+            //Vector3 directionForward = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            rb.MovePosition(rb.position + movementDirection * speed * Time.deltaTime);
             mechaAnimationScript.WalkAnimation(true);
         }
         else mechaAnimationScript.WalkAnimation(false);
