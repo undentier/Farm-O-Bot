@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1563629211}
   - component: {fileID: 5141496985533322943}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Basic Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfAgent: {fileID: 1563629211}
+  hp: 2
