@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class EnemySysteme : MonoBehaviour
 {
-    public NavMeshAgent selfAgent;
+    #region Variable
+
+    [Header ("Stats")]
     public float hp;
     public Transform target;
 
@@ -37,6 +39,24 @@ public class EnemySysteme : MonoBehaviour
         //selfAgent.SetDestination(target.position);
     }
 
+    [Header("Feedback")]
+    public GameObject deathParticleObj;
+
+    [Header ("Unity Setup")]
+    public NavMeshAgent selfAgent;
+
+    #endregion
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player Bullet")
+        {
+            //TakeDamage(Récupérer les dégats)
+        }
+    }
+
+
 
     public void TakeDamage(float damageAmount)
     {
@@ -47,9 +67,10 @@ public class EnemySysteme : MonoBehaviour
             Die();
         }
     }
-
     private void Die()
     {
+        GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
+        Destroy(particle, 5f);
         Destroy(gameObject);
     }
 
