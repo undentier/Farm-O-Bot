@@ -8,15 +8,18 @@ public class MechaControllerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed;
+    private Vector3 movementDirection;
     //public float rotationSpeedLegs;
     public bool legMoveWithChestRotation = false;
     public float turnTime;
+    public float turnTimeInMovement;
     private bool turnDownBody = false;
     private float targetAngleChest = 0;
     private float turnVelocity;
     public Transform legs;
     private float legsRotationX;
     private float legsBaseAngle;
+
     [Header("Aim")]
     public float rotationSpeedChest;
     public bool clampChestRotationHorizontal = false;
@@ -50,7 +53,7 @@ public class MechaControllerMovement : MonoBehaviour
     {
         ReadInput();
 
-        if(legMoveWithChestRotation) RotateMechaDownBody();
+        if(legMoveWithChestRotation && movementDirection.magnitude <= 0.2f) RotateMechaDownBody();
         RotateMechaUpBody();
         MoveMecha();
     }
@@ -67,7 +70,7 @@ public class MechaControllerMovement : MonoBehaviour
 
         //legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, legsRotationX + 180f, legs.rotation.eulerAngles.z);
 
-        if (chestRotationX >= clampAngleHorizontal.y || chestRotationX <= clampAngleHorizontal.x)
+        if ((chestRotationX >= clampAngleHorizontal.y || chestRotationX <= clampAngleHorizontal.x))
         {
             targetAngleChest = chest.eulerAngles.y -180;
             chestRotationX = 0;
@@ -85,7 +88,7 @@ public class MechaControllerMovement : MonoBehaviour
 
     private void RotateMechaUpBody()
     {
-        Vector3 lookDirection = new Vector2(inputLook.x, inputLook.y).normalized;
+        Vector3 lookDirection = new Vector2(inputLook.x, inputLook.y);
 
         if (lookDirection.magnitude >= 0.2f)
         {
@@ -114,7 +117,7 @@ public class MechaControllerMovement : MonoBehaviour
             mechaAnimationScript.WalkAnimation(false);
         }*/
 
-        Vector3 movementDirection = inputMovement.y * chest.forward + inputMovement.x * chest.right;
+        movementDirection = inputMovement.y * chest.forward + inputMovement.x * chest.right;
 
         if (movementDirection.magnitude >= 0.2f)
         {
@@ -126,10 +129,11 @@ public class MechaControllerMovement : MonoBehaviour
             //Mecha movement
             //Vector3 directionForward = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            /*targetAngleChest = chest.eulerAngles.y - 180;
-            turnDownBody = true;*/
+            targetAngleChest = chest.eulerAngles.y - 180;
+            chestRotationX = 0;
+            legsBaseAngle = (targetAngleChest - 180);
+            turnDownBody = true;
 
-            //legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, chest.eulerAngles.y - 180, legs.rotation.eulerAngles.z);
             rb.MovePosition(rb.position + movementDirection * speed * Time.deltaTime);
             mechaAnimationScript.WalkAnimation(true);
         }
@@ -137,7 +141,7 @@ public class MechaControllerMovement : MonoBehaviour
 
         if (turnDownBody)
         {
-            float angle = Mathf.SmoothDampAngle(legs.eulerAngles.y, targetAngleChest, ref turnVelocity, turnTime);
+            float angle = Mathf.SmoothDampAngle(legs.eulerAngles.y, targetAngleChest, ref turnVelocity, turnTimeInMovement);
             legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, angle, legs.rotation.eulerAngles.z);
         }
     }
