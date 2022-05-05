@@ -1511,7 +1511,7 @@ Transform:
   m_GameObject: {fileID: 1753982370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 1, z: 6}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 530530403}
@@ -2528,7 +2528,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2565152206273394162}
-  - component: {fileID: 2565152206273394177}
   - component: {fileID: 2565152206273394176}
   - component: {fileID: 2565152206273394173}
   - component: {fileID: 2565152206273394175}
@@ -4243,35 +4242,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8a7efacc7ef1448a3bb1732f533dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  maxSpeed: 7.5
+  decelerationSpeed: 7.5
+  decelerationTime: 0.5
   turnTimeStatic: 0.5
   turnTimeInMovement: 0.75
   legs: {fileID: 2565152206273394156}
   rotationSpeedChest: 75
   clampChestRotationHorizontal: 1
-  clampAngleHorizontal: {x: -70, y: 70}
-  clampChestRotationVertical: 1
-  clampAngleVertical: {x: -70, y: 70}
-  chest: {fileID: 552268794}
---- !u!114 &2565152206273394177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565152206273358224}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f951919b0f7e407428ed4946af1d5d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7.5
-  legMoveWithChestRotation: 1
-  turnTime: 0.5
-  turnTimeInMovement: 0.75
-  legs: {fileID: 2565152206273394156}
-  rotationSpeedChest: 75
-  clampChestRotationHorizontal: 0
   clampAngleHorizontal: {x: -70, y: 70}
   clampChestRotationVertical: 1
   clampAngleVertical: {x: -70, y: 70}

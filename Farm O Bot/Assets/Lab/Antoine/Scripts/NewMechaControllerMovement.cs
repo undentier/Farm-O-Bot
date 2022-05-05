@@ -7,8 +7,13 @@ public class NewMechaControllerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [Range(0, 50)]
-    public float speed;
+    public float maxSpeed;
+    public float decelerationSpeed;
+    public float decelerationTime;
+    private float decelerationTimer;
+    private bool isMoving = false;
     private Vector3 movementDirection;
+    private Vector3 lastMovementDirection;
     [Range(0, 5)]
     public float turnTimeStatic;
     [Range(0, 5)]
@@ -57,6 +62,8 @@ public class NewMechaControllerMovement : MonoBehaviour
         MoveMecha();
         RotateMechaChest();
         if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
+
+        AnimateMecha();
     }
 
     private void ReadInput()
@@ -72,16 +79,23 @@ public class NewMechaControllerMovement : MonoBehaviour
         if (movementDirection.magnitude >= 0.2f)
         {
             ResetAngleChestAndLegs();
-
-            turnTime = turnTimeInMovement; ;
+            rb.MovePosition(rb.position + movementDirection * maxSpeed * Time.deltaTime);
+            decelerationTimer = 0;
+            isMoving = true;
+            lastMovementDirection = movementDirection;
+            lastMovementDirection.Normalize();
+            turnTime = turnTimeInMovement;
             TurnLegsDependingChest();
-
-            rb.MovePosition(rb.position + movementDirection * speed * Time.deltaTime);
-            mechaAnimationScript.WalkAnimation(true);
         }
-        else mechaAnimationScript.WalkAnimation(false);
-
-        
+        else
+        {
+            if (decelerationTimer <= decelerationTime)
+            {
+                decelerationTimer += Time.deltaTime;
+                rb.MovePosition(rb.position + lastMovementDirection * decelerationSpeed * Time.deltaTime);
+            }
+            else isMoving = false;
+        }
     }
 
     private void RotateMechaLegs()
@@ -122,6 +136,12 @@ public class NewMechaControllerMovement : MonoBehaviour
     {
         float angle = Mathf.SmoothDampAngle(legs.eulerAngles.y, targetAngleChest, ref turnVelocity, turnTime);
         legs.rotation = Quaternion.Euler(legs.rotation.eulerAngles.x, angle, legs.rotation.eulerAngles.z);
+    }
+
+    private void AnimateMecha()
+    {
+        if (isMoving) mechaAnimationScript.WalkAnimation(true);
+        else mechaAnimationScript.WalkAnimation(false);
     }
 
     private float ClampAngle(float angle, float from, float to)
