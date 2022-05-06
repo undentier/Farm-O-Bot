@@ -8,15 +8,16 @@ public class NewMechaControllerMovement : MonoBehaviour
     [Header("Movement")]
     [Range(0, 50)]
     public float maxSpeed;
+    [Range(0, 50)]
     public float decelerationSpeed;
     public float decelerationTime;
     private float decelerationTimer;
     private bool isMoving = false;
     private Vector3 movementDirection;
     private Vector3 lastMovementDirection;
-    [Range(0, 5)]
+
+    [Header("Legs")]
     public float turnTimeStatic;
-    [Range(0, 5)]
     public float turnTimeInMovement;
     private float turnTime;
     private float turnVelocity;
@@ -25,7 +26,7 @@ public class NewMechaControllerMovement : MonoBehaviour
     private float legsBaseAngle;
     public Transform legs;
 
-    [Header("Aim")]
+    [Header("Chest")]
     [Range(0, 300)]
     public float rotationSpeedChest;
     public bool clampChestRotationHorizontal = false;
@@ -35,6 +36,7 @@ public class NewMechaControllerMovement : MonoBehaviour
     private float chestRotationX;
     private float chestRotationY;
     public Transform chest;
+    public Transform lookAtReticule;
 
     //Input
     private Vector2 inputMovement;
@@ -74,12 +76,12 @@ public class NewMechaControllerMovement : MonoBehaviour
 
     private void MoveMecha()
     {
-        movementDirection = inputMovement.y * chest.forward + inputMovement.x * chest.right;
+        movementDirection = inputMovement.y * -legs.forward + inputMovement.x * legs.up;
 
         if (movementDirection.magnitude >= 0.2f)
         {
             ResetAngleChestAndLegs();
-            rb.MovePosition(rb.position + movementDirection * maxSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + movementDirection.normalized * maxSpeed * Time.deltaTime);
             decelerationTimer = 0;
             isMoving = true;
             lastMovementDirection = movementDirection;
@@ -121,6 +123,7 @@ public class NewMechaControllerMovement : MonoBehaviour
             if (clampChestRotationHorizontal) { chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); ClampAngle(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); }
             if (clampChestRotationVertical) { chestRotationY = Mathf.Clamp(chestRotationY, clampAngleVertical.x, clampAngleVertical.y); ClampAngle(chestRotationY, clampAngleVertical.x, clampAngleVertical.y); }
 
+            //chest.rotation = Quaternion.Euler(lookAtReticule.eulerAngles.x, legsBaseAngle + chestRotationX, 0);
             chest.rotation = Quaternion.Euler(chestRotationY, legsBaseAngle + chestRotationX, 0);
         }
     }
