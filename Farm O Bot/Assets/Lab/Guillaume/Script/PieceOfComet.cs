@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class PieceOfComet : MonoBehaviour
 {
     #region Variable
 
-    [Header ("Stats")]
+    [Header("Stats")]
     public float spawnRate;
     public int numOfEnemySpawnRate;
     public int maxEnemyToSpawn;
     public float speed;
 
-    [Header ("Enemy wich spawn")]
+    [Header("Wich enemy to spawn")]
     public GameObject wichEnemy;
 
-    [Header ("Each spawn point")]
+    [Header("Each spawn point")]
     public Transform[] spawnPoints;
 
-    [HideInInspector]public Transform target;
+    [Header("Feedback")]
+    public ParticleSystem trailParticle;
+
+    [HideInInspector] public Transform target;
 
     private float actualTimer;
     private int numOfEnemySpawn;
@@ -58,7 +61,6 @@ public class Spawner : MonoBehaviour
             actualTimer += Time.deltaTime;
         }
     }
-
     private void CheckIfLimitReach()
     {
         if (numOfEnemySpawn >= maxEnemyToSpawn)
@@ -72,10 +74,12 @@ public class Spawner : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > 0f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+            transform.LookAt(target.position);
         }
         else
         {
             isGrounded = true;
+            trailParticle.Stop();
         }
     }
 }
