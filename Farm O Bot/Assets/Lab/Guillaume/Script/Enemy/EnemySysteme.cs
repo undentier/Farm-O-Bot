@@ -47,15 +47,14 @@ public class EnemySysteme : MonoBehaviour
     }
 
 
-    /*
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
-            //TakeDamage(Récupérer les dégats)
+            TakeDamage(1);
+            Destroy(other.gameObject);
         }
     }
-    */
 
 
     public void TakeDamage(float damageAmount)

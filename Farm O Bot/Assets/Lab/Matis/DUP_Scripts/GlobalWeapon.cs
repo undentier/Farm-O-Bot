@@ -38,9 +38,9 @@ public class GlobalWeapon : MonoBehaviour
             bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
             bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;
 
-            Vector3 bulletWay = BulletSpread(startingPoint);
+            Vector3 bulletWay = BulletSpread(startingPoint, bullet.transform);
 
-            bullet.GetComponent<Rigidbody>().velocity = (bulletWay + bullet.transform.forward * (bulletSpeed * 500) * Time.deltaTime);
+            bullet.GetComponent<Rigidbody>().velocity = (bulletWay * (bulletSpeed * 500) * Time.deltaTime);
 
             canShoot = false;
 
@@ -48,15 +48,15 @@ public class GlobalWeapon : MonoBehaviour
         }
     }
 
-    Vector3 BulletSpread(Transform originPoint)
+    Vector3 BulletSpread(Transform originPoint, Transform direction)
     {
-        Vector3 spread = originPoint.forward;
+        Vector3 spread = direction.forward;
 
         float deviation = Random.Range(0, weaponDispersion);
         float angle = Random.Range(0, 360f);
 
-        spread = Quaternion.AngleAxis(deviation, originPoint.up) * originPoint.forward;
-        spread = Quaternion.AngleAxis(angle, originPoint.forward) * spread;
+        spread = Quaternion.AngleAxis(deviation, direction.up) * direction.forward;
+        spread = Quaternion.AngleAxis(angle, direction.forward) * spread;
         //spread = startingPoint.rotation * spread;
 
         return spread;

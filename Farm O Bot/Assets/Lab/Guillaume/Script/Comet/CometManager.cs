@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CometManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CometManager : MonoBehaviour
 
     [Header ("Unity setup")]
     public GameObject cometPrefab;
+
+    public PlayerInput playerInputScript;
 
     #endregion
 
@@ -30,14 +33,19 @@ public class CometManager : MonoBehaviour
         #endregion
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        playerInputScript.actions["Spawn"].started += Spawn;
+        playerInputScript.actions["Spawn"].canceled += Spawn;
+    }
+
+    public void Spawn(InputAction.CallbackContext context)
+    {
+        if (context.started)
         {
             SpawnPieceOfComet();
         }
     }
-
 
     private void SpawnPieceOfComet()
     {
