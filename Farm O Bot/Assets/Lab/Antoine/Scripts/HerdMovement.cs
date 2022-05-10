@@ -11,14 +11,16 @@ public class HerdMovement : MonoBehaviour
 
     [Header("Herd")]
     public Transform zones;
-    public Transform[] zonesPosition;
-    public float[] zonesDistance;
-    public float[] ZonesDistanceOrdered;
-    public Transform[] nearestZones;
     public int numberBisons;
     public float herdRadius;
     public float herdMoveFrequence;
     private float herdMoveTimer = 0;
+
+    private Transform[] zonesPosition;
+    private float[] zonesDistance;
+    private float[] ZonesDistanceOrdered;
+    public Transform[] nearestZones;
+    private Transform lastZone;
 
     [Header("Debug")]
     public bool debugHerdRadius = false;
@@ -31,28 +33,17 @@ public class HerdMovement : MonoBehaviour
         }
 
         zonesPosition = new Transform[zones.childCount];
+        zonesDistance = new float[zones.childCount];
+        ZonesDistanceOrdered = zonesDistance;
+        nearestZones = new Transform[2];
+
         for (int i = 0; i < zones.childCount; i++)
         {
             zonesPosition[i] = zones.GetChild(i);
         }
 
-        zonesDistance = new float[zones.childCount];
         RefreshZonesDistance();
-
-        ZonesDistanceOrdered = zonesDistance;
-        
-        nearestZones = new Transform[2];
-
         SortNearestZones();
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (debugHerdRadius)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, herdRadius);
-        }
     }
 
     private void RefreshZonesDistance()
@@ -71,6 +62,14 @@ public class HerdMovement : MonoBehaviour
         {
             int index = System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[i+1]);
             nearestZones[i] = zonesPosition[index];
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if (debugHerdRadius)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, herdRadius);
         }
     }
 }

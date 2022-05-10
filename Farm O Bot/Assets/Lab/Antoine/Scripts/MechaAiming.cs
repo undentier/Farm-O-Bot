@@ -7,7 +7,6 @@ public class MechaAiming : MonoBehaviour
 {
     public LayerMask aimColliderLayer;
     public float distanceIfNoCollision;
-    public bool adjustTime = false;
     public float aimAdjustTime;
     private Vector3 velocity;
 
@@ -15,6 +14,12 @@ public class MechaAiming : MonoBehaviour
     public bool displayDebug = false;
     public Transform colliderPoint;
     public Transform aimPoint;
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     private void Update()
     {
@@ -34,8 +39,7 @@ public class MechaAiming : MonoBehaviour
 
     private void AdjustAim()
     {
-        if (adjustTime) { aimPoint.position = Vector3.SmoothDamp(aimPoint.position, colliderPoint.position, ref velocity, aimAdjustTime); aimPoint.gameObject.SetActive(true); }
-        else aimPoint.position = colliderPoint.position;
+        aimPoint.position = Vector3.SmoothDamp(aimPoint.position, colliderPoint.position, ref velocity, aimAdjustTime); aimPoint.gameObject.SetActive(true);
     }
 
     private void Debug()
