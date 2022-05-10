@@ -35,6 +35,10 @@ public class BisonSystem : MonoBehaviour
         herdScript = GetComponentInParent<HerdMovement>();
         moveFrequence = herdScript.bisonMoveFrequence;
         herdRadius = herdScript.herdRadius;
+        herdCenter = herdScript.transform.position;
+
+        RandomMoveInsideCercle();
+        RefreshPath();
     }
 
     private void Update()
@@ -52,17 +56,14 @@ public class BisonSystem : MonoBehaviour
             moveTimer += Time.deltaTime;
         }
 
-        if (target != Vector3.zero)
+        if (actualCooldown > cooldown)
         {
-            if (actualCooldown > cooldown)
-            {
-                actualCooldown = 0f;
-                RefreshPath();
-            }
-            else
-            {
-                actualCooldown += Time.deltaTime;
-            }
+            actualCooldown = 0f;
+            RefreshPath();
+        }
+        else
+        {
+            actualCooldown += Time.deltaTime;
         }
     }
 

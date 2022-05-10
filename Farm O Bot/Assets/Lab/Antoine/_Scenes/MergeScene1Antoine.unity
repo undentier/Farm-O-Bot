@@ -1990,9 +1990,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bison: {fileID: 7015460970460274711, guid: 82b75397da5b3a14890f9fcb9e6a6dde, type: 3}
-  numberBisons: 3
-  herdRadius: 15
-  bisonMoveFrequence: 5
+  numberBisons: 15
+  herdRadius: 30
+  bisonMoveFrequence: 10
   herdMoveFrequence: 0
   debugHerdRadius: 1
 --- !u!1 &1385098473
