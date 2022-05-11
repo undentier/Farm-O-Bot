@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 3815007127822126875}
   - component: {fileID: 3815007127822126872}
   - component: {fileID: 3815007127822126873}
+  - component: {fileID: 614025366870327872}
   - component: {fileID: 3815007127822126878}
   - component: {fileID: 3815007127822126879}
   - component: {fileID: 3815007127822126876}
@@ -564,7 +565,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   distanceIfNoCollision: 50
-  adjustTime: 1
   aimAdjustTime: 0
   displayDebug: 1
   colliderPoint: {fileID: 0}
@@ -590,6 +590,18 @@ MonoBehaviour:
     type: 3}
   rightFire: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
+--- !u!114 &614025366870327872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bea21f37bd8cb844b90cc1e577d95e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3815007127822126878
 MonoBehaviour:
   m_ObjectHideFlags: 0

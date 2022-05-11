@@ -2564,10 +2564,12 @@ MonoBehaviour:
   numberBisons: 20
   herdRadius: 30
   herdMovingSpeed: 10
-  herdMoveFrequence: 15
+  herdMoveFrequence: 20
   nearestZones: []
   nextZone: {fileID: 0}
+  mechaWhistlingPosition: {fileID: 0}
   herddIsMoving: 0
+  mechaIsWhistling: 0
   debugHerdRadius: 1
 --- !u!1 &1385098473
 GameObject:
@@ -4756,6 +4758,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614025366870327872, guid: 0524f7a0a598ab745ac5c9ce142cc141,
+        type: 3}
+      propertyPath: herdScript
+      value: 
+      objectReference: {fileID: 1366921103}
+    - target: {fileID: 614025366870327872, guid: 0524f7a0a598ab745ac5c9ce142cc141,
+        type: 3}
+      propertyPath: whistlingTime
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3815007127822126851, guid: 0524f7a0a598ab745ac5c9ce142cc141,
         type: 3}
       propertyPath: m_Name
@@ -4766,16 +4778,6 @@ PrefabInstance:
       propertyPath: aimPoint
       value: 
       objectReference: {fileID: 605718130}
-    - target: {fileID: 3815007127822126872, guid: 0524f7a0a598ab745ac5c9ce142cc141,
-        type: 3}
-      propertyPath: adjustTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815007127822126872, guid: 0524f7a0a598ab745ac5c9ce142cc141,
-        type: 3}
-      propertyPath: aimAdjustTime
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3815007127822126872, guid: 0524f7a0a598ab745ac5c9ce142cc141,
         type: 3}
       propertyPath: colliderPoint

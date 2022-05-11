@@ -26,9 +26,11 @@ public class HerdMovement : MonoBehaviour
     public Transform[] nearestZones;
     private Transform lastZone;
     [HideInInspector] public Transform nextZone;
+    [HideInInspector] public Transform mechaWhistlingPosition;
 
     private int x = 0;
     [HideInInspector] public bool herddIsMoving = false;
+    [HideInInspector] public bool mechaIsWhistling = false;
 
     [Header("Debug")]
     public bool debugHerdRadius = false;

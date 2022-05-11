@@ -14,6 +14,7 @@ public class BisonSystem : MonoBehaviour
     private float herdRadius;
     private Vector3 herdCenter;
     private bool herdIsMoving;
+    private bool mechaIsWhistling = false;
 
     /*[Header("Feedback")]
     public GameObject deathParticleObj;*/
@@ -45,8 +46,9 @@ public class BisonSystem : MonoBehaviour
     {
         herdCenter = herdScript.transform.position;
         herdIsMoving = herdScript.herddIsMoving;
+        mechaIsWhistling = herdScript.mechaIsWhistling;
 
-        if (!herdIsMoving)
+        if (!herdIsMoving && !mechaIsWhistling)
         {
             if (moveTimer > moveFrequence)
             {
@@ -59,10 +61,16 @@ public class BisonSystem : MonoBehaviour
                 moveTimer += Time.deltaTime;
             }
         }
-        else
+        else if (herdIsMoving)
         {
             target = herdScript.nextZone.position;
             moveTimer = moveFrequence;
+        }
+        else if (mechaIsWhistling)
+        {
+            target = herdScript.mechaWhistlingPosition.position;
+            moveTimer = moveFrequence;
+
         }
 
         if (actualCooldown > cooldown)
