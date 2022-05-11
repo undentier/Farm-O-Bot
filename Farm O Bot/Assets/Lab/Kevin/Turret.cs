@@ -5,23 +5,25 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private GameObject actualTarget;
+    public Transform firePoint;
     public float detectionRange = 15f;
-    public float turnSpeed = 5f;
+    public float headTurnSpeed = 5f;
+    public float fireRate = 1f;
 
-    public string enemyTag = "Enemy";
-
-    public float cadence = 1f;
     private float leftTime = 0f;
 
-    public GameObject bulletPrefab;
-    public int bulletDamage =1; //not functionnal
-    public Transform firePoint;
+    [Header("Bullet")]
+    public GameObject bullet;
+    public int bulletDamage = 1; //not functionnal
+    public string enemyTag = "Enemy";
+
+    [Header("Head")]
+    public Transform head;
+    public Animator headAnimator;
 
     void Start()
     {
-
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
-        
     }
 
     void UpdateTarget()
@@ -50,7 +52,6 @@ public class Turret : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(actualTarget == null)
@@ -60,21 +61,22 @@ public class Turret : MonoBehaviour
 
         Vector3 dirrection = actualTarget.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(dirrection);
-        Vector3 myRotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * turnSpeed).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, myRotation.y, 0f);
+        Vector3 myRotation = Quaternion.Lerp(head.rotation, rotation, Time.deltaTime * headTurnSpeed).eulerAngles;
+        head.rotation = Quaternion.Euler(0f, myRotation.y, 0f);
 
-        if(leftTime <= 0)
+        if (leftTime <= 0)
         {
             Shoot();
-            leftTime = 1 / cadence;
+            leftTime = 1 / fireRate;
         }
 
         leftTime -= Time.deltaTime;
     }
     void Shoot()
     {
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet theBullet = bullet.GetComponent<Bullet>();
+        headAnimator.SetTrigger("shoot");
+        GameObject bulletInstance = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        TurretBullet theBullet = bulletInstance.GetComponent<TurretBullet>();
 
         if(theBullet != null)
         {
