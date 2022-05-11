@@ -7,20 +7,28 @@ public class HerdMovement : MonoBehaviour
 {
     [Header("Bison")]
     public GameObject bison;
+    public Transform bisonsGroup;
     public float bisonMoveFrequence;
 
     [Header("Herd")]
     public Transform zones;
     public int numberBisons;
     public float herdRadius;
+    public float herdMovingSpeed;
     public float herdMoveFrequence;
     private float herdMoveTimer = 0;
 
     private Transform[] zonesPosition;
     private float[] zonesDistance;
     private float[] ZonesDistanceOrdered;
+
+    [Space]
     public Transform[] nearestZones;
     private Transform lastZone;
+    [HideInInspector] public Transform nextZone;
+
+    private int x = 0;
+    [HideInInspector] public bool herddIsMoving = false;
 
     [Header("Debug")]
     public bool debugHerdRadius = false;
@@ -29,7 +37,8 @@ public class HerdMovement : MonoBehaviour
     {
         for (int i = 0; i < numberBisons; i++)
         {
-            Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, transform);
+            GameObject bisonInstance = Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, bisonsGroup);
+            bisonInstance.GetComponent<BisonSystem>().herdScript = this;
         }
 
         zonesPosition = new Transform[zones.childCount];
@@ -41,9 +50,24 @@ public class HerdMovement : MonoBehaviour
         {
             zonesPosition[i] = zones.GetChild(i);
         }
+    }
 
-        RefreshZonesDistance();
-        SortNearestZones();
+    private void Update()
+    {
+        if (herdMoveTimer > herdMoveFrequence && !herddIsMoving)
+        {
+            RefreshZonesDistance();
+            SortNearestZones();
+            ChooseNextZone();
+            herddIsMoving = true;
+        }
+        else
+        {
+            herdMoveTimer += Time.deltaTime;
+            x = 0;
+        }
+
+        if (herddIsMoving) MoveHerd();
     }
 
     private void RefreshZonesDistance()
@@ -56,14 +80,43 @@ public class HerdMovement : MonoBehaviour
 
     private void SortNearestZones()
     {
+        ZonesDistanceOrdered = zonesDistance;
         ZonesDistanceOrdered = ZonesDistanceOrdered.OrderBy(x => x).ToArray();
 
         for (int i = 0; i < nearestZones.Length; i++)
         {
             int index = System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[i+1]);
-            nearestZones[i] = zonesPosition[index];
+
+            if (zonesPosition[index] == lastZone)
+            {
+                x++;
+            }
+
+            nearestZones[i] = zonesPosition[System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[i + 1 + x])];
         }
     }
+
+    private void ChooseNextZone()
+    {
+        int randomZone = Random.Range(0, 2);
+
+        lastZone = zonesPosition[System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[0])];
+        nextZone = nearestZones[randomZone];
+    }
+
+    private void MoveHerd()
+    {
+        if (Vector3.Distance(transform.position, nextZone.position) > 0f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, nextZone.position, Time.deltaTime * herdMovingSpeed);
+        }
+        else
+        {
+            herddIsMoving = false;
+            herdMoveTimer = 0;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (debugHerdRadius)

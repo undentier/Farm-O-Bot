@@ -13,6 +13,7 @@ public class BisonSystem : MonoBehaviour
     private float moveTimer = 0;
     private float herdRadius;
     private Vector3 herdCenter;
+    private bool herdIsMoving;
 
     /*[Header("Feedback")]
     public GameObject deathParticleObj;*/
@@ -26,13 +27,12 @@ public class BisonSystem : MonoBehaviour
     private NavMeshPath pathToFollow;
     private float actualCooldown = 0;
 
-    private HerdMovement herdScript;
+    [HideInInspector] public HerdMovement herdScript;
 
     #endregion
 
     private void Start()
     {
-        herdScript = GetComponentInParent<HerdMovement>();
         moveFrequence = herdScript.bisonMoveFrequence;
         herdRadius = herdScript.herdRadius;
         herdCenter = herdScript.transform.position;
@@ -44,16 +44,25 @@ public class BisonSystem : MonoBehaviour
     private void Update()
     {
         herdCenter = herdScript.transform.position;
+        herdIsMoving = herdScript.herddIsMoving;
 
-        if (moveTimer > moveFrequence)
+        if (!herdIsMoving)
         {
-            moveTimer = 0;
-            RandomMoveInsideCercle();
-            RefreshPath();
+            if (moveTimer > moveFrequence)
+            {
+                moveTimer = 0;
+                RandomMoveInsideCercle();
+                RefreshPath();
+            }
+            else
+            {
+                moveTimer += Time.deltaTime;
+            }
         }
         else
         {
-            moveTimer += Time.deltaTime;
+            target = herdScript.nextZone.position;
+            moveTimer = moveFrequence;
         }
 
         if (actualCooldown > cooldown)

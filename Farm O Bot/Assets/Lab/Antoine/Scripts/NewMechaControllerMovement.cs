@@ -126,6 +126,10 @@ public class NewMechaControllerMovement : MonoBehaviour
             //chest.rotation = Quaternion.Euler(lookAtReticule.eulerAngles.x, legsBaseAngle + chestRotationX, 0);
             chest.rotation = Quaternion.Euler(chestRotationY, legsBaseAngle + chestRotationX, 0);
         }
+        else
+        {
+            chest.rotation = Quaternion.Euler(chestRotationY, legsBaseAngle + chestRotationX, 0);
+        }
     }
 
     private void ResetAngleChestAndLegs()

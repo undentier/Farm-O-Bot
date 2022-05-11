@@ -1147,6 +1147,7 @@ MonoBehaviour:
   selfAgent: {fileID: 4002509268643546290}
   cooldown: 1
   target: {x: 0, y: 0, z: 0}
+  herdScript: {fileID: 0}
 --- !u!195 &4002509268643546290
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1156,9 +1157,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 7015460970460274711}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.19
-  m_Speed: 7
-  m_Acceleration: 5
+  m_Radius: 0.13
+  m_Speed: 6
+  m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
