@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5980495364820533850}
   - component: {fileID: 4605568357892257415}
   m_Layer: 0
-  m_Name: Tourelle's Bullet
+  m_Name: Turret's Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tourelle : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     private GameObject actualTarget;
     public float detectionRange = 15f;
@@ -14,7 +14,9 @@ public class Tourelle : MonoBehaviour
     private float leftTime = 0f;
 
     public GameObject bulletPrefab;
+    public int bulletDamage =1; //not functionnal
     public Transform firePoint;
+
     void Start()
     {
 
