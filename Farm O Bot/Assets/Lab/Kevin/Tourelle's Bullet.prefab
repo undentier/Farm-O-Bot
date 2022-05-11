@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5980495364820533850}
   - component: {fileID: 4605568357892257415}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: Tourelle's Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: c43213e1494d8486881b6aa626ebee03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f97930aca5ae842b2f1af5c3b38b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
+  speed: 2

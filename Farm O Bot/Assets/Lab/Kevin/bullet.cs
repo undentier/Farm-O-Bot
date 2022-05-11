@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    private Transform target;
+    private GameObject target;
     public float speed = 70f;
 
-    public void Seek(Transform _target)
+    public void Seek(GameObject _target)
     {
         target = _target;
     }
@@ -21,7 +21,7 @@ public class bullet : MonoBehaviour
             return;
         }
 
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
         if(dir.magnitude <= distanceThisFrame)
@@ -38,5 +38,6 @@ public class bullet : MonoBehaviour
     void HitTarget()
     {
         Destroy(gameObject);
+        Destroy(target);
     }
 }

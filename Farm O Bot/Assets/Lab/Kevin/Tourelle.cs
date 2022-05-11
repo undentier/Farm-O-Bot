@@ -4,85 +4,85 @@ using UnityEngine;
 
 public class Tourelle : MonoBehaviour
 {
-    private Transform target;
-    public float range = 15f;
+    private GameObject actualTarget;
+    public float detectionRange = 15f;
     public float turnSpeed = 5f;
 
     public string enemyTag = "Enemy";
 
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    public float cadence = 1f;
+    private float leftTime = 0f;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-    // Start is called before the first frame update
     void Start()
     {
-        //InvokeReapeating("UpdateTarget", 0f, 0.5f);
+
+        InvokeRepeating("UpdateTarget", 0f, 0.1f);
         
     }
 
     void UpdateTarget()
     {
-        GameObject[] ennemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        float shotestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
+        GameObject[] myEnnemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        float distanceMin = Mathf.Infinity;
+        GameObject target = null;
 
-        foreach(GameObject enemy in ennemies)
+        foreach(GameObject enemy in myEnnemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if(distanceToEnemy < shotestDistance)
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if(distance < distanceMin)
             {
-                shotestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                distanceMin = distance;
+                target = enemy;
             }
         }
 
-        if(nearestEnemy != null && shotestDistance <= range)
+        if(target != null && distanceMin <= detectionRange)
         {
-            target = nearestEnemy.transform;
+            actualTarget = target;
         }
         else
         {
-            target = null;
+            actualTarget = null;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
+        if(actualTarget == null)
         {
             return;
         }
 
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        Vector3 dirrection = actualTarget.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(dirrection);
+        Vector3 myRotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * turnSpeed).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, myRotation.y, 0f);
 
-        if(fireCountdown <= 0)
+        if(leftTime <= 0)
         {
             Shoot();
-            fireCountdown = 1 / fireRate;
+            leftTime = 1 / cadence;
         }
 
-        fireCountdown -= Time.deltaTime;
+        leftTime -= Time.deltaTime;
     }
     void Shoot()
     {
-        GameObject bulletGo = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet bull = bulletGo.GetComponent<bullet>();
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet theBullet = bullet.GetComponent<Bullet>();
 
-        if(bull != null)
+        if(theBullet != null)
         {
-            bull.Seek(target);
+            theBullet.Seek(actualTarget);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 }
