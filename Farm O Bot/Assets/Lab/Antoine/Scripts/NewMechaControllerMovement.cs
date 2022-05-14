@@ -65,7 +65,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
         base.OnStartClient();
         if (IsOwner)
         {
-            Debug.Log("test");
             mainCamera.SetActive(true);
             cinecam.gameObject.SetActive(true);
             cinecam.Follow = mechCameraRoot;

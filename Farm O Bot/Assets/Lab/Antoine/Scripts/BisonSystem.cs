@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FishNet.Object;
 
-public class BisonSystem : MonoBehaviour
+public class BisonSystem : NetworkBehaviour
 {
     #region Variable
 
@@ -32,8 +33,18 @@ public class BisonSystem : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    public override void OnStartClient()
     {
+        base.OnStartClient();
+
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+
+        herdScript = GameObject.Find("Herd").GetComponent<HerdMovement>();
+        Debug.Log(herdScript);
         moveFrequence = herdScript.bisonMoveFrequence;
         herdRadius = herdScript.herdRadius;
         herdCenter = herdScript.transform.position;
@@ -42,46 +53,52 @@ public class BisonSystem : MonoBehaviour
         RefreshPath();
     }
 
+
     private void Update()
     {
-        herdCenter = herdScript.transform.position;
-        herdIsMoving = herdScript.herddIsMoving;
-        mechaIsWhistling = herdScript.mechaIsWhistling;
-
-        if (!herdIsMoving && !mechaIsWhistling)
+        if (IsServer && !IsClientOnly)
         {
-            if (moveTimer > moveFrequence)
+            herdCenter = herdScript.transform.position;
+            herdIsMoving = herdScript.herddIsMoving;
+            mechaIsWhistling = herdScript.mechaIsWhistling;
+
+            if (!herdIsMoving && !mechaIsWhistling)
             {
-                moveTimer = 0;
-                RandomMoveInsideCercle();
+                if (moveTimer > moveFrequence)
+                {
+                    moveTimer = 0;
+
+                    RandomMoveInsideCercle();
+                    RefreshPath();
+                }
+                else
+                {
+                    moveTimer += Time.deltaTime;
+                }
+            }
+            else if (herdIsMoving)
+            {
+                target = herdScript.nextZone.position;
+                moveTimer = moveFrequence;
+            }
+            else if (mechaIsWhistling)
+            {
+                target = herdScript.mechaWhistlingPosition.position;
+                moveTimer = moveFrequence;
+
+            }
+
+            if (actualCooldown > cooldown)
+            {
+                actualCooldown = 0f;
                 RefreshPath();
             }
             else
             {
-                moveTimer += Time.deltaTime;
+                actualCooldown += Time.deltaTime;
             }
         }
-        else if (herdIsMoving)
-        {
-            target = herdScript.nextZone.position;
-            moveTimer = moveFrequence;
-        }
-        else if (mechaIsWhistling)
-        {
-            target = herdScript.mechaWhistlingPosition.position;
-            moveTimer = moveFrequence;
-
-        }
-
-        if (actualCooldown > cooldown)
-        {
-            actualCooldown = 0f;
-            RefreshPath();
-        }
-        else
-        {
-            actualCooldown += Time.deltaTime;
-        }
+       
     }
 
 
@@ -112,7 +129,7 @@ public class BisonSystem : MonoBehaviour
 
     private void RandomMoveInsideCercle()
     {
-        target = herdCenter + new Vector3(Random.insideUnitSphere.x * herdRadius, herdCenter.y, Random.insideUnitSphere.z * herdRadius);
+        target = herdCenter;//+ new Vector3(Random.insideUnitSphere.x * herdRadius, herdCenter.y, Random.insideUnitSphere.z * herdRadius);
     }
 
     private void RefreshPath()

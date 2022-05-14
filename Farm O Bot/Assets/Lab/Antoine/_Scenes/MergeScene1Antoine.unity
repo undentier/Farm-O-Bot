@@ -1634,6 +1634,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &929563465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 385525886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &929563470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929563465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f48f002b825cbd45a19bd96d90f9edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unreliableMTU: 1023
+  _attackResponseType: 1
+  _ipv4BindAddress: 
+  _ipv6BindAddress: 
+  _port: 7770
+  _maximumClients: 4095
+  _clientAddress: localhost
+  _timeout: 15
 --- !u!1 &938852397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,6 +2542,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1366921102}
   - component: {fileID: 1366921103}
+  - component: {fileID: 1366921104}
+  - component: {fileID: 1366921105}
   m_Layer: 0
   m_Name: Herd
   m_TagString: Untagged
@@ -2550,20 +2578,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f7e11eaff32f46aca918d67e2b31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 1366921104}
+  _networkObjectCache: {fileID: 1366921104}
   bison: {fileID: 7015460970460274711, guid: 82b75397da5b3a14890f9fcb9e6a6dde, type: 3}
   bisonsGroup: {fileID: 128664451}
-  bisonMoveFrequence: 10
+  bisonMoveFrequence: 5
   zones: {fileID: 953253687}
   numberBisons: 20
   herdRadius: 30
   herdMovingSpeed: 10
-  herdMoveFrequence: 20
+  herdMoveFrequence: 5
   nearestZones: []
   nextZone: {fileID: 0}
   mechaWhistlingPosition: {fileID: 0}
   herddIsMoving: 0
   mechaIsWhistling: 0
   debugHerdRadius: 1
+--- !u!114 &1366921104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366921101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 1366921103}
+  - {fileID: 1366921105}
+  SceneTransformProperties:
+    Position: {x: -25.8, y: 0, z: -9.3}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 1456325567
+  _sceneId: 6254870683983218569
+  _sceneNetworkObjects:
+  - {fileID: 1366921104}
+--- !u!114 &1366921105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366921101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 1366921104}
+  _networkObjectCache: {fileID: 1366921104}
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 2
+  _extrapolation: 0
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 1
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1 &1385098473
 GameObject:
   m_ObjectHideFlags: 0

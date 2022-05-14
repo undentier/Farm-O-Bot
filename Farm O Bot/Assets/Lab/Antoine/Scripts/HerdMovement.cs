@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using FishNet.Object;
+using FishNet;
+using FishNet.Connection;
 
-public class HerdMovement : MonoBehaviour
+public class HerdMovement : NetworkBehaviour
 {
     [Header("Bison")]
     public GameObject bison;
@@ -35,12 +38,15 @@ public class HerdMovement : MonoBehaviour
     [Header("Debug")]
     public bool debugHerdRadius = false;
 
-    private void Start()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
+
         for (int i = 0; i < numberBisons; i++)
         {
-            GameObject bisonInstance = Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, bisonsGroup);
-            bisonInstance.GetComponent<BisonSystem>().herdScript = this;
+            GameObject bisonInstance = Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, null);
+            //bisonInstance.GetComponent<BisonSystem>().herdScript = this;
+            InstanceFinder.ServerManager.Spawn(bisonInstance, InstanceFinder.ClientManager.Connection);
         }
 
         zonesPosition = new Transform[zones.childCount];
@@ -54,22 +60,32 @@ public class HerdMovement : MonoBehaviour
         }
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        
+    }
+
     private void Update()
     {
-        if (herdMoveTimer > herdMoveFrequence && !herddIsMoving)
+        if (IsServer && !IsClientOnly)
         {
-            RefreshZonesDistance();
-            SortNearestZones();
-            ChooseNextZone();
-            herddIsMoving = true;
-        }
-        else
-        {
-            herdMoveTimer += Time.deltaTime;
-            x = 0;
-        }
+            if (herdMoveTimer > herdMoveFrequence && !herddIsMoving)
+            {
+                RefreshZonesDistance();
+                SortNearestZones();
+                ChooseNextZone();
+                herddIsMoving = true;
+            }
+            else
+            {
+                herdMoveTimer += Time.deltaTime;
+                x = 0;
+            }
 
-        if (herddIsMoving) MoveHerd();
+            if (herddIsMoving) MoveHerd();
+        }
     }
 
     private void RefreshZonesDistance()
@@ -104,13 +120,16 @@ public class HerdMovement : MonoBehaviour
 
         lastZone = zonesPosition[System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[0])];
         nextZone = nearestZones[randomZone];
+
     }
+
 
     private void MoveHerd()
     {
         if (Vector3.Distance(transform.position, nextZone.position) > 0f)
         {
             transform.position = Vector3.MoveTowards(transform.position, nextZone.position, Time.deltaTime * herdMovingSpeed);
+            Debug.Log("Moove");
         }
         else
         {
