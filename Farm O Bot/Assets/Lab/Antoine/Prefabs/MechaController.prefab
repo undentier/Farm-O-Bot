@@ -500,6 +500,8 @@ GameObject:
   - component: {fileID: 3815007127822126876}
   - component: {fileID: 3815007127822126877}
   - component: {fileID: 3815007127822126850}
+  - component: {fileID: 151926469}
+  - component: {fileID: 151926470}
   m_Layer: 0
   m_Name: MechaController
   m_TagString: Untagged
@@ -557,7 +559,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 933af97d69d5a284b96a228b7baa53e5, type: 3}
   m_Name: 
@@ -577,7 +579,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ec64d0afb44c43449316a2383666550, type: 3}
   m_Name: 
@@ -598,7 +600,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bea21f37bd8cb844b90cc1e577d95e6, type: 3}
   m_Name: 
@@ -612,11 +614,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee0cb9fbd5a44d3429a3e8d5feb70716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxNumberTurretsPlaced: 2
+  currentTurretsNumber: []
+  maxDistanceBuild: 40
+  turret: {fileID: 8280751323245754215, guid: 0113b9918ee35dc4a928764611ca3754, type: 3}
+  turretPreview: {fileID: 8280751323245754215, guid: 2c16460f97df7044eb3b7ee6d1755fd9,
+    type: 3}
+  aimPosition: {fileID: 0}
+  chest: {fileID: 3815007129061943576}
 --- !u!114 &3815007127822126878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +757,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fd41dc1c-b4ff-4302-8db2-880f49cb7963
     m_ActionName: Player/Whistle[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4986f418-0422-497b-a796-871ebc234778
+    m_ActionName: Player/SelectTurret[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 737c6f6c-adf9-427b-9019-5779c565f306
+    m_ActionName: Player/PlaceTurret[/Mouse/middleButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -802,6 +820,73 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &151926469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 151926470}
+  SceneTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects:
+  - {fileID: 151926469}
+--- !u!114 &151926470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 2
+  _extrapolation: 0
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 1
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1 &3815007127832767112
 GameObject:
   m_ObjectHideFlags: 0

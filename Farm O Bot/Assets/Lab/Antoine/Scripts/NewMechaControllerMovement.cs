@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class NewMechaControllerMovement : MonoBehaviour
+using FishNet.Object;
+using Cinemachine;
+public class NewMechaControllerMovement : NetworkBehaviour
 {
     [Header("Movement")]
     [Range(0, 50)]
@@ -46,6 +47,7 @@ public class NewMechaControllerMovement : MonoBehaviour
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
+    private CinemachineVirtualCamera cam;
 
     private void Start()
     {
@@ -53,19 +55,34 @@ public class NewMechaControllerMovement : MonoBehaviour
         mechaAnimationScript = GetComponent<MechaAnimation>();
         playerActions = new DefaultInputActions();
         playerActions.Player.Enable();
-
+        cam = GameObject.Find("3rdCameraTop").GetComponent<CinemachineVirtualCamera>();
         ResetAngleChestAndLegs();
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        cam = GameObject.Find("3rdCameraTop").GetComponent<CinemachineVirtualCamera>();
+        if (IsOwner)
+        {
+            cam.Follow = transform;
+        }
+
     }
 
     private void Update()
     {
-        ReadInput();
+        if (IsOwner)
+        {
+            ReadInput();
 
-        MoveMecha();
-        RotateMechaChest();
-        if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
+            MoveMecha();
+            RotateMechaChest();
+            if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
 
-        AnimateMecha();
+            AnimateMecha();
+        }
+
     }
 
     private void ReadInput()
