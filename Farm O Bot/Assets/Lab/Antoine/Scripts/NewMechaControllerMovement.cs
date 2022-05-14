@@ -38,6 +38,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private float chestRotationY;
     public Transform chest;
     public Transform lookAtReticule;
+    public Transform mechCameraRoot;
 
     //Input
     private Vector2 inputMovement;
@@ -47,7 +48,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
-    private CinemachineVirtualCamera cam;
+    public CinemachineVirtualCamera cinecam;
+    public GameObject mainCamera;
 
     private void Start()
     {
@@ -55,19 +57,23 @@ public class NewMechaControllerMovement : NetworkBehaviour
         mechaAnimationScript = GetComponent<MechaAnimation>();
         playerActions = new DefaultInputActions();
         playerActions.Player.Enable();
-        cam = GameObject.Find("3rdCameraTop").GetComponent<CinemachineVirtualCamera>();
         ResetAngleChestAndLegs();
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        cam = GameObject.Find("3rdCameraTop").GetComponent<CinemachineVirtualCamera>();
         if (IsOwner)
         {
-            cam.Follow = transform;
+            Debug.Log("test");
+            mainCamera.SetActive(true);
+            cinecam.gameObject.SetActive(true);
+            cinecam.Follow = mechCameraRoot;
         }
-
+        else {
+            cinecam.gameObject.SetActive(false);
+            mainCamera.SetActive(false);
+        }
     }
 
     private void Update()
