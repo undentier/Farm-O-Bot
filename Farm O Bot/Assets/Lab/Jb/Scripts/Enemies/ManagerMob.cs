@@ -25,59 +25,42 @@ public class ManagerMob : NetworkBehaviour
     [SerializeField] private int flockSize;
     [SerializeField] private Vector3 spawnBounds;
 
-    [Header("Speed Setup")]
-    [Range(0, 10)]
-    [SerializeField] private float _minSpeed;
-    public float minSpeed { get { return _minSpeed; } }
-    [Range(0, 10)]
-    [SerializeField] private float _maxSpeed;
-    public float maxSpeed { get { return _maxSpeed; } }
-
+    [Header("Speed")]
+    [Range(0, 100)]
+    [SerializeField] private float speed;
 
     [Header("Detection Distances")]
+    [Range(0, 10)]
+    public float cohesionDistance;
 
     [Range(0, 10)]
-    [SerializeField] private float _cohesionDistance;
-    public float cohesionDistance { get { return _cohesionDistance; } }
+    public float avoidanceDistance;
 
     [Range(0, 10)]
-    [SerializeField] private float _avoidanceDistance;
-    public float avoidanceDistance { get { return _avoidanceDistance; } }
+    public float aligementDistance;
 
     [Range(0, 10)]
-    [SerializeField] private float _aligementDistance;
-    public float aligementDistance { get { return _aligementDistance; } }
-
-    [Range(0, 10)]
-    [SerializeField] private float _obstacleDistance;
-    public float obstacleDistance { get { return _obstacleDistance; } }
+    public float obstacleDistance;
 
     [Range(0, 100)]
-    [SerializeField] private float _boundsDistance;
-    public float boundsDistance { get { return _boundsDistance; } }
+    public float boundsDistance;
 
 
     [Header("Behaviour Weights")]
+    [Range(0, 10)]
+    public float cohesionWeight;
 
     [Range(0, 10)]
-    [SerializeField] private float _cohesionWeight;
-    public float cohesionWeight { get { return _cohesionWeight; } }
+    public float avoidanceWeight;
 
     [Range(0, 10)]
-    [SerializeField] private float _avoidanceWeight;
-    public float avoidanceWeight { get { return _avoidanceWeight; } }
+    public float aligementWeight;
 
     [Range(0, 10)]
-    [SerializeField] private float _aligementWeight;
-    public float aligementWeight { get { return _aligementWeight; } }
-
-    [Range(0, 10)]
-    [SerializeField] private float _boundsWeight;
-    public float boundsWeight { get { return _boundsWeight; } }
+    public float boundsWeight;
 
     [Range(0, 100)]
-    [SerializeField] private float _obstacleWeight;
-    public float obstacleWeight { get { return _obstacleWeight; } }
+    public float obstacleWeight;
 
     //-------------//
 
@@ -85,11 +68,7 @@ public class ManagerMob : NetworkBehaviour
     //Private parameter
     //[HideInInspector]
     public FlocksLogic[] allMobs;
-
     public Vector3 distanceWithGround;
-
-    public ComputeShader computeShader;
-
 
     // Start is called before the first frame update
     void Start()
@@ -171,10 +150,4 @@ public class ManagerMob : NetworkBehaviour
         }
     }
 
-    //Compute shader test
-    private void RunCompute()
-    {
-        int kernelHandle = computeShader.FindKernel("CSMain");
-
-    }
 }

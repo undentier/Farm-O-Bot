@@ -99,7 +99,6 @@ public class FlocksLogic : MonoBehaviour
 		}
 
 		speed /= cohesionNeighbours.Count;
-		speed = Mathf.Clamp(speed, assignedFlock.minSpeed, assignedFlock.maxSpeed);
 	}
 
 	private Vector3 CalculateCohesionVector()
