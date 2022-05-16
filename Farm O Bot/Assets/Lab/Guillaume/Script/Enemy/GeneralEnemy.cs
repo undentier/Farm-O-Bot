@@ -8,13 +8,16 @@ public class GeneralEnemy : MonoBehaviour
     public NavMeshAgent[] agentsArray;
 
     private void Start()
-    {
+    { 
+        /*
+         * 
         foreach (NavMeshAgent agent in agentsArray)
         {
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(GameManager.instance.playerTransform.position, path);
             agent.path = path;
         }
+        */
     }
 
     private void Update()

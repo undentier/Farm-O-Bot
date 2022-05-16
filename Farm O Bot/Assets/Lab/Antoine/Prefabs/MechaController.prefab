@@ -63,7 +63,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7780429, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1008,6 +1008,7 @@ GameObject:
   - component: {fileID: 151926469}
   - component: {fileID: 151926470}
   - component: {fileID: 3440859606219571136}
+  - component: {fileID: 1355429724988539878}
   m_Layer: 0
   m_Name: MechaController
   m_TagString: Untagged
@@ -1052,7 +1053,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   mouseSensibility: 0.03
-  maxSpeed: 7.5
+  maxSpeed: 20
   decelerationSpeed: 7.5
   decelerationTime: 0.5
   turnTimeStatic: 0.5
@@ -1432,6 +1433,18 @@ MonoBehaviour:
   _synchronizeInterval: 0.1
   _clientAuthoritative: 1
   _sendToOwner: 0
+--- !u!114 &1355429724988539878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225a51d642500574791188bbd2b6b52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3815007127832767112
 GameObject:
   m_ObjectHideFlags: 0

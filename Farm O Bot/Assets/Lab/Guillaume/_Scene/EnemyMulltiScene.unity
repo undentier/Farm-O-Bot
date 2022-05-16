@@ -2561,7 +2561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3227f976296fade4fab8683acf44f651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1273073079}
+  playerTransformList: []
+  bisonTransform: {fileID: 1366921102}
 --- !u!4 &1273073079
 Transform:
   m_ObjectHideFlags: 0
