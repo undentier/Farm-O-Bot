@@ -2622,6 +2622,7 @@ MonoBehaviour:
   _sceneId: 6254870683983218569
   _sceneNetworkObjects:
   - {fileID: 1366921104}
+  - {fileID: 2064235703}
 --- !u!114 &1366921105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,6 +4400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064235702}
   - component: {fileID: 2064235701}
+  - component: {fileID: 2064235703}
   m_Layer: 0
   m_Name: Comet Manager
   m_TagString: Untagged
@@ -4418,6 +4420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01fe3d4997073b4cb8080da2b1d8ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 2064235703}
+  _networkObjectCache: {fileID: 2064235703}
   allTargets:
   - {fileID: 1932370389}
   - {fileID: 1385098474}
@@ -4434,6 +4439,7 @@ MonoBehaviour:
   cometPrefab: {fileID: 7355314588627608029, guid: 501ced48c9fd41044997129dcd7efe2e,
     type: 3}
   playerInputScript: {fileID: 0}
+  numOftarget: 0
 --- !u!4 &2064235702
 Transform:
   m_ObjectHideFlags: 0
@@ -4449,6 +4455,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2064235703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064235700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 2064235701}
+  SceneTransformProperties:
+    Position: {x: -5.9, y: 162.9, z: 62.13398}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 1456325567
+  _sceneId: 6254870685138138069
+  _sceneNetworkObjects:
+  - {fileID: 1366921104}
+  - {fileID: 2064235703}
 --- !u!1001 &2136586556
 PrefabInstance:
   m_ObjectHideFlags: 0

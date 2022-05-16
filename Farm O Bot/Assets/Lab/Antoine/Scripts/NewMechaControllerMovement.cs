@@ -154,8 +154,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
             //Mouse is use
             else
             {
-                chestRotationX += lookDirection.x * rotationSpeedChest * mouseSensibility * Time.deltaTime;
-                chestRotationY += -lookDirection.y * rotationSpeedChest * mouseSensibility * Time.deltaTime;
+                chestRotationX += lookDirection.x * rotationSpeedChest * (mouseSensibility * 0.1f) * Time.deltaTime;
+                chestRotationY += -lookDirection.y * rotationSpeedChest * (mouseSensibility * 0.1f) * Time.deltaTime;
             }
 
             if (clampChestRotationHorizontal) { chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); ClampAngle(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); }
