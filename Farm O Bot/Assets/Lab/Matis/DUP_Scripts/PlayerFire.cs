@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FishNet.Object;
 
-public class PlayerFire : MonoBehaviour
+public class PlayerFire : NetworkBehaviour
 {
-    public CanvasManager canvas;
+    //public CanvasManager canvas;
 
     public List<GlobalWeapon> leftWeapons;
     public List<GlobalWeapon> rightWeapons;
 
-    public InputActionReference leftFire;
-    public InputActionReference rightFire;
+    public InputActionReference leftFireInput;
+    public InputActionReference rightFireInput;
 
     private MechaAiming aimScript;
 
@@ -22,11 +23,11 @@ public class PlayerFire : MonoBehaviour
 
     private void Update()
     {
-        if (leftFire.action.phase == InputActionPhase.Performed)
+        if (leftFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
             FireLeft();
         }
-        if (rightFire.action.phase == InputActionPhase.Performed)
+        if (rightFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
             FireRight();
         }
@@ -37,14 +38,14 @@ public class PlayerFire : MonoBehaviour
     {
         for (int i = 0; i < leftWeapons.Count; i++)
         {
-            leftWeapons[i].Shoot(aimScript.aimPoint.position);
+            leftWeapons[i].RpcShoot(aimScript.aimPoint.position);
         }    
     }
     public void FireRight()
     {
         for (int i = 0; i < rightWeapons.Count; i++)
         {
-            rightWeapons[i].Shoot(aimScript.aimPoint.position);          
+            rightWeapons[i].RpcShoot(aimScript.aimPoint.position);          
         }
     }
 }

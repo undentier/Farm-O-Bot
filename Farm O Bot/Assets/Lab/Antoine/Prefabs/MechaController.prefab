@@ -1095,19 +1095,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ec64d0afb44c43449316a2383666550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   leftWeapons:
   - {fileID: 3815007128843780262}
   rightWeapons:
   - {fileID: 3815007128555248622}
-  leftFire: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
+  leftFireInput: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
-  rightFire: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
+  rightFireInput: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
 --- !u!114 &614025366870327872
 MonoBehaviour:

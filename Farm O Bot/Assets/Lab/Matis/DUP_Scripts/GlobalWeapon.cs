@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
 
-public class GlobalWeapon : MonoBehaviour
+public class GlobalWeapon : NetworkBehaviour
 {
     public string weaponName;
     public GameObject associatedCross;
-
 
     [Header("Weapon")]
     public Transform startingPoint;
@@ -28,7 +28,7 @@ public class GlobalWeapon : MonoBehaviour
 
     bool canShoot = true;
 
-    public void Shoot(Vector3 aimPoint)
+    private void Shoot(Vector3 aimPoint)
     {
         if (canShoot == true)
         {
@@ -67,5 +67,17 @@ public class GlobalWeapon : MonoBehaviour
     {
         yield return new WaitForSeconds(weaponFireRate);
         canShoot = true;
+    }
+
+    [ServerRpc]
+    public void RpcShoot(Vector3 aimPoint)
+    {
+        RpcClientShoot(aimPoint);
+    }
+
+    [ObserversRpc]
+    private void RpcClientShoot(Vector3 aimPoint)
+    {
+        Shoot(aimPoint);
     }
 }
