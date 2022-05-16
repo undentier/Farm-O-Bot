@@ -395,8 +395,7 @@ GameObject:
   - component: {fileID: 7355314588627608024}
   - component: {fileID: 7355314588627608027}
   - component: {fileID: 5420770793106332651}
-  - component: {fileID: 7095310961511080400}
-  - component: {fileID: 2126489451870171536}
+  - component: {fileID: 272568665048081243}
   m_Layer: 0
   m_Name: Piece of comet
   m_TagString: Untagged
@@ -483,6 +482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250433884150dd54da9749a0de0bad40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 272568665048081243}
+  _networkObjectCache: {fileID: 272568665048081243}
   spawnRate: 1
   numOfEnemySpawnRate: 10
   maxEnemyToSpawn: 300
@@ -503,48 +505,7 @@ MonoBehaviour:
   - {fileID: 7355314588171567344}
   trailParticle: {fileID: 2310762754760310369}
   target: {fileID: 0}
---- !u!114 &7095310961511080400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355314588627608029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 2126489451870171536}
-  _networkObjectCache: {fileID: 2126489451870171536}
-  _synchronizeParent: 0
-  _packing:
-    Position: 1
-    Rotation: 1
-    Scale: 0
-  _interpolation: 2
-  _extrapolation: 0
-  _enableTeleport: 0
-  _teleportThreshold: 1
-  _clientAuthoritative: 1
-  _sendToOwner: 1
-  _synchronizePosition: 1
-  _positionSnapping:
-    X: 0
-    Y: 0
-    Z: 0
-  _synchronizeRotation: 1
-  _rotationSnapping:
-    X: 0
-    Y: 0
-    Z: 0
-  _synchronizeScale: 1
-  _scaleSnapping:
-    X: 0
-    Y: 0
-    Z: 0
---- !u!114 &2126489451870171536
+--- !u!114 &272568665048081243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -557,12 +518,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _networkBehaviours:
-  - {fileID: 7095310961511080400}
+  - {fileID: 5420770793106332651}
   SceneTransformProperties:
     Position: {x: 96.9, y: 22.9, z: 161.9}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 25, y: 25, z: 25}
-  _isNetworked: 1
+  _isNetworked: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: -1

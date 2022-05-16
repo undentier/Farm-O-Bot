@@ -34,7 +34,7 @@ public class EnemySysteme : MonoBehaviour
 
     private void Update()
     {
-        if (actualCooldown > cooldown)
+        /*if (actualCooldown > cooldown)
         {
             actualCooldown = 0f;
             RefreshPath();
@@ -42,8 +42,8 @@ public class EnemySysteme : MonoBehaviour
         else
         {
             actualCooldown += Time.deltaTime;
-        }
-        //selfAgent.SetDestination(target.position);
+        }*/
+        selfAgent.SetDestination(target.position);
     }
 
 

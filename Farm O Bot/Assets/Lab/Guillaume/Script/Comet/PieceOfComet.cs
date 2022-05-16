@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet;
+using FishNet.Object;
 
-public class PieceOfComet : MonoBehaviour
+public class PieceOfComet : NetworkBehaviour
 {
     #region Variable
 
@@ -33,7 +35,11 @@ public class PieceOfComet : MonoBehaviour
     {
         if (isGrounded == true)
         {
-            SpawnerSysteme();
+            if (!IsClientOnly)
+            {
+                Debug.Log("Je spawn");
+                SpawnerSysteme();
+            }
         }
         else
         {
@@ -50,7 +56,8 @@ public class PieceOfComet : MonoBehaviour
             for (int i = 0; i < numOfEnemySpawnRate; i++)
             {
                 int random = Random.Range(0, spawnPoints.Length - 1);
-                Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
+                GameObject actualEnemy = Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
+                InstanceFinder.ServerManager.Spawn(actualEnemy, Owner);
 
                 numOfEnemySpawn += 1;
                 CheckIfLimitReach();
@@ -75,6 +82,7 @@ public class PieceOfComet : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
             transform.LookAt(target.position);
+            
         }
         else
         {

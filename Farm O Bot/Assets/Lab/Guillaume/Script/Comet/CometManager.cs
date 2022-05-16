@@ -19,7 +19,8 @@ public class CometManager : NetworkBehaviour
 
     public PlayerInput playerInputScript;
 
-    private int numOftarget;
+    public int numOftarget;
+    private GameObject actualComet;
 
     #endregion
 
@@ -45,26 +46,24 @@ public class CometManager : NetworkBehaviour
         playerInputScript.actions["SpawnComet"].canceled += Spawn;
     }
 
-
     public void Spawn(InputAction.CallbackContext context)
     {
-        if (IsOwner)
+        if (context.started)
         {
-            if (context.started)
-            {
-                SpawnPieceOfComet();
-            }
+            SpawnPieceOfComet();
         }
     }
 
+
+    [ObserversRpc]
     private void SpawnPieceOfComet()
     {
-        GameObject actualCometPiece = Instantiate(cometPrefab, transform.position, transform.rotation);
-        PieceOfComet actualScript = actualCometPiece.GetComponent<PieceOfComet>();
-        actualScript.target = FindTarget();
+        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
+        //InstanceFinder.ServerManager.Spawn(actualComet, InstanceFinder.ClientManager.Connection);
 
-        InstanceFinder.ServerManager.Spawn(actualCometPiece, InstanceFinder.ClientManager.Connection);
-        
+
+        PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
+        actualScript.target = FindTarget();
 
         numOftarget += 1;
         if (numOftarget >= allTargets.Length - 1)
@@ -72,6 +71,8 @@ public class CometManager : NetworkBehaviour
             numOftarget = 0;
         }
     }
+
+
 
     private Transform FindTarget()
     {
