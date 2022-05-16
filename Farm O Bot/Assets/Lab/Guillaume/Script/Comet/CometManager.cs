@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FishNet.Object;
+using FishNet;
 
-public class CometManager : MonoBehaviour
+public class CometManager : NetworkBehaviour
 {
     #region
 
@@ -16,6 +18,9 @@ public class CometManager : MonoBehaviour
     public GameObject cometPrefab;
 
     public PlayerInput playerInputScript;
+
+    public int numOftarget;
+    private GameObject actualComet;
 
     #endregion
 
@@ -33,10 +38,12 @@ public class CometManager : MonoBehaviour
         #endregion
     }
 
-    private void Start()
+    public override void OnStartServer()
     {
-        playerInputScript.actions["Spawn"].started += Spawn;
-        playerInputScript.actions["Spawn"].canceled += Spawn;
+        base.OnStartServer();
+
+        playerInputScript.actions["SpawnComet"].started += Spawn;
+        playerInputScript.actions["SpawnComet"].canceled += Spawn;
     }
 
     public void Spawn(InputAction.CallbackContext context)
@@ -47,18 +54,28 @@ public class CometManager : MonoBehaviour
         }
     }
 
+
+    [ObserversRpc]
     private void SpawnPieceOfComet()
     {
-        GameObject actualCometPiece = Instantiate(cometPrefab, transform.position, transform.rotation);
-        PieceOfComet actualScript = actualCometPiece.GetComponent<PieceOfComet>();
+        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
+        //InstanceFinder.ServerManager.Spawn(actualComet, InstanceFinder.ClientManager.Connection);
 
+
+        PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
         actualScript.target = FindTarget();
+
+        numOftarget += 1;
+        if (numOftarget >= allTargets.Length - 1)
+        {
+            numOftarget = 0;
+        }
     }
+
+
 
     private Transform FindTarget()
     {
-        int random = Random.Range(0, allTargets.Length - 1);
-
-        return allTargets[random];
+        return allTargets[numOftarget];
     }
 }
