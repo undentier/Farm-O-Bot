@@ -44,7 +44,6 @@ public class BisonSystem : NetworkBehaviour
         base.OnStartServer();
 
         herdScript = GameObject.Find("Herd").GetComponent<HerdMovement>();
-        Debug.Log(herdScript);
         moveFrequence = herdScript.bisonMoveFrequence;
         herdRadius = herdScript.herdRadius;
         herdCenter = herdScript.transform.position;

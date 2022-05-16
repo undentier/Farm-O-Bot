@@ -6,6 +6,9 @@ using FishNet.Object;
 using Cinemachine;
 public class NewMechaControllerMovement : NetworkBehaviour
 {
+    [Header("Mouse sensibility")]
+    [Range(0, 1)] public float mouseSensibility;
+
     [Header("Movement")]
     [Range(0, 50)]
     public float maxSpeed;
@@ -38,7 +41,11 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private float chestRotationY;
     public Transform chest;
     public Transform lookAtReticule;
+
+    [Header("Camera")]
     public Transform mechCameraRoot;
+    public CinemachineVirtualCamera cinecam;
+    public GameObject mainCamera;
 
     //Input
     private Vector2 inputMovement;
@@ -48,8 +55,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
-    public CinemachineVirtualCamera cinecam;
-    public GameObject mainCamera;
 
     private void Start()
     {
@@ -135,12 +140,23 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     private void RotateMechaChest()
     {
-        Vector3 lookDirection = Vector2.ClampMagnitude(new Vector2(inputLook.x, inputLook.y), 1);
+        //Vector3 lookDirection = Vector2.ClampMagnitude(new Vector2(inputLook.x, inputLook.y), 1);
+        Vector3 lookDirection = new Vector2(inputLook.x, inputLook.y);
 
         if (lookDirection.magnitude >= 0.2f)
         {
-            chestRotationX += lookDirection.x * rotationSpeedChest * Time.deltaTime;
-            chestRotationY += -lookDirection.y * rotationSpeedChest * Time.deltaTime;
+            //A controller is plugged
+            if (Gamepad.all.Count > 1)
+            {
+                chestRotationX += lookDirection.x * rotationSpeedChest * Time.deltaTime;
+                chestRotationY += -lookDirection.y * rotationSpeedChest * Time.deltaTime;
+            }
+            //Mouse is use
+            else
+            {
+                chestRotationX += lookDirection.x * rotationSpeedChest * mouseSensibility * Time.deltaTime;
+                chestRotationY += -lookDirection.y * rotationSpeedChest * mouseSensibility * Time.deltaTime;
+            }
 
             if (clampChestRotationHorizontal) { chestRotationX = Mathf.Clamp(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); ClampAngle(chestRotationX, clampAngleHorizontal.x, clampAngleHorizontal.y); }
             if (clampChestRotationVertical) { chestRotationY = Mathf.Clamp(chestRotationY, clampAngleVertical.x, clampAngleVertical.y); ClampAngle(chestRotationY, clampAngleVertical.x, clampAngleVertical.y); }

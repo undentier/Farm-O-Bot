@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FishNet.Object;
+using FishNet;
 
-public class BuildSystem : MonoBehaviour
+public class BuildSystem : NetworkBehaviour
 {
     [Header("Turrets")]
     public int maxNumberTurretsPlaced;
@@ -63,6 +65,7 @@ public class BuildSystem : MonoBehaviour
         {
             case true:
                 turretPreviewInstance = Instantiate(turretPreview, aimPosition.position, Quaternion.identity);
+
                 break;
             case false:
                 Destroy(turretPreviewInstance);
@@ -94,6 +97,7 @@ public class BuildSystem : MonoBehaviour
             if (currentTurretsNumber.Count < maxNumberTurretsPlaced)
             {
                 GameObject turretInstance = Instantiate(turret, turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
+                InstanceFinder.ServerManager.Spawn(turretInstance, Owner);
                 currentTurretsNumber.Add(turretInstance);
             }
             else
@@ -105,6 +109,7 @@ public class BuildSystem : MonoBehaviour
                 currentTurretsNumber.Clear();
 
                 GameObject turretInstance = Instantiate(turret, turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
+                InstanceFinder.ServerManager.Spawn(turretInstance, Owner);
                 currentTurretsNumber.Add(turretInstance);
             }
             

@@ -129,7 +129,6 @@ public class HerdMovement : NetworkBehaviour
         if (Vector3.Distance(transform.position, nextZone.position) > 0f)
         {
             transform.position = Vector3.MoveTowards(transform.position, nextZone.position, Time.deltaTime * herdMovingSpeed);
-            Debug.Log("Moove");
         }
         else
         {
