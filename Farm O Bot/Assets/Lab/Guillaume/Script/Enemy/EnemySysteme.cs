@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FishNet.Object;
 
-public class EnemySysteme : MonoBehaviour
+public class EnemySysteme : NetworkBehaviour
 {
     #region Variable
 
@@ -34,16 +35,17 @@ public class EnemySysteme : MonoBehaviour
 
     private void Update()
     {
-        /*if (actualCooldown > cooldown)
+        if (actualCooldown > cooldown)
         {
+            selfAgent.SetDestination(target.position);
             actualCooldown = 0f;
-            RefreshPath();
+            //RefreshPath();
         }
         else
         {
             actualCooldown += Time.deltaTime;
-        }*/
-        selfAgent.SetDestination(target.position);
+        }
+
     }
 
 
@@ -66,6 +68,8 @@ public class EnemySysteme : MonoBehaviour
             Die();
         }
     }
+
+    [ObserversRpc]
     private void Die()
     {
         GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
