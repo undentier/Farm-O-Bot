@@ -10,6 +10,7 @@ public class EnemySysteme : NetworkBehaviour
 
     [Header ("Stats")]
     public float hp;
+    public float rangePlayerAggro;
 
     [Header("Feedback")]
     public GameObject deathParticleObj;
@@ -29,8 +30,6 @@ public class EnemySysteme : NetworkBehaviour
     {
         target = GameManager.instance.playerTransform;
         actualCooldown = 0f;
-
-        RefreshPath();
     }
 
     private void Update()
@@ -46,6 +45,7 @@ public class EnemySysteme : NetworkBehaviour
             actualCooldown += Time.deltaTime;
         }
 
+        PlayerDetection();
     }
 
 
@@ -78,6 +78,10 @@ public class EnemySysteme : NetworkBehaviour
     }
 
 
+    private void PlayerDetection()
+    {
+        
+    }
 
     private void RefreshPath()
     {

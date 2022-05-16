@@ -59,7 +59,6 @@ public class CometManager : NetworkBehaviour
     private void SpawnPieceOfComet()
     {
         actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
-        //InstanceFinder.ServerManager.Spawn(actualComet, InstanceFinder.ClientManager.Connection);
 
 
         PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
