@@ -34,15 +34,7 @@ public class EnemySysteme : NetworkBehaviour
 
     private void Update()
     {
-        if (actualCooldown > cooldown)
-        {
-            selfAgent.SetDestination(target.position);
-            actualCooldown = 0f;
-        }
-        else
-        {
-            actualCooldown += Time.deltaTime;
-        }
+        RefreshPathSysteme();
 
         if (targetOnPlayer == false)
         {
@@ -85,6 +77,7 @@ public class EnemySysteme : NetworkBehaviour
     }
 
 
+    
     private void PlayerDetection()
     {
         for (int i = 0; i < GameManager.instance.playerTransformList.Count; i++)
@@ -100,6 +93,20 @@ public class EnemySysteme : NetworkBehaviour
                 targetOnPlayer = true;
             }
             
+        }
+    }
+
+    [ObserversRpc]
+    private void RefreshPathSysteme()
+    {
+        if (actualCooldown > cooldown)
+        {
+            selfAgent.SetDestination(target.position);
+            actualCooldown = 0f;
+        }
+        else
+        {
+            actualCooldown += Time.deltaTime;
         }
     }
 
