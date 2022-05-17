@@ -11,8 +11,6 @@ public class RegularWeapon : GlobalWeapon
     public GameObject bulletPrefab;
     public float bulletSpeed;
 
-    private bool canShoot = true;
-
     public override void Shoot(bool isShooting, Vector3 aimPoint)
     {
         if (isShooting && canShoot)

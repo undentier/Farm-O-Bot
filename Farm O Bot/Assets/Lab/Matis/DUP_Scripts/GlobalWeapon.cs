@@ -6,13 +6,13 @@ using FishNet.Object;
 public class GlobalWeapon : NetworkBehaviour
 {
     public string weaponName;
+    public Transform startingPoint;
 
     [Header("Weapon")]
-    public Transform startingPoint;
     public int weaponDamages;
     public float weaponRange;
 
-    
+    [HideInInspector] public bool canShoot = true;
 
     public virtual void Shoot(bool isShooting, Vector3 aimPoint)
     {

@@ -5,19 +5,20 @@ using FishNet.Object;
 
 public class LaserWeapon : GlobalWeapon
 {
+    public float damagesRate;
+    private float damagesTimer;
+
     [Header("Laser")]
-    private LineRenderer laserRenderer;
     [Range(0, 2)]
     public float laserWidth;
     public Gradient laserColor;
 
-    private RaycastHit hit;
-
-    private bool canHit = false;
+    private LineRenderer laserRenderer;
 
     private void Start()
     {
         SetLaserComponent();
+        damagesTimer = damagesRate;
     }
 
     private void SetLaserComponent()
@@ -33,6 +34,21 @@ public class LaserWeapon : GlobalWeapon
     {
         if (isShooting)
         {
+            Vector3 aimDirection = (aimPoint - startingPoint.position).normalized;
+
+            DisplayLaser(aimPoint);
+            LaserCast(aimDirection);
+        }
+        else
+        {
+            laserRenderer.enabled = false;
+        }
+    }
+
+    private void DisplayLaser(Vector3 aimPoint)
+    {
+        if (Vector3.Distance(aimPoint, startingPoint.position) < weaponRange)
+        {
             laserRenderer.SetPosition(0, startingPoint.position);
             laserRenderer.enabled = true;
             laserRenderer.SetPosition(1, aimPoint);
@@ -43,26 +59,21 @@ public class LaserWeapon : GlobalWeapon
         }
     }
 
-    /*void Update()
+    private void LaserCast(Vector3 dir)
     {
-
-        laserRenderer.SetPosition(0, startingPoint.position);
-        laserRenderer.SetPosition(1, aimObject.transform.position);
-        if (canHit)
+        RaycastHit hit;
+        if (Physics.Raycast(startingPoint.position, dir, out hit, weaponRange) && canShoot && (damagesTimer >= damagesRate))
         {
-            Vector3 aimDirection = (aimObject.transform.position - startingPoint.position).normalized;
-            if (Physics.Raycast(startingPoint.position, aimDirection, weaponRange) && hit.transform.tag == "Enemy")
+            if (hit.transform.CompareTag("Enemy"))
             {
-                hit.transform.gameObject.GetComponent<EnemySysteme>().TakeDamage(weaponDamages);
-                StartCoroutine(weaponCooldown());
+                hit.transform.GetComponent<EnemySysteme>().TakeDamage(weaponDamages);
+                damagesTimer = 0;
             }
         }
-    }*/
 
-    /*IEnumerator weaponCooldown()
-    {
-        canHit = false;
-        yield return new WaitForSeconds(weaponFireRate);
-        canHit = true;
-    }*/
+        if(damagesTimer < damagesRate)
+        {
+            damagesTimer += Time.deltaTime;
+        }
+    }
 }

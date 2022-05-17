@@ -63,7 +63,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783133, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1105,13 +1105,19 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  leftWeapons:
+  leftWeaponsList:
   - {fileID: 6062054876046475619}
-  rightWeapons:
+  - {fileID: 2010296366512296737}
+  rightWeaponsList:
+  - {fileID: 1296417715042650508}
   - {fileID: 5848822610240797436}
   leftFireInput: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
   rightFireInput: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
+    type: 3}
+  switchWeaponLeftInput: {fileID: -8445770989656554897, guid: f9651504f950e944fa6f5c504c2fb1ae,
+    type: 3}
+  switchWeaponRightInput: {fileID: -4002024265259740412, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
 --- !u!114 &614025366870327872
 MonoBehaviour:
@@ -1292,6 +1298,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b096b4ad-0af0-4086-843a-b816528abf57
     m_ActionName: Player/Run[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12b0dc77-0278-427f-a9cc-cfc0fc79afc8
+    m_ActionName: Player/SwitchWeaponLeft[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ecc4c6e9-c055-49cb-8a32-70540cf8df52
+    m_ActionName: Player/SwitchWeaponRight[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1366,9 +1380,10 @@ MonoBehaviour:
   - {fileID: 151926470}
   - {fileID: 3440859606219571136}
   - {fileID: 2748706879924596030}
+  - {fileID: 1296417715042650508}
   - {fileID: 5848822610240797436}
-  - {fileID: 159106806414377246}
   - {fileID: 6062054876046475619}
+  - {fileID: 2010296366512296737}
   - {fileID: 6455231874090474569}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
@@ -1754,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2106,8 +2121,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3815007128555248623}
+  - component: {fileID: 1296417715042650508}
   - component: {fileID: 5848822610240797436}
-  - component: {fileID: 159106806414377246}
   m_Layer: 0
   m_Name: Right Weapon
   m_TagString: Untagged
@@ -2129,8 +2144,33 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3815007129061943576}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1296417715042650508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007128555248620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
+  weaponName: Sniper
+  startingPoint: {fileID: 3815007128555248623}
+  weaponDamages: 1
+  weaponRange: 500
+  canShoot: 1
+  weaponFireRate: 1
+  weaponDispersion: 1
+  bulletPrefab: {fileID: 1535977597517077943, guid: 83b12255e5c89ad4eb1e6c02d56c7da5,
+    type: 3}
+  bulletSpeed: 20
 --- !u!114 &5848822610240797436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,14 +2183,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03dee492c87cca4ebc61e0b082295d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
   startingPoint: {fileID: 3815007128555248623}
   weaponDamages: 1
   weaponRange: 500
-  laserRenderer: {fileID: 0}
+  canShoot: 1
+  damagesRate: 0
   laserWidth: 0.3
   laserColor:
     serializedVersion: 2
@@ -2181,30 +2222,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
---- !u!114 &159106806414377246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3815007128555248620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 7
-  _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 151926469}
-  weaponName: Explosive Launcher
-  startingPoint: {fileID: 3815007128555248623}
-  weaponDamages: 1
-  weaponRange: 500
-  weaponFireRate: 1
-  weaponDispersion: 1
-  bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
-    type: 3}
-  bulletSpeed: 10
 --- !u!1 &3815007128570142544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,6 +2536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3815007128843780257}
   - component: {fileID: 6062054876046475619}
+  - component: {fileID: 2010296366512296737}
   m_Layer: 0
   m_Name: Left Weapon
   m_TagString: Untagged
@@ -2540,7 +2558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3815007129061943576}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6062054876046475619
 MonoBehaviour:
@@ -2561,11 +2579,37 @@ MonoBehaviour:
   startingPoint: {fileID: 3815007128843780257}
   weaponDamages: 1
   weaponRange: 500
+  canShoot: 1
   weaponFireRate: 0.05
   weaponDispersion: 0.5
   bulletPrefab: {fileID: 7102762139552053791, guid: 3178443e792d6c0448f445c5f754dc54,
     type: 3}
   bulletSpeed: 40
+--- !u!114 &2010296366512296737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007128843780263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 9
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
+  weaponName: Explosive Launcher
+  startingPoint: {fileID: 3815007128843780257}
+  weaponDamages: 1
+  weaponRange: 500
+  canShoot: 1
+  weaponFireRate: 1
+  weaponDispersion: 1
+  bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
+    type: 3}
+  bulletSpeed: 10
 --- !u!1 &3815007128851389517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,8 +2864,8 @@ Transform:
   m_Children:
   - {fileID: 3815007128724001590}
   - {fileID: 3815007128434789536}
-  - {fileID: 3815007128555248623}
   - {fileID: 3815007128843780257}
+  - {fileID: 3815007128555248623}
   m_Father: {fileID: 3815007128851389516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}

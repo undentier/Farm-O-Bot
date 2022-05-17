@@ -6,56 +6,69 @@ using FishNet.Object;
 
 public class PlayerFire : NetworkBehaviour
 {
-    public List<GlobalWeapon> leftWeapons;
-    public List<GlobalWeapon> rightWeapons;
+    public List<GlobalWeapon> leftWeaponsList;
+    public List<GlobalWeapon> rightWeaponsList;
 
     public InputActionReference leftFireInput;
     public InputActionReference rightFireInput;
+    private PlayerInput _playerInput;
+
+    private int weaponLeftIndex = 0;
+    private int weaponRightIndex = 0;
 
     private MechaAiming aimScript;
 
     private void Start()
     {
         aimScript = GetComponent<MechaAiming>();
+        _playerInput = GetComponent<PlayerInput>();
+        _playerInput.actions["SwitchWeaponLeft"].started += SwitchWeaponLeft;
+        _playerInput.actions["SwitchWeaponLeft"].canceled += SwitchWeaponLeft;
+        _playerInput.actions["SwitchWeaponRight"].started += SwitchWeaponRight;
+        _playerInput.actions["SwitchWeaponRight"].canceled += SwitchWeaponRight;
     }
 
     private void Update()
     {
+        DetectShooting();
+    }
+
+    private void SwitchWeaponLeft(InputAction.CallbackContext context)
+    {
+        if (context.started && IsOwner)
+        {
+            if (weaponLeftIndex < leftWeaponsList.Count - 1) weaponLeftIndex++;
+            else weaponLeftIndex = 0;
+        }
+    }
+
+    private void SwitchWeaponRight(InputAction.CallbackContext context)
+    {
+        if (context.started && IsOwner)
+        {
+            if (weaponRightIndex < rightWeaponsList.Count - 1) weaponRightIndex++;
+            else weaponRightIndex = 0;
+        }
+    }
+
+    private void DetectShooting()
+    {
         if (leftFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            FireLeft(true);
+            leftWeaponsList[weaponLeftIndex].RpcShoot(true, aimScript.aimPoint.position);
         }
         if (leftFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
         {
-            FireLeft(false);
+            leftWeaponsList[weaponLeftIndex].RpcShoot(false, aimScript.aimPoint.position);
         }
 
         if (rightFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            FireRight(true);
+            rightWeaponsList[weaponRightIndex].RpcShoot(true, aimScript.aimPoint.position);
         }
         if (rightFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
         {
-            FireRight(false);
+            rightWeaponsList[weaponRightIndex].RpcShoot(false, aimScript.aimPoint.position);
         }
-    }
-
-    public void FireLeft(bool isShooting)
-    {
-        /*for (int i = 0; i < leftWeapons.Count; i++)
-        {
-            leftWeapons[i].RpcShoot(aimScript.aimPoint.position);
-        }*/
-
-        leftWeapons[0].RpcShoot(isShooting, aimScript.aimPoint.position);
-    }
-    public void FireRight(bool isShooting)
-    {
-        /*for (int i = 0; i < rightWeapons.Count; i++)
-        {
-            rightWeapons[i].RpcShoot(aimScript.aimPoint.position);          
-        }*/
-
-        rightWeapons[0].RpcShoot(isShooting, aimScript.aimPoint.position);
     }
 }
