@@ -23,8 +23,12 @@ public class LaserWeapon : NetworkBehaviour
     public float scaleForce = 1;
     public float scaleSpeed = 1;
 
+    void Start()
+    {
+        myLaser.gameObject.SetActive(false);
+    }
 
-    private void Shoot()
+    public void Shoot()
     {
         myLaser.gameObject.SetActive(true);
             
