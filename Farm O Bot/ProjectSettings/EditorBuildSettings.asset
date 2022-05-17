@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Lab/Jb/Scenes/TestJb.unity
+    guid: e5bd614c7cad40d4480e6c832e281170
+  - enabled: 0
     path: Assets/Lab/Guillaume/_Scene/EnemyMulltiScene.unity
     guid: a227ac2bcaa167541b9b65eb96bde322
   m_configObjects: {}

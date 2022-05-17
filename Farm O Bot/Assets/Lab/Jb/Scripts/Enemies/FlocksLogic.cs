@@ -17,7 +17,7 @@ public class FlocksLogic : MonoBehaviour
 	private Vector3 currentVelocity;
 	private Vector3 currentObstacleAvoidanceVector;
 	private float speed;
-
+	private Transform target;
 	public Transform myTransform { get; set; }
 
 	private void Awake()
@@ -35,24 +35,35 @@ public class FlocksLogic : MonoBehaviour
 		this.speed = speed;
 	}
 
+	public void InitializeTarget(Transform target)
+    {
+		this.target = target;
+	}
+
 	public void MoveUnit()
 	{
 		FindNeighbours();
 		CalculateSpeed();
 
-		var cohesionVector = CalculateCohesionVector() * assignedFlock.cohesionWeight;
-		var avoidanceVector = CalculateAvoidanceVector() * assignedFlock.avoidanceWeight;
-		var aligementVector = CalculateAligementVector() * assignedFlock.aligementWeight;
-		var boundsVector = CalculateBoundsVector() * assignedFlock.boundsWeight;
-		var obstacleVector = CalculateObstacleVector() * assignedFlock.obstacleWeight;
+		Vector3 offsetToTarget = Vector3.zero;
+		if (target != null)
+        {
+			offsetToTarget = (target.position - transform.position);
+			
+		}
 
-		var moveVector = cohesionVector + avoidanceVector + aligementVector + boundsVector + obstacleVector;
+		Vector3 obstacelTarget = offsetToTarget.normalized * assignedFlock.targetWeight;
+		Vector3 cohesionVector = CalculateCohesionVector() * assignedFlock.cohesionWeight;
+		Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedFlock.avoidanceWeight;
+		Vector3 aligementVector = CalculateAligementVector() * assignedFlock.aligementWeight;
+		Vector3 boundsVector = CalculateBoundsVector() * assignedFlock.boundsWeight;
+		Vector3 obstacleVector = CalculateObstacleVector() * assignedFlock.obstacleWeight;
+
+		Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + boundsVector + obstacleVector + obstacelTarget;
 		moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
 		moveVector = moveVector.normalized * speed;
-		/*if (moveVector == Vector3.zero)
-			moveVector = transform.forward;*/
-
-		Debug.Log(moveVector);
+		if (moveVector == Vector3.zero)
+			moveVector = transform.forward;
 
 		myTransform.forward = moveVector;
 		myTransform.position += moveVector * Time.deltaTime;
@@ -165,7 +176,7 @@ public class FlocksLogic : MonoBehaviour
 	private Vector3 CalculateBoundsVector()
 	{
 		var offsetToCenter = assignedFlock.transform.position - myTransform.position;
-		if (offsetToCenter.magnitude >= assignedFlock.boundsDistance * 0.9f)
+		if (offsetToCenter.magnitude >= assignedFlock.movementField * 0.9f)
 		{
 			return offsetToCenter.normalized;
 		}
