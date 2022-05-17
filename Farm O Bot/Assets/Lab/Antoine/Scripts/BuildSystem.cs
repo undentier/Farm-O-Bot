@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FishNet.Object;
 using FishNet;
+using FishNet.Connection;
 
 public class BuildSystem : NetworkBehaviour
 {
@@ -35,7 +36,7 @@ public class BuildSystem : NetworkBehaviour
 
     private void SelectTurret(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && IsOwner)
         {
             turretIsPreview = !turretIsPreview;
 
@@ -46,7 +47,7 @@ public class BuildSystem : NetworkBehaviour
 
     private void PlaceTurret(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && IsOwner)
         {
             PlaceTurretInWorld();
         }
@@ -54,9 +55,12 @@ public class BuildSystem : NetworkBehaviour
 
     private void Update()
     {
-        distanceAimPoint = Vector3.Distance(aimPosition.position, transform.position);
+        if (IsOwner)
+        {
+            distanceAimPoint = Vector3.Distance(aimPosition.position, transform.position);
 
-        UpdateTurretPreview();
+            UpdateTurretPreview();
+        }
     }
 
     private void SelectTurretPreview(bool enable)
@@ -96,25 +100,42 @@ public class BuildSystem : NetworkBehaviour
         {
             if (currentTurretsNumber.Count < maxNumberTurretsPlaced)
             {
-                GameObject turretInstance = Instantiate(turret, turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
-                InstanceFinder.ServerManager.Spawn(turretInstance, Owner);
-                currentTurretsNumber.Add(turretInstance);
+                SpawnTurretServeur(turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
             }
             else
             {
-                for (int i = 0; i < currentTurretsNumber.Count; i++)
-                {
-                    Destroy(currentTurretsNumber[i]);
-                }
+                DespawnTurretServeur(currentTurretsNumber);
                 currentTurretsNumber.Clear();
 
-                GameObject turretInstance = Instantiate(turret, turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
-                InstanceFinder.ServerManager.Spawn(turretInstance, Owner);
-                currentTurretsNumber.Add(turretInstance);
+                SpawnTurretServeur(turretPreviewInstance.transform.position, turretPreviewInstance.transform.rotation);
             }
             
             Destroy(turretPreviewInstance);
             turretIsPreview = false;
+        }
+    }
+    
+    [ServerRpc]
+    private void SpawnTurretServeur(Vector3 turretPreviewPos, Quaternion turretPreviewRot)
+    {
+        GameObject turretInstance = Instantiate(turret, turretPreviewPos, turretPreviewRot);
+        InstanceFinder.ServerManager.Spawn(turretInstance, Owner);
+        AddTurretToList(Owner, turretInstance);
+    }
+
+    [TargetRpc]
+    private void AddTurretToList(NetworkConnection conection, GameObject turretObj)
+    {
+        currentTurretsNumber.Add(turretObj);
+    }
+
+    [ServerRpc]
+    private void DespawnTurretServeur(List<GameObject> turrets)
+    {
+        for (int i = 0; i < turrets.Count; i++)
+        {
+            Debug.Log("destroy");
+            InstanceFinder.ServerManager.Despawn(turrets[i]);
         }
     }
 }

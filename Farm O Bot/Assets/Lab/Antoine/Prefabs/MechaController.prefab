@@ -1052,8 +1052,8 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  mouseSensibility: 0.03
-  maxSpeed: 20
+  mouseSensibility: 0.25
+  maxSpeed: 7.5
   decelerationSpeed: 7.5
   decelerationTime: 0.5
   turnTimeStatic: 0.5
@@ -1101,14 +1101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec64d0afb44c43449316a2383666550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   leftWeapons:
   - {fileID: 3815007128843780262}
   rightWeapons:
   - {fileID: 3815007128555248622}
-  leftFire: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
+  leftFireInput: {fileID: 3904889111616099367, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
-  rightFire: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
+  rightFireInput: {fileID: 1390077513890361722, guid: f9651504f950e944fa6f5c504c2fb1ae,
     type: 3}
 --- !u!114 &614025366870327872
 MonoBehaviour:
