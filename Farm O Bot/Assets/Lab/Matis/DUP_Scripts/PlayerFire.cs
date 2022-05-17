@@ -6,8 +6,6 @@ using FishNet.Object;
 
 public class PlayerFire : NetworkBehaviour
 {
-    //public CanvasManager canvas;
-
     public List<GlobalWeapon> leftWeapons;
     public List<GlobalWeapon> rightWeapons;
 
@@ -25,27 +23,39 @@ public class PlayerFire : NetworkBehaviour
     {
         if (leftFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            FireLeft();
+            FireLeft(true);
         }
+        if (leftFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
+        {
+            FireLeft(false);
+        }
+
         if (rightFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            FireRight();
+            FireRight(true);
+        }
+        if (rightFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
+        {
+            FireRight(false);
         }
     }
 
-
-    public void FireLeft()
+    public void FireLeft(bool isShooting)
     {
-        for (int i = 0; i < leftWeapons.Count; i++)
+        /*for (int i = 0; i < leftWeapons.Count; i++)
         {
             leftWeapons[i].RpcShoot(aimScript.aimPoint.position);
-        }    
+        }*/
+
+        leftWeapons[0].RpcShoot(isShooting, aimScript.aimPoint.position);
     }
-    public void FireRight()
+    public void FireRight(bool isShooting)
     {
-        for (int i = 0; i < rightWeapons.Count; i++)
+        /*for (int i = 0; i < rightWeapons.Count; i++)
         {
             rightWeapons[i].RpcShoot(aimScript.aimPoint.position);          
-        }
+        }*/
+
+        rightWeapons[0].RpcShoot(isShooting, aimScript.aimPoint.position);
     }
 }

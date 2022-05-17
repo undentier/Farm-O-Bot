@@ -3,50 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 
-public class LaserWeapon : NetworkBehaviour
+public class LaserWeapon : GlobalWeapon
 {
-    public RaycastHit hit;
-    public string weaponName;
-    public GameObject associatedCross;
-    public LineRenderer myLaser;
-    public GameObject aimObject;
-    public bool canHit = true;
+    [Header("Laser")]
+    private LineRenderer laserRenderer;
+    [Range(0, 2)]
+    public float laserWidth;
+    public Gradient laserColor;
 
-    [Header("Weapon")]
-    public Transform startingPoint;
+    private RaycastHit hit;
 
-    public int weaponDamages = 1;
-    public float weaponFireRate = 0.5f;
-    public float weaponRange = 10;
+    private bool canHit = false;
 
-    [Header("CrossHit")]
-    public float scaleForce = 1;
-    public float scaleSpeed = 1;
-
-    void Start()
+    private void Start()
     {
-        myLaser.gameObject.SetActive(false);
+        SetLaserComponent();
     }
 
-    public void Shoot()
+    private void SetLaserComponent()
     {
-        myLaser.gameObject.SetActive(true);
-            
-    }
-    private void StopShoot()
-    {
-        myLaser.gameObject.SetActive(false);
+        laserRenderer = gameObject.AddComponent<LineRenderer>();
+        laserRenderer.enabled = false;
+        laserRenderer.useWorldSpace = true;
+        laserRenderer.startWidth = laserWidth;
+        laserRenderer.colorGradient = laserColor;
     }
 
-    void Update()
+    public override void Shoot(bool isShooting, Vector3 aimPoint)
     {
-        if(myLaser.gameObject.activeSelf == false)
+        if (isShooting)
         {
-            return;
+            laserRenderer.SetPosition(0, startingPoint.position);
+            laserRenderer.enabled = true;
+            laserRenderer.SetPosition(1, aimPoint);
         }
+        else
+        {
+            laserRenderer.enabled = false;
+        }
+    }
 
-        myLaser.SetPosition(0, startingPoint.position);
-        myLaser.SetPosition(1, aimObject.transform.position);
+    /*void Update()
+    {
+
+        laserRenderer.SetPosition(0, startingPoint.position);
+        laserRenderer.SetPosition(1, aimObject.transform.position);
         if (canHit)
         {
             Vector3 aimDirection = (aimObject.transform.position - startingPoint.position).normalized;
@@ -56,25 +57,12 @@ public class LaserWeapon : NetworkBehaviour
                 StartCoroutine(weaponCooldown());
             }
         }
-    }
+    }*/
 
-    IEnumerator weaponCooldown()
+    /*IEnumerator weaponCooldown()
     {
         canHit = false;
         yield return new WaitForSeconds(weaponFireRate);
         canHit = true;
-    }
-
-    [ServerRpc]
-    public void RpcShoot()
-    {
-        RpcClientShoot();
-    }
-
-    [ObserversRpc]
-    private void RpcClientShoot()
-    {
-        Shoot();
-    }
-
+    }*/
 }
