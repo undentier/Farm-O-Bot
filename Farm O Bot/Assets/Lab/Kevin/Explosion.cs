@@ -15,13 +15,13 @@ public class Explosion : GlobalBullet
 
     }
 
-    protected override void OnTriggerEnter(Collider collider)
+    /*protected override void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Enemy")
         {
             collider.GetComponent<EnemySysteme>().TakeDamage(explosionDamage);
         }
-    }
+    }*/
 
     IEnumerator LerpScale(Vector3 startScale, Vector3 endScale, float lerpTime)
     {
@@ -39,10 +39,10 @@ public class Explosion : GlobalBullet
         Destroy(gameObject);
     }
 
-    protected override void Update()
+    /*protected override void Update()
     {
         
-    }
+    }*/
 
     protected void OnDestroy()
     {
