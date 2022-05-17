@@ -206,8 +206,24 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     private void AnimateMecha()
     {
-        if (isMoving) mechaAnimationScript.WalkAnimation(true);
-        else mechaAnimationScript.WalkAnimation(false);
+        if (isMoving)
+        {
+            if (isRunning)
+            {
+                mechaAnimationScript.WalkAnimation(false);
+                mechaAnimationScript.RunAnimation(true);
+            }
+            else
+            {
+                mechaAnimationScript.WalkAnimation(true);
+                mechaAnimationScript.RunAnimation(false);
+            }
+        }
+        else
+        {
+            mechaAnimationScript.WalkAnimation(false);
+            mechaAnimationScript.RunAnimation(false);
+        }
     }
 
     private float ClampAngle(float angle, float from, float to)

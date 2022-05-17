@@ -13,14 +13,13 @@ public class MechaAnimation : MonoBehaviour
 
     public void WalkAnimation(bool enable)
     {
-        switch (enable)
-        {
-            case true:
-                animator.SetBool("isWalking", true);
-                break;
-            case false:
-                animator.SetBool("isWalking", false);
-                break;
-        }
+        if(enable) animator.SetBool("isWalking", true);
+        else animator.SetBool("isWalking", false);
+    }
+
+    public void RunAnimation(bool enable)
+    {
+        if (enable) animator.SetBool("isRunning", true);
+        else animator.SetBool("isRunning", false);
     }
 }
