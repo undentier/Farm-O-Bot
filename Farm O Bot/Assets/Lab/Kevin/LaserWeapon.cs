@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FishNet.Object;
+
+public class LaserWeapon : NetworkBehaviour
+{
+    var hit : RaycastHit;
+    public string weaponName;
+    public GameObject associatedCross;
+    public LineRenderer myLaser;
+    public GameObject aimObject;
+    public bool canHit = true;
+
+    [Header("Weapon")]
+    public Transform startingPoint;
+
+    public int weaponDamages = 1;
+    public float weaponFireRate = 0.5f;
+    public float weaponRange = 10;
+
+    [Header("CrossHit")]
+    public float scaleForce = 1;
+    public float scaleSpeed = 1;
+
+
+    private void Shoot()
+    {
+        myLaser.enable(true);
+            
+    }
+    private void StopShoot()
+    {
+        myLaser.enable(false);
+    }
+
+    Private void Update()
+    {
+        if(myLaser.enable == false)
+        {
+            return;
+        }
+
+        myLaser.SetPosition(0, startingPoint.position);
+        myLaser.SetPosition(1, aimObject.transform.position);
+        if (canHit)
+        {
+            Vector3 aimDirection = (aimObject.transform.position - startingPoint.position).normalized;
+            if (Physics.Raycast(startingPoint.position, aimDirection, weaponRange) && hit.transform.tag == "Enemy")
+            {
+                hit.gameObject.getComponent<EnemySysteme>().TakeDamage(weaponDamages);
+                StartCoroutine(weaponCooldown());
+            }
+        }
+    }
+
+    IEnumerator weaponCooldown()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(weaponFireRate);
+        canHit = true;
+    }
+
+    [ServerRpc]
+    public void RpcShoot(Vector3 aimPoint)
+    {
+        RpcClientShoot(aimPoint);
+    }
+
+    [ObserversRpc]
+    private void RpcClientShoot(Vector3 aimPoint)
+    {
+        Shoot(aimPoint);
+    }
+}
