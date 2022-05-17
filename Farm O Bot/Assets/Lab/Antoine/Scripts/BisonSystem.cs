@@ -128,7 +128,6 @@ public class BisonSystem : NetworkBehaviour
     private void RandomMoveInsideCercle()
     {
         target = herdCenter + new Vector3(Random.insideUnitSphere.x * herdRadius, herdCenter.y, Random.insideUnitSphere.z * herdRadius);
-        Debug.Log("random");
     }
 
     private void RefreshPath()

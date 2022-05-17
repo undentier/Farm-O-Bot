@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GlobalBullet : MonoBehaviour
 {
-    public float maxDistance;
-    public Transform originPoint;
+    //variables filled with weapon script : 
+    [HideInInspector] public float maxDistance;
+    [HideInInspector] public Transform originPoint;
+    [HideInInspector] public float bulletDamage;
 
     Vector3 distanceFromOrigin;
 
-    private void Update()
+    public virtual void Update()
     {
         distanceFromOrigin = (transform.position - originPoint.position);
 
@@ -19,8 +21,12 @@ public class GlobalBullet : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Enemy")) Destroy(gameObject);
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemySysteme>().TakeDamage(bulletDamage);
+        }
+        Destroy(gameObject);
     }
 }

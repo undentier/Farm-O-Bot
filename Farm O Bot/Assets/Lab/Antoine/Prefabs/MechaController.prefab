@@ -63,7 +63,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7783133, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -470,7 +470,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947968306606001191}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2145,15 +2145,12 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Sniper
-  associatedCross: {fileID: 0}
   startingPoint: {fileID: 3815007128555248623}
   weaponDamages: 1
   weaponFireRate: 1
   weaponRange: 500
   weaponDispersion: 1
-  scaleForce: 2
-  scaleSpeed: 0.5
-  bulletPrefab: {fileID: 2277501788416071358, guid: 5e9b39f193c40f44e804514726e2ab6a,
+  bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
     type: 3}
   bulletSpeed: 10
 --- !u!1 &3815007128570142544
@@ -2509,15 +2506,12 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Assault Gun
-  associatedCross: {fileID: 0}
   startingPoint: {fileID: 3815007128843780257}
   weaponDamages: 1
   weaponFireRate: 0.05
   weaponRange: 500
   weaponDispersion: 0.5
-  scaleForce: 1
-  scaleSpeed: 0.1
-  bulletPrefab: {fileID: 2277501788416071358, guid: 5e9b39f193c40f44e804514726e2ab6a,
+  bulletPrefab: {fileID: 1535977597517077943, guid: 83b12255e5c89ad4eb1e6c02d56c7da5,
     type: 3}
   bulletSpeed: 40
 --- !u!1 &3815007128851389517
@@ -3122,7 +3116,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7123659406046071463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

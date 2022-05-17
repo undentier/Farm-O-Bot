@@ -57,15 +57,6 @@ public class EnemySysteme : NetworkBehaviour
         Gizmos.DrawWireSphere(transform.position, rangePlayerAggro);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            TakeDamage(1);
-            Destroy(other.gameObject);
-        }
-    }
-
     public void TakeDamage(float damageAmount)
     {
         hp -= damageAmount;

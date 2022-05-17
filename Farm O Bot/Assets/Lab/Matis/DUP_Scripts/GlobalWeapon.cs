@@ -6,7 +6,6 @@ using FishNet.Object;
 public class GlobalWeapon : NetworkBehaviour
 {
     public string weaponName;
-    public GameObject associatedCross;
 
     [Header("Weapon")]
     public Transform startingPoint;
@@ -15,11 +14,6 @@ public class GlobalWeapon : NetworkBehaviour
     public float weaponFireRate = 0.5f;
     public float weaponRange = 10;
     public float weaponDispersion = 0;
-
-    [Header("CrossHit")]
-    public float scaleForce = 1;
-    public float scaleSpeed = 1;
-
 
     [Header("Bullet")]
     public GameObject bulletPrefab;
@@ -37,6 +31,7 @@ public class GlobalWeapon : NetworkBehaviour
 
             bullet.GetComponent<GlobalBullet>().maxDistance = weaponRange;
             bullet.GetComponent<GlobalBullet>().originPoint = startingPoint;
+            bullet.GetComponent<GlobalBullet>().bulletDamage = weaponDamages;
 
             Vector3 bulletWay = BulletSpread(startingPoint, bullet.transform);
 
