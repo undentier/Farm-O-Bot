@@ -485,7 +485,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 272568665048081243}
   _networkObjectCache: {fileID: 272568665048081243}
-  spawnRate: 1
+  spawnRate: 0
   numOfEnemySpawnRate: 10
   maxEnemyToSpawn: 300
   speed: 100
@@ -526,7 +526,7 @@ MonoBehaviour:
   _isNetworked: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 7
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []

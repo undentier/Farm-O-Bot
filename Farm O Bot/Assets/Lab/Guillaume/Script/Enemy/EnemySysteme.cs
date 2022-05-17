@@ -23,6 +23,7 @@ public class EnemySysteme : NetworkBehaviour
 
     private float actualCooldown;
     private bool targetOnPlayer;
+    private float startHp;
 
     #endregion
 
@@ -30,6 +31,7 @@ public class EnemySysteme : NetworkBehaviour
     {
         target = GameManager.instance.bisonTransform;
         actualCooldown = 0f;
+        startHp = hp;
     }
 
     private void Update()
@@ -73,10 +75,18 @@ public class EnemySysteme : NetworkBehaviour
     {
         GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
         Destroy(particle, 5f);
-        Destroy(gameObject);
+
+        PutBackEnemyInPool();
     }
 
+    private void PutBackEnemyInPool()
+    {
+        target = GameManager.instance.bisonTransform;
+        hp = startHp;
+        actualCooldown = 0f;
 
+        PoolEnemyManager.instance.AddObjectToPool("Enemy", gameObject);
+    }
     
     private void PlayerDetection()
     {

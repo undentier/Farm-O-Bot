@@ -41,13 +41,47 @@ public class PoolEnemyManager : MonoBehaviour
             for (int i = 0; i < pool.sizeOfPool; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
+                objectPool.Add(obj);
                 obj.transform.SetParent(pool.parentStoring);
                 obj.SetActive(false);
-                objectPool.Add(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
 
+    private void Update()
+    {
+        Debug.Log(poolDictionary["Enemy"].Count);
+    }
+
+    public GameObject SpawnFromPool(string tag, Vector3 _position, Quaternion _rotation)
+    {
+        if (poolDictionary.ContainsKey(tag) == false)
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't excist");
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag][0];
+        poolDictionary[tag].RemoveAt(0);
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = _position;
+        objectToSpawn.transform.rotation = _rotation;
+
+        return objectToSpawn;
+    }
+
+    public void AddObjectToPool(string tag, GameObject objToAdd)
+    {
+        if (poolDictionary.ContainsKey(tag) == false)
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't excist");
+            return;
+        }
+
+        poolDictionary[tag].Add(objToAdd);
+        objToAdd.SetActive(false);
+    }
 }
