@@ -2588,7 +2588,8 @@ MonoBehaviour:
   numberBisons: 20
   herdRadius: 30
   herdMovingSpeed: 10
-  herdMoveFrequence: 5
+  herdMoveFrequence: 20
+  cantMovePreviousZone: 1
   nearestZones: []
   nextZone: {fileID: 0}
   mechaWhistlingPosition: {fileID: 0}
@@ -4193,7 +4194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3227f976296fade4fab8683acf44f651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransformList: []
+  bisonTransform: {fileID: 0}
 --- !u!4 &1943574409
 Transform:
   m_ObjectHideFlags: 0

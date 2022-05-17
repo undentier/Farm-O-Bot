@@ -36,7 +36,6 @@ public class BisonSystem : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-
     }
 
     public override void OnStartServer()
@@ -128,7 +127,8 @@ public class BisonSystem : NetworkBehaviour
 
     private void RandomMoveInsideCercle()
     {
-        target = herdCenter;//+ new Vector3(Random.insideUnitSphere.x * herdRadius, herdCenter.y, Random.insideUnitSphere.z * herdRadius);
+        target = herdCenter + new Vector3(Random.insideUnitSphere.x * herdRadius, herdCenter.y, Random.insideUnitSphere.z * herdRadius);
+        Debug.Log("random");
     }
 
     private void RefreshPath()

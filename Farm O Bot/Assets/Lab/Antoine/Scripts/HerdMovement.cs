@@ -20,6 +20,7 @@ public class HerdMovement : NetworkBehaviour
     public float herdMovingSpeed;
     public float herdMoveFrequence;
     private float herdMoveTimer = 0;
+    public bool cantMovePreviousZone = true;
 
     private Transform[] zonesPosition;
     private float[] zonesDistance;
@@ -63,8 +64,6 @@ public class HerdMovement : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-
-        
     }
 
     private void Update()
@@ -105,7 +104,7 @@ public class HerdMovement : NetworkBehaviour
         {
             int index = System.Array.IndexOf(zonesDistance, ZonesDistanceOrdered[i+1]);
 
-            if (zonesPosition[index] == lastZone)
+            if (cantMovePreviousZone && zonesPosition[index] == lastZone)
             {
                 x++;
             }
