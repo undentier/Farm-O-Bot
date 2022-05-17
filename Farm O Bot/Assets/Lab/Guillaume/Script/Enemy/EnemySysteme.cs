@@ -10,6 +10,7 @@ public class EnemySysteme : NetworkBehaviour
 
     [Header ("Stats")]
     public float hp;
+    public float rangePlayerAggro;
 
     [Header("Feedback")]
     public GameObject deathParticleObj;
@@ -20,17 +21,15 @@ public class EnemySysteme : NetworkBehaviour
 
     [HideInInspector]public Transform target;
 
-    private NavMeshPath pathToFollow;
     private float actualCooldown;
+    private bool targetOnPlayer;
 
     #endregion
 
     private void Start()
     {
-        target = GameManager.instance.playerTransform;
+        target = GameManager.instance.bisonTransform;
         actualCooldown = 0f;
-
-        RefreshPath();
     }
 
     private void Update()
@@ -39,15 +38,24 @@ public class EnemySysteme : NetworkBehaviour
         {
             selfAgent.SetDestination(target.position);
             actualCooldown = 0f;
-            //RefreshPath();
         }
         else
         {
             actualCooldown += Time.deltaTime;
         }
 
+        if (targetOnPlayer == false)
+        {
+            PlayerDetection();
+        }
     }
 
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, rangePlayerAggro);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,7 +65,6 @@ public class EnemySysteme : NetworkBehaviour
             Destroy(other.gameObject);
         }
     }
-
 
     public void TakeDamage(float damageAmount)
     {
@@ -78,12 +85,22 @@ public class EnemySysteme : NetworkBehaviour
     }
 
 
-
-    private void RefreshPath()
+    private void PlayerDetection()
     {
-        pathToFollow = new NavMeshPath();
-        selfAgent.CalculatePath(target.position, pathToFollow);
-        selfAgent.path = pathToFollow;
+        for (int i = 0; i < GameManager.instance.playerTransformList.Count; i++)
+        {
+            float playerDist = Vector3.Distance(transform.position, GameManager.instance.playerTransformList[i].position);
+            float bisonDist = Vector3.Distance(transform.position, GameManager.instance.bisonTransform.position);
+
+            if (playerDist < rangePlayerAggro && playerDist < bisonDist)
+            {
+                target = GameManager.instance.playerTransformList[i];
+                selfAgent.SetDestination(target.position);
+
+                targetOnPlayer = true;
+            }
+            
+        }
     }
 
 }

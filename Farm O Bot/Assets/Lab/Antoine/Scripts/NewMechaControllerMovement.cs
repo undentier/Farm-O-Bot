@@ -11,7 +11,9 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     [Header("Movement")]
     [Range(0, 50)]
-    public float maxSpeed;
+    public float normalSpeed;
+    [Range(0, 50)]
+    public float boostedSpeed;
     [Range(0, 50)]
     public float decelerationSpeed;
     public float decelerationTime;
@@ -19,6 +21,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private bool isMoving = false;
     private Vector3 movementDirection;
     private Vector3 lastMovementDirection;
+    private bool isRunning = false;
 
     [Header("Legs")]
     public float turnTimeStatic;
@@ -55,6 +58,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
+    private PlayerInput _playerInput;
 
     private void Start()
     {
@@ -63,6 +67,10 @@ public class NewMechaControllerMovement : NetworkBehaviour
         playerActions = new DefaultInputActions();
         playerActions.Player.Enable();
         ResetAngleChestAndLegs();
+
+        _playerInput = GetComponent<PlayerInput>();
+        _playerInput.actions["Run"].started += ReadRunInput;
+        _playerInput.actions["Run"].canceled += ReadRunInput;
     }
 
     public override void OnStartClient()
@@ -101,6 +109,18 @@ public class NewMechaControllerMovement : NetworkBehaviour
         inputLook = playerActions.Player.Look.ReadValue<Vector2>();
     }
 
+    private void ReadRunInput(InputAction.CallbackContext context)
+    {
+        if (context.started && IsOwner)
+        {
+            isRunning = true;
+        }
+        if (context.canceled && IsOwner)
+        {
+            isRunning = false;
+        }
+    }
+
     private void MoveMecha()
     {
         movementDirection = inputMovement.y * -legs.forward + inputMovement.x * legs.up;
@@ -108,7 +128,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
         if (movementDirection.magnitude >= 0.2f)
         {
             ResetAngleChestAndLegs();
-            rb.MovePosition(rb.position + movementDirection.normalized * maxSpeed * Time.deltaTime);
+            if (isRunning) rb.MovePosition(rb.position + movementDirection.normalized * boostedSpeed * Time.deltaTime);
+            else rb.MovePosition(rb.position + movementDirection.normalized * normalSpeed * Time.deltaTime);
             decelerationTimer = 0;
             isMoving = true;
             lastMovementDirection = movementDirection;
@@ -146,7 +167,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
         if (lookDirection.magnitude >= 0.2f)
         {
             //A controller is plugged
-            if (Gamepad.all.Count > 1)
+            if (Gamepad.all.Count > 0)
             {
                 chestRotationX += lookDirection.x * rotationSpeedChest * Time.deltaTime;
                 chestRotationY += -lookDirection.y * rotationSpeedChest * Time.deltaTime;
@@ -185,8 +206,24 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     private void AnimateMecha()
     {
-        if (isMoving) mechaAnimationScript.WalkAnimation(true);
-        else mechaAnimationScript.WalkAnimation(false);
+        if (isMoving)
+        {
+            if (isRunning)
+            {
+                mechaAnimationScript.WalkAnimation(false);
+                mechaAnimationScript.RunAnimation(true);
+            }
+            else
+            {
+                mechaAnimationScript.WalkAnimation(true);
+                mechaAnimationScript.RunAnimation(false);
+            }
+        }
+        else
+        {
+            mechaAnimationScript.WalkAnimation(false);
+            mechaAnimationScript.RunAnimation(false);
+        }
     }
 
     private float ClampAngle(float angle, float from, float to)

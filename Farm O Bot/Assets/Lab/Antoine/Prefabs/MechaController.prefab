@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703630309}
   m_LocalRotation: {x: 0.10262802, y: -0.00000010536713, z: -0.00000010536713, w: 0.99471986}
-  m_LocalPosition: {x: 0.0000059965664, y: 13.392411, z: -17.333433}
+  m_LocalPosition: {x: 0.00000629719, y: 13.657835, z: -18.606047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0, y: 0, z: 0}
+  Damping: {x: 0, y: 10, z: 0}
   ShoulderOffset: {x: 4, y: 2.13, z: 1.55}
   VerticalArmLength: 0
   CameraSide: 0.5
-  CameraDistance: 19.7
+  CameraDistance: 21
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -206,7 +206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596215860428870260}
   m_LocalRotation: {x: 0.10262802, y: -0.00000010536713, z: -0.00000010536713, w: 0.99471986}
-  m_LocalPosition: {x: 0.0000059965664, y: 13.392411, z: -17.333433}
+  m_LocalPosition: {x: 0.00000629719, y: 13.657835, z: -18.606047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1008,6 +1008,7 @@ GameObject:
   - component: {fileID: 151926469}
   - component: {fileID: 151926470}
   - component: {fileID: 3440859606219571136}
+  - component: {fileID: 1355429724988539878}
   m_Layer: 0
   m_Name: MechaController
   m_TagString: Untagged
@@ -1052,7 +1053,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   mouseSensibility: 0.25
-  maxSpeed: 7.5
+  normalSpeed: 7.5
+  boostedSpeed: 15
   decelerationSpeed: 7.5
   decelerationTime: 0.5
   turnTimeStatic: 0.5
@@ -1100,6 +1102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec64d0afb44c43449316a2383666550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
   leftWeapons:
   - {fileID: 3815007128843780262}
   rightWeapons:
@@ -1134,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0cb9fbd5a44d3429a3e8d5feb70716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   maxNumberTurretsPlaced: 2
@@ -1283,6 +1288,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 737c6f6c-adf9-427b-9019-5779c565f306
     m_ActionName: Player/PlaceTurret[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b096b4ad-0af0-4086-843a-b816528abf57
+    m_ActionName: Player/Run[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1352,10 +1361,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 3815007127822126875}
+  - {fileID: 3815007127822126873}
   - {fileID: 456006946752576382}
   - {fileID: 151926470}
   - {fileID: 3440859606219571136}
   - {fileID: 2748706879924596030}
+  - {fileID: 3815007128555248622}
+  - {fileID: 3815007128843780262}
   - {fileID: 6455231874090474569}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
@@ -1381,7 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -1422,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   IgnoredParameters: []
@@ -1431,6 +1443,18 @@ MonoBehaviour:
   _synchronizeInterval: 0.1
   _clientAuthoritative: 1
   _sendToOwner: 0
+--- !u!114 &1355429724988539878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225a51d642500574791188bbd2b6b52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3815007127832767112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2117,6 +2141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c241997ba466efb4fa19eb5a547da959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 6
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
   weaponName: Sniper
   associatedCross: {fileID: 0}
   startingPoint: {fileID: 3815007128555248623}
@@ -2478,6 +2505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c241997ba466efb4fa19eb5a547da959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
   weaponName: Assault Gun
   associatedCross: {fileID: 0}
   startingPoint: {fileID: 3815007128843780257}
@@ -2761,7 +2791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
