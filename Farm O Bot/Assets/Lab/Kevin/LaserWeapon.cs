@@ -5,7 +5,7 @@ using FishNet.Object;
 
 public class LaserWeapon : NetworkBehaviour
 {
-    var hit : RaycastHit;
+    public RaycastHit hit;
     public string weaponName;
     public GameObject associatedCross;
     public LineRenderer myLaser;
@@ -26,17 +26,17 @@ public class LaserWeapon : NetworkBehaviour
 
     private void Shoot()
     {
-        myLaser.enable(true);
+        myLaser.gameObject.SetActive(true);
             
     }
     private void StopShoot()
     {
-        myLaser.enable(false);
+        myLaser.gameObject.SetActive(false);
     }
 
-    Private void Update()
+    void Update()
     {
-        if(myLaser.enable == false)
+        if(myLaser.gameObject.activeSelf == false)
         {
             return;
         }
@@ -48,7 +48,7 @@ public class LaserWeapon : NetworkBehaviour
             Vector3 aimDirection = (aimObject.transform.position - startingPoint.position).normalized;
             if (Physics.Raycast(startingPoint.position, aimDirection, weaponRange) && hit.transform.tag == "Enemy")
             {
-                hit.gameObject.getComponent<EnemySysteme>().TakeDamage(weaponDamages);
+                hit.transform.gameObject.GetComponent<EnemySysteme>().TakeDamage(weaponDamages);
                 StartCoroutine(weaponCooldown());
             }
         }
@@ -62,14 +62,15 @@ public class LaserWeapon : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void RpcShoot(Vector3 aimPoint)
+    public void RpcShoot()
     {
-        RpcClientShoot(aimPoint);
+        RpcClientShoot();
     }
 
     [ObserversRpc]
-    private void RpcClientShoot(Vector3 aimPoint)
+    private void RpcClientShoot()
     {
-        Shoot(aimPoint);
+        Shoot();
     }
+
 }
