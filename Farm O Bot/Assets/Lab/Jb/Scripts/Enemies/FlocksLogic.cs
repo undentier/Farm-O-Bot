@@ -14,6 +14,7 @@ public class FlocksLogic : MonoBehaviour
 	private List<FlocksLogic> aligementNeighbours = new List<FlocksLogic>();
 
 	private ManagerMob assignedFlock;
+
 	private Vector3 currentVelocity;
 	private Vector3 currentObstacleAvoidanceVector;
 	private float speed;

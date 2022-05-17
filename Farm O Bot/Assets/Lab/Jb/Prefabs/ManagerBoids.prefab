@@ -150,13 +150,15 @@ MonoBehaviour:
     type: 3}
   movementField: 20
   numbToSpawn: 50
+  flocksBehavior:
+  - {fileID: 11400000, guid: 3f86e3d10c55a7845a887a1545e99130, type: 2}
+  - {fileID: 11400000, guid: dda262286de640642911c573da3b45a2, type: 2}
   isDebuging: 1
   speed: 15
   cohesionDistance: 8
   avoidanceDistance: 2
   aligementDistance: 3.5
   obstacleDistance: 6
-  boundsDistance: 40
   cohesionWeight: 2
   avoidanceWeight: 6
   aligementWeight: 8
@@ -180,7 +182,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 5784842809611474832}
   SceneTransformProperties:
-    Position: {x: 7.7, y: 25.6, z: 66}
+    Position: {x: 7.7, y: 24.9, z: 66}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1

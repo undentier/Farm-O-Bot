@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Object;
 using NaughtyAttributes;
 
+
 public class ManagerMob : NetworkBehaviour
 {
     [Header("Spawn Setup")]
@@ -17,9 +18,16 @@ public class ManagerMob : NetworkBehaviour
     [Min(0)]
     private int numbToSpawn;
 
+    public ScriptableFlocksbehavior[] flocksBehavior;
+    public ScriptableFlocksbehavior actualBehavior;
+
     [Header("Inspector Debug")]
     [SerializeField]
     private bool isDebuging;
+
+    [SerializeField]
+    private Transform target;
+
 
     [Header("Speed")]
     [Range(0, 100)]
@@ -69,7 +77,6 @@ public class ManagerMob : NetworkBehaviour
     void OnEnable()
     {
         allMobs = new FlocksLogic[numbToSpawn];
-
         for (int i = 0; i < numbToSpawn; i++)
         {
             allMobs[i] = Instantiate(mobToSpawn, null).GetComponent<FlocksLogic>();
@@ -87,6 +94,7 @@ public class ManagerMob : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void ServerRpcEnableMob()
     {
+        RpcChancheBehavior(0);
         Vector3[] allPosition = new Vector3[allMobs.Length];
         for (int i = 0; i < allMobs.Length; i++)
         {
@@ -118,6 +126,11 @@ public class ManagerMob : NetworkBehaviour
         for (int i = 0; i < allMobs.Length; i++)
         {
             allMobs[i].MoveUnit();
+        }
+
+        if(target != null)
+        {
+            transform.position = target.position;
         }
     }
 
@@ -154,4 +167,68 @@ public class ManagerMob : NetworkBehaviour
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void RpcChancheBehavior(int behavior)
+    {
+        ClientRpcChangeBehavior(behavior);
+    }
+
+    [ObserversRpc]
+    public void ClientRpcChangeBehavior(int behavior)
+    {
+        cohesionWeight = flocksBehavior[behavior].cohesionWeight;
+        avoidanceWeight = flocksBehavior[behavior].avoidanceWeight;
+        aligementWeight = flocksBehavior[behavior].aligementWeight;
+        boundsWeight = flocksBehavior[behavior].boundsWeight;
+        obstacleWeight = flocksBehavior[behavior].obstacleWeight;
+        targetWeight = flocksBehavior[behavior].targetWeight;
+
+        cohesionDistance = flocksBehavior[behavior].cohesionDistance;
+        avoidanceDistance = flocksBehavior[behavior].avoidanceDistance;
+        aligementDistance = flocksBehavior[behavior].aligementDistance;
+        if (speed != flocksBehavior[behavior].speed){
+
+            for (int i = 0; i < allMobs.Length; i++)
+            {
+                allMobs[i].InitializeSpeed(speed);
+            }
+        }
+
+        speed = flocksBehavior[behavior].speed;
+        obstacleDistance = flocksBehavior[behavior].obstacleDistance;
+
+        actualBehavior = flocksBehavior[behavior];
+    }
+
+
+    private int attitude = 0;
+    [Button]
+    public void ChangeAttitude()
+    {
+        if(attitude >= flocksBehavior.Length -1)
+        {
+            attitude = 0;
+        }
+        else
+        {
+            attitude++;
+        }
+        RpcChancheBehavior(attitude);
+    }
+
+    [Button]
+    [ServerRpc(RequireOwnership = false)]
+    public void ChangeTarget()
+    {
+        ClientRpcChangeTarget();
+    }
+    [ObserversRpc]
+    public void ClientRpcChangeTarget()
+    {
+        for (int i = 0; i < allMobs.Length; i++)
+        {
+            allMobs[i].InitializeTarget(target);
+        }
+        
+    }
 }
