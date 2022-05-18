@@ -28,6 +28,7 @@ public class RegularWeapon : GlobalWeapon
 
             canShoot = false;
 
+            RemoveEnergy();
             StartCoroutine(weaponCooldown());
         }
     }

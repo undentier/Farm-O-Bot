@@ -17,7 +17,7 @@ public class ExplosionBullet : GlobalBullet
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (!flagOnce)
+        if (!flagOnce && other.tag != "Bullet")
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponentInChildren<MeshRenderer>().material = explosiveMaterial;

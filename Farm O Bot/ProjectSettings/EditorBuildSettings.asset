@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Lab/Antoine/_Scenes/CleanScene.unity
     guid: f30c0aac8a1a3de4893cd7dbbe8fce5e
+  - enabled: 1
+    path: Assets/Lab/Antoine/_Scenes/CleanSceneAntoine.unity
+    guid: 2b2c318d3ae8f124bb7fe67fa831ed9e
   m_configObjects: {}
