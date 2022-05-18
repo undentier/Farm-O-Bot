@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
-using FishNet;
+using FishNet.Connection;
 
 public class GlobalWeapon : NetworkBehaviour
 {
@@ -18,11 +18,27 @@ public class GlobalWeapon : NetworkBehaviour
 
     [HideInInspector] public bool canShoot = true;
 
-    private EnergySystem _energySystem;
+    [HideInInspector] public EnergySystem _energySystem;
 
-    public virtual void Start()
+    private bool energyFulled = false;
+
+    public override void OnStartClient()
     {
-        _energySystem = GetComponent<EnergySystem>();
+        base.OnStartClient();
+
+        _energySystem = GetComponentInParent<EnergySystem>();
+    }
+
+    private void Update()
+    {
+        if (IsOwner && (_energySystem.currentEnergy < _energySystem.maxEnergy))
+        {
+            energyFulled = false;
+        }
+        if (IsOwner && (_energySystem.currentEnergy >= _energySystem.maxEnergy))
+        {
+            energyFulled = true;
+        }
     }
 
     public virtual void Shoot(bool isShooting, Vector3 aimPoint)
@@ -30,20 +46,24 @@ public class GlobalWeapon : NetworkBehaviour
         //Place weapon behavior here
     }
 
-    public virtual void RemoveEnergy()
+    public virtual void AddEnergy()
     {
-        //_energySystem.RemoveEnergy(energyLosedRate);
+        if (IsOwner)
+        {
+            _energySystem.AddEnergy(energyLosedRate);
+        }
     }
 
     [ServerRpc]
     public void RpcShoot(bool isShooting, Vector3 aimPoint)
     {
-        RpcClientShoot(isShooting, aimPoint);
+        RpcClientShoot(isShooting, aimPoint, energyFulled);
     }
 
     [ObserversRpc]
-    private void RpcClientShoot(bool isShooting, Vector3 aimPoint)
+    private void RpcClientShoot(bool isShooting, Vector3 aimPoint, bool energyIsFull)
     {
-        Shoot(isShooting, aimPoint);
+        if (!energyIsFull) Shoot(isShooting, aimPoint);
+        else Shoot(false, aimPoint);
     }
 }

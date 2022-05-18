@@ -1362,7 +1362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnergy: 100
-  regainEnergyRate: 1
+  currentEnergy: 0
+  regainEnergyRate: 10
   energyImage: {fileID: 546981387501236839}
 --- !u!114 &3815007127822126878
 MonoBehaviour:
@@ -2387,10 +2388,11 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 151926469}
   weaponName: Sniper
   startingPoint: {fileID: 3815007128555248623}
-  energyLosedRate: 2
+  energyLosedRate: 10
   weaponDamages: 1
   weaponRange: 500
   canShoot: 1
+  _energySystem: {fileID: 0}
   weaponFireRate: 1
   weaponDispersion: 1
   bulletPrefab: {fileID: 1535977597517077943, guid: 83b12255e5c89ad4eb1e6c02d56c7da5,
@@ -2413,10 +2415,11 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
   startingPoint: {fileID: 3815007128555248623}
-  energyLosedRate: 2
+  energyLosedRate: 0.4
   weaponDamages: 1
   weaponRange: 500
   canShoot: 1
+  _energySystem: {fileID: 0}
   damagesRate: 0
   laserWidth: 0.3
   laserColor:
@@ -2807,6 +2810,7 @@ MonoBehaviour:
   weaponDamages: 1
   weaponRange: 500
   canShoot: 1
+  _energySystem: {fileID: 0}
   weaponFireRate: 0.05
   weaponDispersion: 0.5
   bulletPrefab: {fileID: 7102762139552053791, guid: 3178443e792d6c0448f445c5f754dc54,
@@ -2829,10 +2833,11 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 151926469}
   weaponName: Explosive Launcher
   startingPoint: {fileID: 3815007128843780257}
-  energyLosedRate: 2
+  energyLosedRate: 17
   weaponDamages: 1
   weaponRange: 500
   canShoot: 1
+  _energySystem: {fileID: 0}
   weaponFireRate: 1
   weaponDispersion: 1
   bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,

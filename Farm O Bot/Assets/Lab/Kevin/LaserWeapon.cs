@@ -15,9 +15,9 @@ public class LaserWeapon : GlobalWeapon
 
     private LineRenderer laserRenderer;
 
-    public override void Start()
+    public override void OnStartClient()
     {
-        base.Start();
+        base.OnStartClient();
 
         SetLaserComponent();
         damagesTimer = damagesRate;
@@ -40,7 +40,7 @@ public class LaserWeapon : GlobalWeapon
 
             DisplayLaser(aimPoint);
             LaserCast(aimDirection);
-            RemoveEnergy();
+            AddEnergy();
         }
         else
         {
