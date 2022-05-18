@@ -61,9 +61,9 @@ public class PoolEnemyManager : MonoBehaviour
         GameObject objectToSpawn = poolDictionary[tag][0];
         poolDictionary[tag].RemoveAt(0);
 
-        objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = _position;
         objectToSpawn.transform.rotation = _rotation;
+        objectToSpawn.SetActive(true);
 
         return objectToSpawn;
     }
