@@ -2671,6 +2671,7 @@ MonoBehaviour:
   herdRadius: 30
   herdMovingSpeed: 10
   herdMoveFrequence: 5
+  cantMovePreviousZone: 1
   nearestZones: []
   nextZone: {fileID: 0}
   mechaWhistlingPosition: {fileID: 0}
