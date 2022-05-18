@@ -50,11 +50,6 @@ public class PoolEnemyManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(poolDictionary["Enemy"].Count);
-    }
-
     public GameObject SpawnFromPool(string tag, Vector3 _position, Quaternion _rotation)
     {
         if (poolDictionary.ContainsKey(tag) == false)

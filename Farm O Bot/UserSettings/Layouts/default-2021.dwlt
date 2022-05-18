@@ -8,7 +8,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -51,14 +51,18 @@ MonoBehaviour:
   - {fileID: 19}
 =======
     y: 561
-    width: 337
+    width: 343
     height: 386
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
+<<<<<<< HEAD
   - {fileID: 13}
+>>>>>>> Guillaume
+=======
+  - {fileID: 14}
 >>>>>>> Guillaume
   m_Selected: 0
   m_LastSelected: 1
@@ -79,17 +83,21 @@ MonoBehaviour:
   - {fileID: 2}
   m_Position:
     serializedVersion: 2
-    x: 1070
+    x: 1129
     y: 0
-    width: 337
+    width: 343
     height: 947
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 102
 =======
   controlID: 215
+>>>>>>> Guillaume
+=======
+  controlID: 164
 >>>>>>> Guillaume
 --- !u!114 &4
 MonoBehaviour:
@@ -219,7 +227,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Guillaume
+  m_LastLoadedLayoutName: 
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -246,10 +254,14 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 101
 --- !u!114 &10
 =======
   controlID: 280
+=======
+  controlID: 246
+>>>>>>> Guillaume
 --- !u!114 &7
 >>>>>>> Guillaume
 MonoBehaviour:
@@ -292,19 +304,27 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 1081
 =======
     width: 1070
+>>>>>>> Guillaume
+=======
+    width: 1129
 >>>>>>> Guillaume
     height: 947
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 171
 --- !u!114 &12
 =======
   controlID: 285
+=======
+  controlID: 119
+>>>>>>> Guillaume
 --- !u!114 &9
 >>>>>>> Guillaume
 MonoBehaviour:
@@ -324,6 +344,7 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 367
     height: 631
   m_MinSize: {x: 202, y: 221}
@@ -333,6 +354,9 @@ MonoBehaviour:
   - {fileID: 21}
 =======
     width: 337
+=======
+    width: 343
+>>>>>>> Guillaume
     height: 561
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
@@ -357,8 +381,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1407
+    x: 1472
     y: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     width: 472
     height: 677
@@ -373,6 +398,9 @@ MonoBehaviour:
 --- !u!114 &14
 =======
     width: 513
+=======
+    width: 448
+>>>>>>> Guillaume
     height: 947
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
@@ -400,6 +428,7 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 1081
     height: 490
   m_MinSize: {x: 201, y: 221}
@@ -417,9 +446,18 @@ MonoBehaviour:
   - {fileID: 22}
   - {fileID: 16}
 >>>>>>> Guillaume
+=======
+    width: 1129
+    height: 507
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 22}
+  m_Panes:
+  - {fileID: 22}
+>>>>>>> Guillaume
   - {fileID: 17}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -436,6 +474,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     y: 490
     width: 1081
@@ -625,15 +664,52 @@ MonoBehaviour:
     height: 461
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+    y: 507
+    width: 1129
+    height: 440
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> Guillaume
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
+  - {fileID: 16}
   - {fileID: 15}
-  - {fileID: 14}
+  - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 3
 --- !u!114 &13
 >>>>>>> Guillaume
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Console
+    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000,
+      type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 580
+    width: 1128
+    height: 419
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -717,7 +793,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 64400000
     m_LastClickedID: 16484
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000888100008a8100008c8100008e81000090810000
+>>>>>>> Guillaume
+=======
+    m_ExpandedIDs: 000000004276000000ca9a3b
 >>>>>>> Guillaume
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -747,9 +827,13 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000488000004a8000004c8000004e8000005080000052800000
 =======
     m_ExpandedIDs: 00000000888100008a8100008c8100008e81000090810000
+>>>>>>> Guillaume
+=======
+    m_ExpandedIDs: 000000004276000000ca9a3b
 >>>>>>> Guillaume
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -816,7 +900,7 @@ MonoBehaviour:
 --- !u!114 &21
 =======
   m_DirectoriesAreaWidth: 161
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -875,7 +959,7 @@ MonoBehaviour:
         m_Identifier: UnityEditorInternal.Profiling.CPUProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-        m_ViewType: 0
+        m_ViewType: 1
         updateViewLive: 0
         m_CurrentFrameIndex: -1
         m_HierarchyOverruledThreadFromSelection: 0
@@ -1709,7 +1793,7 @@ MonoBehaviour:
       data:
         m_SortAscending: 0
         m_SortedColumn: -1
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1731,17 +1815,17 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 559
-    width: 960
-    height: 440
+    y: 580
+    width: 1128
+    height: 419
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 182366
---- !u!114 &16
+  m_LastSelectedObjectID: 35688
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1771,11 +1855,32 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_ViewTransforms:
-    m_KeySerializationHelper: []
-    m_ValueSerializationHelper: []
+    m_KeySerializationHelper:
+    - {fileID: -37984289831918898, guid: 6adc5285427c3284994bd62c134ee318, type: 2}
+    m_ValueSerializationHelper:
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 0}
-  m_BreadCrumbs: []
+  m_AnimatorController: {fileID: 9100000, guid: 6adc5285427c3284994bd62c134ee318,
+    type: 2}
+  m_BreadCrumbs:
+  - m_Target: {fileID: -37984289831918898, guid: 6adc5285427c3284994bd62c134ee318,
+      type: 2}
+    m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -1787,35 +1892,6 @@ MonoBehaviour:
   m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &17
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000,
-      type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 73
-    width: 1069
-    height: 465
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
 --- !u!114 &18
 >>>>>>> Guillaume
 MonoBehaviour:
@@ -1839,14 +1915,18 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1081
     y: 73
     width: 365
     height: 610
 =======
     x: 1070
+=======
+    x: 1129
+>>>>>>> Guillaume
     y: 73
-    width: 335
+    width: 341
     height: 540
 >>>>>>> Guillaume
   m_ViewDataDictionary: {fileID: 0}
@@ -1856,12 +1936,16 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 82830000
       m_LastClickedID: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
       m_ExpandedIDs: 5260feffea61feffda66feffd4a3ffffd8a3ffffdca3ffff02a4ffff18e1ffff1ce1ffff20e1ffff46e1ffff18fbffff
 =======
       m_ExpandedIDs: ee4dffff7cce000002cf000016cf00001ecf0000
+>>>>>>> Guillaume
+=======
+      m_ExpandedIDs: f24bfeff844dfeff6c52fefffe2effff2830ffff1035ffffe6e9ffff50ecffffceeeffff2cf4ffff52faffff
 >>>>>>> Guillaume
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1878,7 +1962,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 9}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1912,9 +1996,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1407
+    x: 1472
     y: 73
-    width: 512
+    width: 447
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1959,14 +2043,18 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1081
     y: 704
     width: 365
     height: 295
 =======
     x: 1070
+=======
+    x: 1129
+>>>>>>> Guillaume
     y: 634
-    width: 335
+    width: 341
     height: 365
 >>>>>>> Guillaume
   m_ViewDataDictionary: {fileID: 0}
@@ -1987,15 +2075,20 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Lab/Antoine/Prefabs
 =======
     - Assets/Lab/Matis/DUP_Scripts
+>>>>>>> Guillaume
+=======
+    - Assets/Lab/Guillaume
 >>>>>>> Guillaume
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
+<<<<<<< HEAD
 <<<<<<< HEAD
   - Assets/Lab/Antoine/Prefabs
   m_LastFoldersGridSize: 16
@@ -2005,10 +2098,16 @@ MonoBehaviour:
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Dossier unity\Farm-O-Bot\Farm O Bot
 >>>>>>> Guillaume
+=======
+  - Assets/Lab/Guillaume
+  m_LastFoldersGridSize: 16
+  m_LastProjectPath: C:\Unity Project\Farm-O-Bot\Farm O Bot
+>>>>>>> Guillaume
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: b2810000
     m_LastClickedID: 33202
@@ -2017,6 +2116,11 @@ MonoBehaviour:
     m_SelectedIDs: 44cb0000
     m_LastClickedID: 52036
     m_ExpandedIDs: 00000000888100008c8100008e81000090810000ea82000076830000
+>>>>>>> Guillaume
+=======
+    m_SelectedIDs: 82830000
+    m_LastClickedID: 33666
+    m_ExpandedIDs: 00000000427600004476000048760000828300008883000000ca9a3b
 >>>>>>> Guillaume
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2033,7 +2137,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 2}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -2046,9 +2150,13 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000488000004a8000004c8000004e8000005080000052800000
 =======
     m_ExpandedIDs: 00000000888100008a8100008c8100008e81000090810000
+>>>>>>> Guillaume
+=======
+    m_ExpandedIDs: 000000004276000000ca9a3b
 >>>>>>> Guillaume
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2081,11 +2189,16 @@ MonoBehaviour:
     m_RenameOverlay:
       m_UserAcceptedRename: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_Name: MechaController
       m_OriginalName: MechaController
 =======
       m_Name: PlayerFire
       m_OriginalName: PlayerFire
+>>>>>>> Guillaume
+=======
+      m_Name: 
+      m_OriginalName: 
 >>>>>>> Guillaume
       m_EditFieldRect:
         serializedVersion: 2
@@ -2094,13 +2207,17 @@ MonoBehaviour:
         width: 0
         height: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_UserData: 32030
 =======
       m_UserData: 11926
 >>>>>>> Guillaume
+=======
+      m_UserData: 0
+>>>>>>> Guillaume
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
 <<<<<<< HEAD
       m_ClientGUIView: {fileID: 4}
@@ -2118,10 +2235,14 @@ MonoBehaviour:
     m_GridSize: 16
   m_SkipHiddenPackages: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_DirectoriesAreaWidth: 134
 --- !u!114 &24
 =======
   m_DirectoriesAreaWidth: 147
+=======
+  m_DirectoriesAreaWidth: 183
+>>>>>>> Guillaume
 --- !u!114 &21
 >>>>>>> Guillaume
 MonoBehaviour:
@@ -2146,6 +2267,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 563
     width: 1080
     height: 436
@@ -2153,6 +2275,11 @@ MonoBehaviour:
     y: 559
     width: 1069
     height: 440
+>>>>>>> Guillaume
+=======
+    y: 580
+    width: 1128
+    height: 419
 >>>>>>> Guillaume
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2164,7 +2291,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 745, y: 419}
+  m_TargetSize: {x: 708, y: 398}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -2179,10 +2306,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -372.5
-    m_HBaseRangeMax: 372.5
-    m_VBaseRangeMin: -209.5
-    m_VBaseRangeMax: 209.5
+    m_HBaseRangeMin: -354
+    m_HBaseRangeMax: 354
+    m_VBaseRangeMin: -199
+    m_VBaseRangeMax: 199
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -2201,6 +2328,7 @@ MonoBehaviour:
       x: 0
       y: 21
 <<<<<<< HEAD
+<<<<<<< HEAD
       width: 1080
       height: 415
     m_Scale: {x: 0.38425925, y: 0.38425925}
@@ -2211,12 +2339,19 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 534.5, y: 209.5}
 >>>>>>> Guillaume
+=======
+      width: 1128
+      height: 398
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 564, y: 199}
+>>>>>>> Guillaume
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
       x: -1405.3013
       y: -540
@@ -2233,6 +2368,15 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1069, y: 440}
+>>>>>>> Guillaume
+=======
+      x: -564
+      y: -199
+      width: 1128
+      height: 398
+    m_MinimalGUI: 1
+  m_defaultScale: 1
+  m_LastWindowPixelSize: {x: 1128, y: 419}
 >>>>>>> Guillaume
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -2267,11 +2411,16 @@ MonoBehaviour:
     x: 0
     y: 73
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 1080
     height: 469
 =======
     width: 1069
     height: 465
+>>>>>>> Guillaume
+=======
+    width: 1128
+    height: 486
 >>>>>>> Guillaume
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2283,7 +2432,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -101, y: -1}
+      snapOffsetDelta: {x: -101, y: -26}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -2309,7 +2458,11 @@ MonoBehaviour:
       snapOffsetDelta: {x: 0, y: 0}
 =======
       snapOffset: {x: 0, y: 0}
+<<<<<<< HEAD
       snapOffsetDelta: {x: 0, y: 25}
+>>>>>>> Guillaume
+=======
+      snapOffsetDelta: {x: 0, y: 0}
 >>>>>>> Guillaume
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -2321,7 +2474,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       id: unity-search-toolbar
       index: 1
@@ -2331,8 +2484,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
       index: 0
@@ -2354,7 +2507,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Light Settings
       index: 0
@@ -2365,7 +2518,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
       index: 1
@@ -2376,7 +2529,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Constraints
       index: 2
@@ -2387,7 +2540,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Collisions
       index: 3
@@ -2398,7 +2551,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Navmesh Display
       index: 4
@@ -2409,7 +2562,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Agent Display
       index: 5
@@ -2420,7 +2573,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Obstacle Display
       index: 6
@@ -2431,7 +2584,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Occlusion Culling
       index: 7
@@ -2442,7 +2595,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Physics Debugger
       index: 8
@@ -2453,7 +2606,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Scene Visibility
       index: 9
@@ -2463,8 +2616,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
       index: 10
@@ -2475,7 +2628,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Visual Effect Model
       index: 11
@@ -2486,7 +2639,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Visual Effect
       index: 12
@@ -2497,21 +2650,22 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Visual Effect Event Tester
       index: 13
       layout: 4
   m_WindowGUID: d6e56523e71ea2540aefa5b7074e9947
   m_Gizmos: 1
-  m_OverrideSceneCullingMask: 0
-  m_SceneIsLit: 0
+  m_OverrideSceneCullingMask: 6917529027641081856
+  m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: 24.012419, y: 24.020319, z: -3.021804}
     speed: 2
@@ -2520,6 +2674,11 @@ MonoBehaviour:
     m_Target: {x: 0, y: 3.8, z: 0.74}
     speed: 2
     m_Value: {x: 63.428886, y: 33.478603, z: -27.266994}
+>>>>>>> Guillaume
+=======
+    m_Target: {x: -9.690133, y: -17.936886, z: 14.203582}
+    speed: 2
+    m_Value: {x: -9.690133, y: -17.936886, z: 14.203582}
 >>>>>>> Guillaume
   m_RenderMode: 0
   m_CameraMode:
@@ -2532,7 +2691,7 @@ MonoBehaviour:
   m_SceneViewState:
     m_AlwaysRefresh: 0
     showFog: 1
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -2554,7 +2713,7 @@ MonoBehaviour:
         m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 4, y: 4}
+      m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
         m_Target: 0
@@ -2568,6 +2727,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.36567113, y: 0.31948256, z: -0.13526782, w: -0.86368924}
     speed: 2
     m_Value: {x: -0.36566362, y: 0.319476, z: -0.13526505, w: -0.86367154}
@@ -2577,20 +2737,27 @@ MonoBehaviour:
     m_Value: 12.2791395
 =======
     m_Target: {x: 0.008593276, y: -0.9353094, z: 0.022738304, w: 0.35303625}
+=======
+    m_Target: {x: 0.33489314, y: -0.181566, z: 0.065909624, w: 0.92226994}
+>>>>>>> Guillaume
     speed: 2
-    m_Value: {x: 0.055136923, y: -0.9443122, z: 0.21196601, w: 0.24557053}
+    m_Value: {x: 0.3348855, y: -0.18156187, z: 0.06590813, w: 0.92224896}
   m_Size:
-    m_Target: 5.1935825
+    m_Target: 91.2153
     speed: 2
+<<<<<<< HEAD
     m_Value: 92.58997
+>>>>>>> Guillaume
+=======
+    m_Value: 91.2153
 >>>>>>> Guillaume
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_Speed: 2
+    m_SpeedNormalized: 1
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
