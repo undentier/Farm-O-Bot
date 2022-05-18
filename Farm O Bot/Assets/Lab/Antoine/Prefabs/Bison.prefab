@@ -1145,6 +1145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00b1d59af50e50459075514fe3be7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 6553431828602374302}
+  _networkObjectCache: {fileID: 6553431828602374302}
   hp: 5
   selfAgent: {fileID: 4002509268643546290}
   cooldown: 1
@@ -1184,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 6553431828602374302}
   _networkObjectCache: {fileID: 6553431828602374302}
   _synchronizeParent: 0
@@ -1226,6 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _networkBehaviours:
+  - {fileID: 4421571632675708235}
   - {fileID: 5099521494729315714}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}

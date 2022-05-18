@@ -10,9 +10,9 @@ public class NewMechaControllerMovement : NetworkBehaviour
     [Range(0, 1)] public float mouseSensibility;
 
     [Header("Movement")]
-    [Range(0, 50)]
+    /*[Range(0, 50)]*/
     public float normalSpeed;
-    [Range(0, 50)]
+    /*[Range(0, 50)]*/
     public float boostedSpeed;
     [Range(0, 50)]
     public float decelerationSpeed;
@@ -22,6 +22,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private Vector3 movementDirection;
     private Vector3 lastMovementDirection;
     private bool isRunning = false;
+
+    public float gravity = 0;
 
     [Header("Legs")]
     public float turnTimeStatic;

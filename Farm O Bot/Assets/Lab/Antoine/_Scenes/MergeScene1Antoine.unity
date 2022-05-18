@@ -2720,7 +2720,6 @@ MonoBehaviour:
   _sceneId: 6254870683983218569
   _sceneNetworkObjects:
   - {fileID: 1366921104}
-  - {fileID: 2064235703}
 --- !u!114 &1366921105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4506,7 +4505,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2064235701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4538,7 +4537,6 @@ MonoBehaviour:
   cometPrefab: {fileID: 7355314588627608029, guid: 501ced48c9fd41044997129dcd7efe2e,
     type: 3}
   playerInputScript: {fileID: 0}
-  numOftarget: 0
 --- !u!4 &2064235702
 Transform:
   m_ObjectHideFlags: 0
@@ -4580,7 +4578,6 @@ MonoBehaviour:
   _sceneId: 6254870685138138069
   _sceneNetworkObjects:
   - {fileID: 1366921104}
-  - {fileID: 2064235703}
 --- !u!1001 &2136586556
 PrefabInstance:
   m_ObjectHideFlags: 0

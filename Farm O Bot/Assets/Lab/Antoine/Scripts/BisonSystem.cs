@@ -132,8 +132,10 @@ public class BisonSystem : NetworkBehaviour
 
     private void RefreshPath()
     {
-        pathToFollow = new NavMeshPath();
+        selfAgent.SetDestination(target);
+
+        /*pathToFollow = new NavMeshPath();
         selfAgent.CalculatePath(target, pathToFollow);
-        selfAgent.path = pathToFollow;
+        selfAgent.path = pathToFollow;*/
     }
 }
