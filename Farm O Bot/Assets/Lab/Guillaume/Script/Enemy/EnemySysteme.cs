@@ -23,6 +23,7 @@ public class EnemySysteme : NetworkBehaviour
 
     private float actualCooldown;
     private bool targetOnPlayer;
+    private float startHp;
 
     #endregion
 
@@ -30,19 +31,12 @@ public class EnemySysteme : NetworkBehaviour
     {
         target = GameManager.instance.bisonTransform;
         actualCooldown = 0f;
+        startHp = hp;
     }
 
     private void Update()
     {
-        if (actualCooldown > cooldown)
-        {
-            selfAgent.SetDestination(target.position);
-            actualCooldown = 0f;
-        }
-        else
-        {
-            actualCooldown += Time.deltaTime;
-        }
+        RefreshPathSysteme();
 
         if (targetOnPlayer == false)
         {
@@ -72,10 +66,19 @@ public class EnemySysteme : NetworkBehaviour
     {
         GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
         Destroy(particle, 5f);
-        Destroy(gameObject);
+
+        PutBackEnemyInPool();
     }
 
+    private void PutBackEnemyInPool()
+    {
+        target = GameManager.instance.bisonTransform;
+        hp = startHp;
+        actualCooldown = 0f;
 
+        PoolEnemyManager.instance.AddObjectToPool("Enemy", gameObject);
+    }
+    
     private void PlayerDetection()
     {
         for (int i = 0; i < GameManager.instance.playerTransformList.Count; i++)
@@ -91,6 +94,20 @@ public class EnemySysteme : NetworkBehaviour
                 targetOnPlayer = true;
             }
             
+        }
+    }
+
+    [ObserversRpc]
+    private void RefreshPathSysteme()
+    {
+        if (actualCooldown > cooldown)
+        {
+            selfAgent.SetDestination(target.position);
+            actualCooldown = 0f;
+        }
+        else
+        {
+            actualCooldown += Time.deltaTime;
         }
     }
 

@@ -37,7 +37,6 @@ public class PieceOfComet : NetworkBehaviour
         {
             if (!IsClientOnly)
             {
-                Debug.Log("Je spawn");
                 SpawnerSysteme();
             }
         }
@@ -56,7 +55,8 @@ public class PieceOfComet : NetworkBehaviour
             for (int i = 0; i < numOfEnemySpawnRate; i++)
             {
                 int random = Random.Range(0, spawnPoints.Length - 1);
-                GameObject actualEnemy = Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
+                GameObject actualEnemy = PoolEnemyManager.instance.SpawnFromPool("Enemy", spawnPoints[random].position, spawnPoints[random].rotation);
+                //GameObject actualEnemy = Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
                 InstanceFinder.ServerManager.Spawn(actualEnemy, Owner);
 
                 numOfEnemySpawn += 1;
@@ -82,7 +82,6 @@ public class PieceOfComet : NetworkBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
             transform.LookAt(target.position);
-            
         }
         else
         {

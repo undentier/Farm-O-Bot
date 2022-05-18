@@ -19,7 +19,7 @@ public class CometManager : NetworkBehaviour
 
     public PlayerInput playerInputScript;
 
-    public int numOftarget;
+    private int numOftarget;
     private GameObject actualComet;
 
     #endregion

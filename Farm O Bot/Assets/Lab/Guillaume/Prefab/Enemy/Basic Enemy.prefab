@@ -126,11 +126,11 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 8723229097116571392}
   _networkObjectCache: {fileID: 8723229097116571392}
   hp: 1
-  rangePlayerAggro: 15
+  rangePlayerAggro: 25
   deathParticleObj: {fileID: 2590925167941556976, guid: fadb1e1f05a1dda4d98f035931b3da0b,
     type: 3}
   selfAgent: {fileID: 1563629211}
-  cooldown: 0.5
+  cooldown: 0.3
   target: {fileID: 0}
 --- !u!136 &8007269956048125803
 CapsuleCollider:
@@ -203,7 +203,7 @@ MonoBehaviour:
   - {fileID: 5141496985533322943}
   - {fileID: 4610638244731571517}
   SceneTransformProperties:
-    Position: {x: 22.325226, y: 1.3, z: 55.4369}
+    Position: {x: 28.6, y: 0.7, z: 83.3}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   _isNetworked: 1
