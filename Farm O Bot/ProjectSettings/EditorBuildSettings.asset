@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Lab/Antoine/_Scenes/MergeScene1Antoine.unity
-    guid: 51258d47c7ac9cc48ab8882d4719a384
+    path: Assets/Lab/Antoine/_Scenes/CleanScene.unity
+    guid: f30c0aac8a1a3de4893cd7dbbe8fce5e
   m_configObjects: {}
