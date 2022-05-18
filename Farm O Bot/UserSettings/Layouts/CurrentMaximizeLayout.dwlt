@@ -25,7 +25,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 4362
+=======
+  controlID: 3582
+>>>>>>> Guillaume
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +147,11 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 4363
+=======
+  controlID: 3583
+>>>>>>> Guillaume
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,10 +169,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1077
     height: 486
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+    width: 1120
+    height: 498
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> Guillaume
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -315,7 +330,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Navmesh Display
@@ -326,7 +341,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Agent Display
@@ -430,9 +445,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 8.088361, y: -1.0846232, z: -18.264496}
     speed: 2
     m_Value: {x: 8.088361, y: -1.0846232, z: -18.264496}
+=======
+    m_Target: {x: 360.2835, y: -450.2078, z: 911.64746}
+    speed: 2
+    m_Value: {x: 360.2835, y: -450.2078, z: 911.64746}
+>>>>>>> Guillaume
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -479,6 +500,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: 0.16097076, y: -0.4024481, z: 0.07211223, w: 0.8983127}
     speed: 2
     m_Value: {x: 0.16096738, y: -0.40243965, z: 0.07211072, w: 0.89829385}
@@ -486,6 +508,15 @@ MonoBehaviour:
     m_Target: 10.998524
     speed: 2
     m_Value: 10.998524
+=======
+    m_Target: {x: 0.33874184, y: 0.41520968, z: -0.1702431, w: 0.82705}
+    speed: 2
+    m_Value: {x: 0.32743263, y: 0.4352644, z: -0.1738975, w: 0.8204221}
+  m_Size:
+    m_Target: 370.96722
+    speed: 2
+    m_Value: 370.96722
+>>>>>>> Guillaume
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -615,7 +646,11 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
+<<<<<<< HEAD
   m_LastSelectedObjectID: 104014
+=======
+  m_LastSelectedObjectID: 523964
+>>>>>>> Guillaume
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1533,7 +1568,11 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 4295
+=======
+  controlID: 3599
+>>>>>>> Guillaume
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1551,10 +1590,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 430
     height: 561
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+=======
+    width: 321
+    height: 552
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+>>>>>>> Guillaume
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -1594,7 +1640,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: d2f4fdff6af6fdff60fbfdff8404feff0407feff7009feffdc0bfeffd616feff6a18feff5c1dfeff1a20feffa021feff303efeffc63ffeffb244feff6c47feff0e4efeff6461fefffa62feffec67feff6c81feff0283fefff487feff34b8feffbab9feffe0c4feff76c6feff68cbfeff56d7feffecd8feffdeddfeff7ae0feffc8f3feff5ef5feff50fafeff2a06ffffc007ffffb20cffffda21ffff6e23ffff6028ffffd63cffff6e3effff6043ffff7e4effff0250ffff2457ffffaa59ffff4a70ffffb672ffff2275ffff8e77ffff047affff8a7bffffb2f1ffff3ef3ffffa6f5ffff18fbffff
+=======
+      m_ExpandedIDs: 4844faff5444faff365cfcff18fbffff9a810000a68200003e8f0000a8980000ceab00001abf0000
+>>>>>>> Guillaume
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1687,22 +1737,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets
+=======
+    - Assets/Lab/Guillaume/Prefab/Comet
+>>>>>>> Guillaume
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
+<<<<<<< HEAD
   - Assets
+=======
+  - Assets/Lab/Guillaume/Prefab/Comet
+>>>>>>> Guillaume
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Projets UNITY\Farm-O-Bot\Farm O Bot
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 5a800000
     m_LastClickedID: 32858
     m_ExpandedIDs: 000000005a8000005c8000005e80000060800000628000006480000066800000688000006a8000006c8000006e80000000ca9a3b
+=======
+    m_SelectedIDs: 76fe0700
+    m_LastClickedID: 523894
+    m_ExpandedIDs: 0000000068cc00006acc00006ccc00006ecc00007acc00003cce000000ca9a3b
+>>>>>>> Guillaume
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1757,22 +1821,26 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
+<<<<<<< HEAD
     m_HadKeyboardFocusLastEvent: 0
+=======
+    m_HadKeyboardFocusLastEvent: 1
+>>>>>>> Guillaume
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Guillaume
+      m_OriginalName: Guillaume
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 52332
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:

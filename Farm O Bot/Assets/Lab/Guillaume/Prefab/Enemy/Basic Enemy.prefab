@@ -97,7 +97,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7842165528459395535}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 15
   m_Acceleration: 10
   avoidancePriority: 50
@@ -130,7 +130,7 @@ MonoBehaviour:
   deathParticleObj: {fileID: 2590925167941556976, guid: fadb1e1f05a1dda4d98f035931b3da0b,
     type: 3}
   selfAgent: {fileID: 1563629211}
-  cooldown: 0.3
+  cooldown: 0
   target: {fileID: 0}
 --- !u!136 &8007269956048125803
 CapsuleCollider:
