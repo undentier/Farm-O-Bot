@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using FishNet.Object;
 
-public class EnergySystem : MonoBehaviour
+public class EnergySystem : NetworkBehaviour
 {
     public float maxEnergy;
     [HideInInspector] public float currentEnergy = 0;
+    [HideInInspector] public bool energyFulled = false;
 
     public float regainEnergyRate;
 
@@ -35,6 +37,8 @@ public class EnergySystem : MonoBehaviour
 
     private void Update()
     {
+        CheckEnergy();
+
         if (currentEnergy > 0 && currentEnergy < maxEnergy)
         {
             currentEnergy -= Time.deltaTime * regainEnergyRate;
@@ -44,6 +48,18 @@ public class EnergySystem : MonoBehaviour
         if (inputLeft.action.phase == InputActionPhase.Waiting && inputLRight.action.phase == InputActionPhase.Waiting && currentEnergy >= maxEnergy)
         {
             currentEnergy = maxEnergy - 0.1f;
+        }
+    }
+
+    private void CheckEnergy()
+    {
+        if (IsOwner && (currentEnergy < maxEnergy))
+        {
+            energyFulled = false;
+        }
+        if (IsOwner && (currentEnergy >= maxEnergy))
+        {
+            energyFulled = true;
         }
     }
 }

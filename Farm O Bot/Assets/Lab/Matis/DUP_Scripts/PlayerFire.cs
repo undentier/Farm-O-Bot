@@ -17,9 +17,11 @@ public class PlayerFire : NetworkBehaviour
     private int weaponRightIndex = 0;
 
     private MechaAiming aimScript;
+    private EnergySystem _energySystem;
 
     private void Start()
     {
+        _energySystem = GetComponent<EnergySystem>();
         aimScript = GetComponent<MechaAiming>();
         _playerInput = GetComponent<PlayerInput>();
         _playerInput.actions["SwitchWeaponLeft"].started += SwitchWeaponLeft;
@@ -55,7 +57,8 @@ public class PlayerFire : NetworkBehaviour
     {
         if (leftFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            leftWeaponsList[weaponLeftIndex].RpcShoot(true, aimScript.aimPoint.position);
+            if(!_energySystem.energyFulled) leftWeaponsList[weaponLeftIndex].RpcShoot(true, aimScript.aimPoint.position);
+            else leftWeaponsList[weaponLeftIndex].RpcShoot(false, aimScript.aimPoint.position);
         }
         if (leftFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
         {
@@ -64,7 +67,8 @@ public class PlayerFire : NetworkBehaviour
 
         if (rightFireInput.action.phase == InputActionPhase.Performed && IsOwner)
         {
-            rightWeaponsList[weaponRightIndex].RpcShoot(true, aimScript.aimPoint.position);
+            if(!_energySystem.energyFulled) rightWeaponsList[weaponRightIndex].RpcShoot(true, aimScript.aimPoint.position);
+            else rightWeaponsList[weaponRightIndex].RpcShoot(false, aimScript.aimPoint.position);
         }
         if (rightFireInput.action.phase == InputActionPhase.Waiting && IsOwner)
         {
