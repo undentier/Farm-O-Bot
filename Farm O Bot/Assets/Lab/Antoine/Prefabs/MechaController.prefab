@@ -1789,15 +1789,15 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   mouseSensibility: 0.25
-  normalSpeed: 15
-  boostedSpeed: 30
+  normalSpeed: 20
+  boostedSpeed: 35
   decelerationSpeed: 7.5
   decelerationTime: 0.5
   gravity: 9.8
   turnTimeStatic: 0.5
   turnTimeInMovement: 0.75
   legs: {fileID: 3815007128131774698}
-  rotationSpeedChest: 75
+  rotationSpeedChest: 100
   clampChestRotationHorizontal: 1
   clampAngleHorizontal: {x: -70, y: 70}
   clampChestRotationVertical: 1
@@ -1925,6 +1925,7 @@ MonoBehaviour:
   minimapCamera: {fileID: 2198233733708594376}
   player1: {r: 0.17254902, g: 1, b: 0, a: 1}
   player2: {r: 0, g: 0.9529412, b: 1, a: 1}
+  iconPlayer: {fileID: 8124741547957679532}
 --- !u!114 &614025366870327872
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -84,6 +84,10 @@ public class NewMechaControllerMovement : NetworkBehaviour
             AnimateMecha();
         }
 
+        if (!isMoving && IsOwner)
+        {
+            isRunning = false;
+        }
     }
 
     private void ReadInput()
@@ -97,10 +101,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
         if (context.started && IsOwner)
         {
             isRunning = true;
-        }
-        if (context.canceled && IsOwner)
-        {
-            isRunning = false;
         }
     }
 

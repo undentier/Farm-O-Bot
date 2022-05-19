@@ -14,6 +14,7 @@ public class MechaCamera : NetworkBehaviour
     [Header("Mini map cam")]
     public GameObject minimapCamera;
     public Color player1, player2;
+    public SpriteRenderer iconPlayer;
 
     public override void OnStartClient()
     {
@@ -25,6 +26,12 @@ public class MechaCamera : NetworkBehaviour
             cinecam.gameObject.SetActive(true);
             cinecam.Follow = mechCameraRoot;
             minimapCamera.SetActive(true);
+
+            if (GameManager.instance.playerTransformList.Count > 1)
+            {
+                iconPlayer.color = player2;
+            }
+            else iconPlayer.color = player1;
         }
         else
         {
