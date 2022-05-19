@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [HideInInspector] public GameObject clientPlayer;
     public List<Transform> playerTransformList = new List<Transform>();
     public Transform bisonTransform;
 

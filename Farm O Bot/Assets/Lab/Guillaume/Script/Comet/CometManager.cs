@@ -60,15 +60,17 @@ public class CometManager : NetworkBehaviour
     {
         actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
 
-
         PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
         actualScript.target = FindTarget();
+        actualScript._objectifFeedback = GameManager.instance.clientPlayer.GetComponent<ObjectifFeedback>();
 
         numOftarget += 1;
         if (numOftarget >= allTargets.Length - 1)
         {
             numOftarget = 0;
         }
+
+        GameManager.instance.clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(actualComet);
     }
 
 

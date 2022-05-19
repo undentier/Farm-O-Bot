@@ -29,6 +29,8 @@ public class PieceOfComet : NetworkBehaviour
     private int numOfEnemySpawn;
     private bool isGrounded;
 
+    [HideInInspector] public ObjectifFeedback _objectifFeedback;
+
     #endregion
 
     private void Update()
@@ -72,6 +74,7 @@ public class PieceOfComet : NetworkBehaviour
     {
         if (numOfEnemySpawn >= maxEnemyToSpawn)
         {
+            _objectifFeedback.DestroyAlert(this.gameObject);
             Destroy(gameObject);
         }
     }

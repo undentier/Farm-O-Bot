@@ -7,5 +7,6 @@ public class GetPlayerStart : MonoBehaviour
     private void Start()
     {
         GameManager.instance.playerTransformList.Add(gameObject.transform);
+        GameManager.instance.clientPlayer = this.gameObject;
     }
 }

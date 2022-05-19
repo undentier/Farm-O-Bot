@@ -1734,6 +1734,7 @@ GameObject:
   - component: {fileID: 233283835004519855}
   - component: {fileID: 3815007127822126878}
   - component: {fileID: 7115167079030956520}
+  - component: {fileID: 51060082238980771}
   - component: {fileID: 614025366870327872}
   - component: {fileID: 3815007127822126879}
   - component: {fileID: 3815007127822126876}
@@ -1923,9 +1924,25 @@ MonoBehaviour:
   mainCamera: {fileID: 596215860428870260}
   mechCameraRoot: {fileID: 3815007128434789536}
   minimapCamera: {fileID: 2198233733708594376}
-  player1: {r: 0.17254902, g: 1, b: 0, a: 1}
-  player2: {r: 0, g: 0.9529412, b: 1, a: 1}
+  myMecha: {r: 0, g: 0.9529412, b: 1, a: 1}
+  otherMecha: {r: 0.053278446, g: 1, b: 0, a: 1}
   iconPlayer: {fileID: 8124741547957679532}
+--- !u!114 &51060082238980771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815007127822126851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b422970c4b8fd2408a933894c75be4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 4219387590538828410}
+  cometAlert: {fileID: 3613461328201421894, guid: 5e48d2c71f97e514985d206257bb7931,
+    type: 3}
+  alertImages: []
 --- !u!114 &614025366870327872
 MonoBehaviour:
   m_ObjectHideFlags: 0
