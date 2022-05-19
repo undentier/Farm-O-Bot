@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
 
-public class IgnoreParentRotation : MonoBehaviour
+public class IgnoreParentRotation : NetworkBehaviour
 {
     Quaternion selfRotation;
 
@@ -13,6 +14,6 @@ public class IgnoreParentRotation : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.rotation = selfRotation;
+        if (IsServer && !IsClientOnly) transform.rotation = selfRotation;
     }
 }

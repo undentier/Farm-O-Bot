@@ -45,7 +45,7 @@ public class HerdMovement : NetworkBehaviour
 
         for (int i = 0; i < numberBisons; i++)
         {
-            GameObject bisonInstance = Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, bisonsGroup);
+            GameObject bisonInstance = Instantiate(bison, transform.position + new Vector3(Random.insideUnitSphere.x * herdRadius, transform.position.y, Random.insideUnitSphere.z * herdRadius), bison.transform.rotation, null);
             //bisonInstance.GetComponent<BisonSystem>().herdScript = this;
             InstanceFinder.ServerManager.Spawn(bisonInstance, InstanceFinder.ClientManager.Connection);
         }
