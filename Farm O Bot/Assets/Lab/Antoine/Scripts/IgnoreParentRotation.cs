@@ -6,7 +6,7 @@ public class IgnoreParentRotation : MonoBehaviour
 {
     Quaternion selfRotation;
 
-    private void Start()
+    private void Awake()
     {
         selfRotation = transform.rotation;
     }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FishNet.Object;
-using Cinemachine;
 public class NewMechaControllerMovement : NetworkBehaviour
 {
     [Header("Mouse sensibility")]
@@ -46,11 +45,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private float chestRotationY;
     public Transform chest;
     public Transform lookAtReticule;
-
-    [Header("Camera")]
-    public Transform mechCameraRoot;
-    public CinemachineVirtualCamera cinecam;
-    public GameObject mainCamera;
+    //public Transform mechCameraRoot;
+    
 
     //Input
     private Vector2 inputMovement;
@@ -73,21 +69,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _playerInput.actions["Run"].started += ReadRunInput;
         _playerInput.actions["Run"].canceled += ReadRunInput;
-    }
-
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        if (IsOwner)
-        {
-            mainCamera.SetActive(true);
-            cinecam.gameObject.SetActive(true);
-            cinecam.Follow = mechCameraRoot;
-        }
-        else {
-            cinecam.gameObject.SetActive(false);
-            mainCamera.SetActive(false);
-        }
     }
 
     private void Update()

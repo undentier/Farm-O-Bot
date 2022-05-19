@@ -67,7 +67,7 @@ MonoBehaviour:
   originPoint: {fileID: 0}
   bulletDamage: 0
   explosionSize: 5
-  timeBeforeExplose: 0.15
+  increaseTime: 0.15
   explosiveMaterial: {fileID: 2100000, guid: fa116671d0ccf964cbd9477269c0b96a, type: 2}
   explosionVisible: 0
 --- !u!135 &7121954364274612066

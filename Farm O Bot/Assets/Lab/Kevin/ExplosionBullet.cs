@@ -6,7 +6,7 @@ public class ExplosionBullet : GlobalBullet
 {
     [Header("Explosion Settings")]
     public float explosionSize;
-    public float timeBeforeExplose;
+    public float increaseTime;
     public Material explosiveMaterial;
     public bool explosionVisible = true;
     private bool flagOnce = false;
@@ -22,7 +22,7 @@ public class ExplosionBullet : GlobalBullet
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponentInChildren<MeshRenderer>().material = explosiveMaterial;
-            StartCoroutine(LerpScale(transform.localScale, new Vector3(explosionSize, explosionSize, explosionSize), timeBeforeExplose));
+            StartCoroutine(LerpScale(transform.localScale, new Vector3(explosionSize, explosionSize, explosionSize), increaseTime));
             if (!explosionVisible) GetComponentInChildren<MeshRenderer>().enabled = false;
 
             flagOnce = true;

@@ -380,7 +380,7 @@ Transform:
   m_GameObject: {fileID: 2141690985864777131}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7642674786871982765}
@@ -426,7 +426,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 334e93dc53a807e4b9d44adff630f9af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -450,6 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ed6620c33c2e7438d399bdfd50bc2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 6553431828602374302}
+  _networkObjectCache: {fileID: 6553431828602374302}
 --- !u!1 &2372521060731763542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,8 +1332,9 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 4421571632675708235}
   - {fileID: 5099521494729315714}
+  - {fileID: 8875218408403045899}
   SceneTransformProperties:
-    Position: {x: 10.310599, y: 9.998161, z: 92.08}
+    Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 20, y: 20, z: 20}
   _isNetworked: 1
@@ -1340,7 +1344,6 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects:
-  - {fileID: 6553431828602374302}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &7156314356502285898
