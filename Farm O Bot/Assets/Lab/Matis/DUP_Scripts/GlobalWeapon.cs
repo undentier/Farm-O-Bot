@@ -29,18 +29,6 @@ public class GlobalWeapon : NetworkBehaviour
         _energySystem = GetComponentInParent<EnergySystem>();
     }
 
-    private void Update()
-    {
-        if (IsOwner && (_energySystem.currentEnergy < _energySystem.maxEnergy))
-        {
-            energyFulled = false;
-        }
-        if (IsOwner && (_energySystem.currentEnergy >= _energySystem.maxEnergy))
-        {
-            energyFulled = true;
-        }
-    }
-
     public virtual void Shoot(bool isShooting, Vector3 aimPoint)
     {
         //Place weapon behavior here
@@ -57,13 +45,13 @@ public class GlobalWeapon : NetworkBehaviour
     [ServerRpc]
     public void RpcShoot(bool isShooting, Vector3 aimPoint)
     {
-        RpcClientShoot(isShooting, aimPoint, energyFulled);
+        RpcClientShoot(isShooting, aimPoint);
     }
 
     [ObserversRpc]
-    private void RpcClientShoot(bool isShooting, Vector3 aimPoint, bool energyIsFull)
+    private void RpcClientShoot(bool isShooting, Vector3 aimPoint)
     {
-        if (!energyIsFull) Shoot(isShooting, aimPoint);
-        else Shoot(false, aimPoint);
+        Shoot(isShooting, aimPoint);
+        //else Shoot(false, aimPoint);
     }
 }
