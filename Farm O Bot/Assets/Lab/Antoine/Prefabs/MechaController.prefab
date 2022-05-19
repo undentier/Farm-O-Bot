@@ -1939,10 +1939,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b422970c4b8fd2408a933894c75be4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 5
+  _addedNetworkObject: {fileID: 151926469}
+  _networkObjectCache: {fileID: 151926469}
   canvas: {fileID: 4219387590538828410}
   cometAlert: {fileID: 3613461328201421894, guid: 5e48d2c71f97e514985d206257bb7931,
     type: 3}
+  alertOffset: {x: 0, y: 40, z: 0}
   alertImages: []
+  comets: []
 --- !u!114 &614025366870327872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2168,6 +2173,7 @@ MonoBehaviour:
   - {fileID: 456006946752576382}
   - {fileID: 233283835004519855}
   - {fileID: 7115167079030956520}
+  - {fileID: 51060082238980771}
   - {fileID: 151926470}
   - {fileID: 3440859606219571136}
   - {fileID: 2748706879924596030}
@@ -2201,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2242,7 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   IgnoredParameters: []
@@ -2561,7 +2567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 12
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2950,7 +2956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 10
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Sniper
@@ -2977,7 +2983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03dee492c87cca4ebc61e0b082295d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 11
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
@@ -3368,7 +3374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Machine gun
@@ -3395,7 +3401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Explosive Launcher
@@ -3681,7 +3687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0

@@ -22,6 +22,8 @@ public class CometManager : NetworkBehaviour
     private int numOftarget;
     private GameObject actualComet;
 
+    [HideInInspector] public GameObject clientPlayer;
+
     #endregion
 
     private void Awake()
@@ -62,7 +64,7 @@ public class CometManager : NetworkBehaviour
 
         PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
         actualScript.target = FindTarget();
-        actualScript._objectifFeedback = GameManager.instance.clientPlayer.GetComponent<ObjectifFeedback>();
+        actualScript._objectifFeedback = clientPlayer.GetComponent<ObjectifFeedback>();
 
         numOftarget += 1;
         if (numOftarget >= allTargets.Length - 1)
@@ -70,7 +72,7 @@ public class CometManager : NetworkBehaviour
             numOftarget = 0;
         }
 
-        GameManager.instance.clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(actualComet);
+        clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(actualComet);
     }
 
 

@@ -74,7 +74,6 @@ public class PieceOfComet : NetworkBehaviour
     {
         if (numOfEnemySpawn >= maxEnemyToSpawn)
         {
-            _objectifFeedback.DestroyAlert(this.gameObject);
             Destroy(gameObject);
         }
     }
@@ -90,6 +89,7 @@ public class PieceOfComet : NetworkBehaviour
         {
             isGrounded = true;
             trailParticle.Stop();
+            _objectifFeedback.DestroyAlert();
         }
     }
 }

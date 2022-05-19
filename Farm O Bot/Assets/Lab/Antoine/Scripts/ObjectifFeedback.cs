@@ -19,7 +19,11 @@ public class ObjectifFeedback : NetworkBehaviour
     {
         base.OnStartClient();
 
-        if(IsOwner) mechaCam = GetComponent<MechaCamera>().mainCamera.GetComponent<Camera>();
+        if (IsOwner)
+        {
+            CometManager.instance.clientPlayer = gameObject;
+            mechaCam = GetComponent<MechaCamera>().mainCamera.GetComponent<Camera>();
+        }
     }
 
     public void SpawnAlert(GameObject currentComet)
@@ -29,16 +33,16 @@ public class ObjectifFeedback : NetworkBehaviour
             GameObject currentAlert = Instantiate(cometAlert, canvas.position, Quaternion.identity, canvas);
             alertImages.Add(currentAlert.GetComponent<Image>());
             comets.Add(currentComet.transform);
-        } 
+        }
     }
 
-    public void DestroyAlert(GameObject currentComet)
+    public void DestroyAlert()
     {
         if (IsOwner)
         {
             Destroy(alertImages[0].gameObject);
             alertImages.RemoveAt(0);
-            comets.Remove(currentComet.transform);
+            comets.RemoveAt(0);
         }
     }
 
@@ -57,7 +61,7 @@ public class ObjectifFeedback : NetworkBehaviour
 
                 Vector2 alertPos = mechaCam.WorldToScreenPoint(comets[i].position + alertOffset);
 
-                if (Vector3.Dot((comets[i].position - transform.position), transform.forward) < 0)
+                if (Vector3.Dot((comets[i].position - mechaCam.transform.position), mechaCam.transform.forward) < 0)
                 {
                     //Comet is behind the player camera
                     if(alertPos.x < Screen.width / 2)
