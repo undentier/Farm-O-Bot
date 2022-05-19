@@ -6,6 +6,7 @@ public class TurretBullet : MonoBehaviour
 {
     private GameObject target;
     public float speed = 70f;
+    public float bulletDamage;
 
     public void Seek(GameObject _target)
     {
@@ -31,13 +32,14 @@ public class TurretBullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
-
     }
 
-    void HitTarget()
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemySysteme>().TakeDamage(bulletDamage);
+        }
         Destroy(gameObject);
-        Destroy(target);
     }
 }

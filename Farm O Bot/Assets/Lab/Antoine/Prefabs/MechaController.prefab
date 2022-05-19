@@ -1341,7 +1341,7 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  maxNumberTurretsPlaced: 2
+  maxNumberTurretsPlaced: 1
   currentTurretsNumber: []
   maxDistanceBuild: 40
   turret: {fileID: 8280751323245754215, guid: 0113b9918ee35dc4a928764611ca3754, type: 3}
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 100
   currentEnergy: 0
-  regainEnergyRate: 10
+  regainEnergyRate: 15
   energyImage: {fileID: 546981387501236839}
 --- !u!114 &3815007127822126878
 MonoBehaviour:
@@ -2813,7 +2813,7 @@ MonoBehaviour:
   _energySystem: {fileID: 0}
   weaponFireRate: 0.05
   weaponDispersion: 0.5
-  bulletPrefab: {fileID: 7102762139552053791, guid: 3178443e792d6c0448f445c5f754dc54,
+  bulletPrefab: {fileID: 1535977597517077943, guid: d9ec2b79caa70f742a24e4ad71dc5677,
     type: 3}
   bulletSpeed: 40
 --- !u!114 &2010296366512296737

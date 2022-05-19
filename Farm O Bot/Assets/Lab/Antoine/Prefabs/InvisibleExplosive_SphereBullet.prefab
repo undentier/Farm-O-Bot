@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8490345707659081630}
   - component: {fileID: 7121954364274612066}
   m_Layer: 0
-  m_Name: Explosive_SphereBullet
+  m_Name: InvisibleExplosive_SphereBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,10 +66,10 @@ MonoBehaviour:
   maxDistance: 0
   originPoint: {fileID: 0}
   bulletDamage: 0
-  explosionSize: 15
+  explosionSize: 5
   timeBeforeExplose: 0.15
   explosiveMaterial: {fileID: 2100000, guid: fa116671d0ccf964cbd9477269c0b96a, type: 2}
-  explosionVisible: 1
+  explosionVisible: 0
 --- !u!135 &7121954364274612066
 SphereCollider:
   m_ObjectHideFlags: 0

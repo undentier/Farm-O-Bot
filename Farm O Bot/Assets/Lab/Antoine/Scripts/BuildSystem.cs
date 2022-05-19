@@ -134,7 +134,6 @@ public class BuildSystem : NetworkBehaviour
     {
         for (int i = 0; i < turrets.Count; i++)
         {
-            Debug.Log("destroy");
             InstanceFinder.ServerManager.Despawn(turrets[i]);
         }
     }
