@@ -19,6 +19,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private float decelerationTimer;
     private bool isMoving = false;
     private Vector3 movementDirection;
+    private Vector3 gravityMovement;
     private Vector3 lastMovementDirection;
     private bool isRunning = false;
 
@@ -57,9 +58,11 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
     private PlayerInput _playerInput;
+    private CharacterController _characterController;
 
     private void Start()
     {
+        _characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         mechaAnimationScript = GetComponent<MechaAnimation>();
         playerActions = new DefaultInputActions();
@@ -77,6 +80,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
         {
             ReadInput();
 
+            UseGravity();
             MoveMecha();
             RotateMechaChest();
             if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
@@ -104,6 +108,18 @@ public class NewMechaControllerMovement : NetworkBehaviour
         }
     }
 
+    private void UseGravity()
+    {
+        if (_characterController.isGrounded)
+        {
+            gravityMovement.y = -0.05f;
+        }
+        else
+        {
+            gravityMovement.y = -9.8f;
+        }
+    }
+
     private void MoveMecha()
     {
         movementDirection = inputMovement.y * -legs.forward + inputMovement.x * legs.up;
@@ -111,8 +127,8 @@ public class NewMechaControllerMovement : NetworkBehaviour
         if (movementDirection.magnitude >= 0.2f)
         {
             ResetAngleChestAndLegs();
-            if (isRunning) rb.MovePosition(rb.position + movementDirection.normalized * boostedSpeed * Time.deltaTime);
-            else rb.MovePosition(rb.position + movementDirection.normalized * normalSpeed * Time.deltaTime);
+            if (isRunning) /*rb.MovePosition(rb.position + movementDirection.normalized * boostedSpeed * Time.deltaTime)*/ _characterController.Move((movementDirection.normalized + gravityMovement) * boostedSpeed * Time.deltaTime);
+            else /*rb.MovePosition(rb.position + movementDirection.normalized * normalSpeed * Time.deltaTime)*/ _characterController.Move((movementDirection.normalized + gravityMovement) * normalSpeed * Time.deltaTime);
             decelerationTimer = 0;
             isMoving = true;
             lastMovementDirection = movementDirection;
@@ -125,7 +141,9 @@ public class NewMechaControllerMovement : NetworkBehaviour
             if (decelerationTimer <= decelerationTime)
             {
                 decelerationTimer += Time.deltaTime;
-                rb.MovePosition(rb.position + lastMovementDirection * decelerationSpeed * Time.deltaTime);
+                //rb.MovePosition(rb.position + lastMovementDirection * decelerationSpeed * Time.deltaTime);
+                _characterController.Move((lastMovementDirection + gravityMovement) * decelerationSpeed * Time.deltaTime);
+                isRunning = false;
             }
             else isMoving = false;
         }

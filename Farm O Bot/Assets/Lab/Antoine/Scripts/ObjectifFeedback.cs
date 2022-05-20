@@ -10,8 +10,8 @@ public class ObjectifFeedback : NetworkBehaviour
     public GameObject cometAlert;
     public Vector3 alertOffset;
 
-    public List<Image> alertImages;
-    public List<Transform> comets;
+    [HideInInspector] public List<Image> alertImages;
+    [HideInInspector] public List<Transform> comets;
 
     private Camera mechaCam;
 

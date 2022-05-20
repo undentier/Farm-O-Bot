@@ -14,16 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabs:
   - {fileID: 27039729695437543, guid: f820efff6a2871447b961fc755212ba3, type: 3}
+  - {fileID: 8723229097116571392, guid: 8732be0eb2a07a7408a7840bbef5c524, type: 3}
+  - {fileID: 8374502075802644980, guid: 0113b9918ee35dc4a928764611ca3754, type: 3}
+  - {fileID: 272568665048081243, guid: 501ced48c9fd41044997129dcd7efe2e, type: 3}
+  - {fileID: 151926469, guid: 0524f7a0a598ab745ac5c9ce142cc141, type: 3}
   - {fileID: 201277550, guid: d904f93bc171bb144ba33c5155282f6f, type: 3}
   - {fileID: 9117857247562382210, guid: b2991431a5f893e49937d01b6da44ff8, type: 3}
   - {fileID: 611616139817875448, guid: bf5f023b4017a5e41a9815ec5745df3d, type: 3}
-  - {fileID: 151926469, guid: 0524f7a0a598ab745ac5c9ce142cc141, type: 3}
-  - {fileID: 6553431828602374302, guid: 82b75397da5b3a14890f9fcb9e6a6dde, type: 3}
-<<<<<<< HEAD
-  - {fileID: 8723229097116571392, guid: 8732be0eb2a07a7408a7840bbef5c524, type: 3}
-  - {fileID: 272568665048081243, guid: 501ced48c9fd41044997129dcd7efe2e, type: 3}
-  - {fileID: 8374502075802644980, guid: 0113b9918ee35dc4a928764611ca3754, type: 3}
-=======
-  - {fileID: 2126489451870171536, guid: 501ced48c9fd41044997129dcd7efe2e, type: 3}
   - {fileID: 4103392267701929189, guid: 35315d1cc49b2fe4698e33208b01cc00, type: 3}
->>>>>>> Jb
+  - {fileID: 6553431828602374302, guid: 82b75397da5b3a14890f9fcb9e6a6dde, type: 3}
+  - {fileID: 151926469, guid: 553c6967058287041bfec90b11754c98, type: 3}
