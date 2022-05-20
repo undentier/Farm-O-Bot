@@ -6,6 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Lab/Antoine/_Scenes/CleanSceneAntoine.unity
     guid: 2b2c318d3ae8f124bb7fe67fa831ed9e
+=======
+    path: Assets/Lab/Jb/Scenes/TestJb.unity
+    guid: e5bd614c7cad40d4480e6c832e281170
+  - enabled: 0
+    path: Assets/Lab/Guillaume/_Scene/EnemyMulltiScene.unity
+    guid: a227ac2bcaa167541b9b65eb96bde322
+>>>>>>> Jb
   m_configObjects: {}
