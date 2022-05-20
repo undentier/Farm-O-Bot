@@ -34,9 +34,10 @@ public class LaserWeapon : GlobalWeapon
 
     public override void Shoot(bool isShooting, Vector3 aimPoint)
     {
-        if (isShooting)
+        if (isShooting && !coolingDown)
         {
-            Vector3 aimDirection = (aimPoint - startingPoint.position).normalized;
+            isFire = true;
+            aimDirection = (aimPoint - startingPoint.position).normalized;
 
             DisplayLaser(aimPoint);
             LaserCast(aimDirection);
@@ -44,6 +45,7 @@ public class LaserWeapon : GlobalWeapon
         }
         else
         {
+            isFire = false;
             laserRenderer.enabled = false;
         }
     }
@@ -65,7 +67,7 @@ public class LaserWeapon : GlobalWeapon
     private void LaserCast(Vector3 dir)
     {
         RaycastHit hit;
-        if (Physics.Raycast(startingPoint.position, dir, out hit, weaponRange) && canShoot && (damagesTimer >= damagesRate))
+        if (Physics.Raycast(startingPoint.position, dir, out hit, weaponRange) && (damagesTimer >= damagesRate))
         {
             if (hit.transform.CompareTag("Enemy"))
             {

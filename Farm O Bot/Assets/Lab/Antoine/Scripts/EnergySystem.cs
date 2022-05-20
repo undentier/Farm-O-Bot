@@ -10,6 +10,8 @@ public class EnergySystem : NetworkBehaviour
     public float maxEnergy;
     [HideInInspector] public float currentEnergy = 0;
     [HideInInspector] public bool energyFulled = false;
+    [HideInInspector] public bool isCooldown = false;
+    [HideInInspector] public bool mechaIsFire = false;
 
     public float regainEnergyRate;
 
@@ -39,13 +41,13 @@ public class EnergySystem : NetworkBehaviour
     {
         CheckEnergy();
 
-        if (currentEnergy > 0 && currentEnergy < maxEnergy)
+        if (currentEnergy > 0 && IsOwner && (!mechaIsFire) || isCooldown)
         {
             currentEnergy -= Time.deltaTime * regainEnergyRate;
             energyImage.fillAmount = currentEnergy / maxEnergy;
         }
 
-        if (inputLeft.action.phase == InputActionPhase.Waiting && inputLRight.action.phase == InputActionPhase.Waiting && currentEnergy >= maxEnergy)
+        if (currentEnergy >= maxEnergy && IsOwner)
         {
             currentEnergy = maxEnergy - 0.1f;
         }

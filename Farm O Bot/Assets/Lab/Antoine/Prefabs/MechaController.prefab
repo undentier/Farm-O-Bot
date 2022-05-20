@@ -1908,6 +1908,8 @@ MonoBehaviour:
   maxEnergy: 100
   currentEnergy: 0
   energyFulled: 0
+  isCooldown: 0
+  mechaIsFire: 0
   regainEnergyRate: 15
   energyImage: {fileID: 546981387501236839}
 --- !u!114 &3815007127822126878
@@ -2946,18 +2948,25 @@ MonoBehaviour:
   _componentIndexCache: 11
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  weaponName: Sniper
+  weaponName: Burst
   startingPoint: {fileID: 3815007128555248623}
-  energyLosedRate: 10
+  aimDirection: {x: -0.06411385, y: -0.06481902, z: 0.99583524}
+  energyLosedRate: 15
+  coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
+  weaponDispersion: 0.1
   canShoot: 1
+  isFire: 0
+  coolingDown: 0
   _energySystem: {fileID: 0}
-  weaponFireRate: 1
-  weaponDispersion: 1
+  weaponFireRate: 0.5
+  bulletsPerShoot: 3
+  timeBtwShots: 0.08
   bulletPrefab: {fileID: 1535977597517077943, guid: 83b12255e5c89ad4eb1e6c02d56c7da5,
     type: 3}
-  bulletSpeed: 20
+  bulletSpeed: 40
+  FireAlwaysPressed: 0
 --- !u!114 &5848822610240797436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,10 +2984,15 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
   startingPoint: {fileID: 3815007128555248623}
-  energyLosedRate: 0.4
+  aimDirection: {x: 0, y: 0, z: 0}
+  energyLosedRate: 0.8
+  coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
+  weaponDispersion: 0
   canShoot: 1
+  isFire: 0
+  coolingDown: 0
   _energySystem: {fileID: 0}
   damagesRate: 0
   laserWidth: 0.3
@@ -3366,16 +3380,23 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 151926469}
   weaponName: Machine gun
   startingPoint: {fileID: 3815007128843780257}
+  aimDirection: {x: -0.316, y: -0.03600579, z: 0.9480757}
   energyLosedRate: 2
+  coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
+  weaponDispersion: 0.2
   canShoot: 1
+  isFire: 0
+  coolingDown: 0
   _energySystem: {fileID: 0}
   weaponFireRate: 0.05
-  weaponDispersion: 0.5
+  bulletsPerShoot: 1
+  timeBtwShots: 0
   bulletPrefab: {fileID: 1535977597517077943, guid: d9ec2b79caa70f742a24e4ad71dc5677,
     type: 3}
-  bulletSpeed: 40
+  bulletSpeed: 30
+  FireAlwaysPressed: 1
 --- !u!114 &2010296366512296737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,18 +3412,25 @@ MonoBehaviour:
   _componentIndexCache: 10
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  weaponName: Explosive Launcher
+  weaponName: Shootgun
   startingPoint: {fileID: 3815007128843780257}
-  energyLosedRate: 17
+  aimDirection: {x: 0, y: 0, z: 0}
+  energyLosedRate: 30
+  coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
+  weaponDispersion: 1
   canShoot: 1
+  isFire: 0
+  coolingDown: 0
   _energySystem: {fileID: 0}
   weaponFireRate: 1
-  weaponDispersion: 1
+  bulletsPerShoot: 6
+  timeBtwShots: 0
   bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
     type: 3}
   bulletSpeed: 10
+  FireAlwaysPressed: 0
 --- !u!1 &3815007128851389517
 GameObject:
   m_ObjectHideFlags: 0

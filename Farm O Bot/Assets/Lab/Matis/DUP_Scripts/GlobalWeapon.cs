@@ -8,19 +8,23 @@ public class GlobalWeapon : NetworkBehaviour
 {
     public string weaponName;
     public Transform startingPoint;
+    [HideInInspector] public Vector3 aimDirection;
 
     [Header("Energy")]
     public float energyLosedRate;
+    public float coolingDownTime;
 
     [Header("Weapon")]
     public int weaponDamages;
     public float weaponRange;
+    public float weaponDispersion;
 
     [HideInInspector] public bool canShoot = true;
+    [HideInInspector] public bool isFire = false;
+    [HideInInspector] public bool coolingDown = false;
+    private bool playOnce = true;
 
     [HideInInspector] public EnergySystem _energySystem;
-
-    private bool energyFulled = false;
 
     public override void OnStartClient()
     {
@@ -40,6 +44,22 @@ public class GlobalWeapon : NetworkBehaviour
         {
             _energySystem.AddEnergy(energyLosedRate);
         }
+    }
+
+    public virtual void StartWeaponCooldown()
+    {
+        if(playOnce) StartCoroutine(weaponCooldown());
+    }
+
+    private IEnumerator weaponCooldown()
+    {
+        playOnce = false;
+        _energySystem.isCooldown = true;
+        coolingDown = true;
+        yield return new WaitForSeconds(coolingDownTime);
+        coolingDown = false;
+        _energySystem.isCooldown = false;
+        playOnce = true;
     }
 
     [ServerRpc]
