@@ -48,10 +48,17 @@ public class LaserWeapon : GlobalWeapon
             DisplayLaser(aimPoint);
             LaserCast(aimDirection);
             AddEnergy();
+
+            //Place Vibration
+            _gamepadVibration.StartVibration(leftVibrationIntensity, rightVibrationIntensity);
         }
         else
         {
-            isFire = false;
+            if (isFire)
+            {
+                _gamepadVibration.StopVibration();
+                isFire = false;
+            }
             laserRenderer.enabled = false;
             dispersionRateTimer = 0;
             previousLaserDirection[0] = (Vector3.zero);

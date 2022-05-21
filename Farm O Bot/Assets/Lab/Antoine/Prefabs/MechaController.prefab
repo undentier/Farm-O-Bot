@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703630312}
   - component: {fileID: 703630311}
+  - component: {fileID: 1085476076590700565}
   m_Layer: 0
   m_Name: 3rdCameraTop
   m_TagString: Untagged
@@ -151,6 +152,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2037507500}
+--- !u!114 &1085476076590700565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703630309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad469277de41c254695a75957834b3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037507499
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +175,7 @@ GameObject:
   - component: {fileID: 2037507500}
   - component: {fileID: 2037507502}
   - component: {fileID: 2037507501}
+  - component: {fileID: 3976618545703523347}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -220,6 +234,23 @@ MonoBehaviour:
   CameraRadius: 0.2
   DampingIntoCollision: 0
   DampingFromCollision: 0
+--- !u!114 &3976618545703523347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037507499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 493.39673, y: 385.72333, z: 372.96698}
 --- !u!1 &531727473963594884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,9 +1439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -1778,7 +1809,7 @@ GameObject:
   - component: {fileID: 3815007127822126878}
   - component: {fileID: 7115167079030956520}
   - component: {fileID: 51060082238980771}
-  - component: {fileID: 614025366870327872}
+  - component: {fileID: 4147304220789053742}
   - component: {fileID: 3815007127822126879}
   - component: {fileID: 3815007127822126876}
   - component: {fileID: 151926469}
@@ -1864,6 +1895,18 @@ MonoBehaviour:
   clampAngleVertical: {x: -70, y: 70}
   chest: {fileID: 3815007129061943576}
   lookAtReticule: {fileID: 3815007129103302420}
+  camShakeIntensityWalk: 1.5
+  camShakeDurationWalk: 0.2
+  camShakeFrequenceWalking: 0.8
+  walkVibrationDuration: 0.1
+  walkLeftVibrationIntensity: 0.25
+  walkRightVibrationIntensity: 0.25
+  camShakeIntensityRun: 1.5
+  camShakeDurationRun: 0.3
+  camShakeFrequenceRunning: 0.4
+  runVibrationDuration: 0.1
+  runLeftVibrationIntensity: 0.5
+  runRightVibrationIntensity: 0.5
 --- !u!114 &3815007127822126872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,20 +2052,18 @@ MonoBehaviour:
   alertOffset: {x: 0, y: 40, z: 0}
   alertImages: []
   comets: []
---- !u!114 &614025366870327872
+--- !u!114 &4147304220789053742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3815007127822126851}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bea21f37bd8cb844b90cc1e577d95e6, type: 3}
+  m_Script: {fileID: 11500000, guid: d5cb8b6dbb891af4eaf7e95c6c86726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  herdScript: {fileID: 0}
-  whistlingTime: 6
 --- !u!114 &3815007127822126879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,6 +2249,11 @@ MonoBehaviour:
   - {fileID: 151926470}
   - {fileID: 3440859606219571136}
   - {fileID: 2748706879924596030}
+  - {fileID: 6226245498340996479}
+  - {fileID: 5329170669156416717}
+  - {fileID: 3832103357450470647}
+  - {fileID: 2512434697833004873}
+  - {fileID: 1348726422359740500}
   - {fileID: 6062054876046475619}
   - {fileID: 2010296366512296737}
   - {fileID: 1296417715042650508}
@@ -2598,7 +2644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 13
+  _componentIndexCache: 18
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2987,7 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 11
+  _componentIndexCache: 16
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Burst
@@ -2995,11 +3041,11 @@ MonoBehaviour:
   leftWeapon: 0
   aimDirection: {x: -0.06411385, y: -0.06481902, z: 0.99583524}
   muzzleFlash: {fileID: 100006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
-  camShakeIntensity: 0
-  camShakeDuration: 0
-  vibrationTime: 0
-  leftJoystickVibrationSpeed: 0
-  rightJoystickVibrationSpeed: 0
+  camShakeIntensity: 2
+  camShakeDuration: 0.1
+  vibrationDuration: 0.1
+  leftVibrationIntensity: 0.5
+  rightVibrationIntensity: 0.5
   energyLosedRate: 15
   coolingDownTime: 2
   weaponDamages: 1
@@ -3009,6 +3055,8 @@ MonoBehaviour:
   isFire: 0
   coolingDown: 0
   _energySystem: {fileID: 0}
+  _cameraShaking: {fileID: 0}
+  _gamepadVibration: {fileID: 0}
   weaponFireRate: 0.5
   bulletsPerShoot: 3
   timeBtwShots: 0.08
@@ -3028,7 +3076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03dee492c87cca4ebc61e0b082295d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 12
+  _componentIndexCache: 17
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
@@ -3038,9 +3086,9 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   camShakeIntensity: 0
   camShakeDuration: 0
-  vibrationTime: 0
-  leftJoystickVibrationSpeed: 0
-  rightJoystickVibrationSpeed: 0
+  vibrationDuration: 0
+  leftVibrationIntensity: 0.12
+  rightVibrationIntensity: 0.12
   energyLosedRate: 0.45
   coolingDownTime: 2
   weaponDamages: 1
@@ -3050,6 +3098,8 @@ MonoBehaviour:
   isFire: 0
   coolingDown: 0
   _energySystem: {fileID: 0}
+  _cameraShaking: {fileID: 0}
+  _gamepadVibration: {fileID: 0}
   dispersionRate: 0.4
   damagesRate: 0
   laserWidth: 0.3
@@ -3127,9 +3177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -3327,9 +3377,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
   IgnoredParameters: []
   _animator: {fileID: 454239546989924763}
   _smoothFloats: 1
@@ -3518,7 +3568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Machine gun
@@ -3526,11 +3576,11 @@ MonoBehaviour:
   leftWeapon: 1
   aimDirection: {x: -0.316, y: -0.03600579, z: 0.9480757}
   muzzleFlash: {fileID: 100006, guid: f47cb9d88f4bc6c4bb7441e962c2c1a5, type: 3}
-  camShakeIntensity: 0
-  camShakeDuration: 0
-  vibrationTime: 0
-  leftJoystickVibrationSpeed: 0
-  rightJoystickVibrationSpeed: 0
+  camShakeIntensity: 0.3
+  camShakeDuration: 0.05
+  vibrationDuration: 0.02
+  leftVibrationIntensity: 0.13
+  rightVibrationIntensity: 0.13
   energyLosedRate: 2
   coolingDownTime: 2
   weaponDamages: 1
@@ -3540,6 +3590,8 @@ MonoBehaviour:
   isFire: 0
   coolingDown: 0
   _energySystem: {fileID: 0}
+  _cameraShaking: {fileID: 0}
+  _gamepadVibration: {fileID: 0}
   weaponFireRate: 0.05
   bulletsPerShoot: 1
   timeBtwShots: 0
@@ -3559,7 +3611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 10
+  _componentIndexCache: 15
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Shootgun
@@ -3567,11 +3619,11 @@ MonoBehaviour:
   leftWeapon: 1
   aimDirection: {x: 0, y: 0, z: 0}
   muzzleFlash: {fileID: 100006, guid: c888f0c922d622147bbdbe2ca794142b, type: 3}
-  camShakeIntensity: 0
-  camShakeDuration: 0
-  vibrationTime: 0
-  leftJoystickVibrationSpeed: 0
-  rightJoystickVibrationSpeed: 0
+  camShakeIntensity: 5
+  camShakeDuration: 0.3
+  vibrationDuration: 0.1
+  leftVibrationIntensity: 1.5
+  rightVibrationIntensity: 1.5
   energyLosedRate: 40
   coolingDownTime: 2
   weaponDamages: 1
@@ -3581,6 +3633,8 @@ MonoBehaviour:
   isFire: 0
   coolingDown: 0
   _energySystem: {fileID: 0}
+  _cameraShaking: {fileID: 0}
+  _gamepadVibration: {fileID: 0}
   weaponFireRate: 1
   bulletsPerShoot: 6
   timeBtwShots: 0
@@ -3760,9 +3814,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -4037,9 +4091,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
   _packing:
     Position: 1

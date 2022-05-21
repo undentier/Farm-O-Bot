@@ -14,9 +14,9 @@ public class GlobalWeapon : NetworkBehaviour
     [Header("Feedback")]
     public GameObject muzzleFlash;
     public float camShakeIntensity, camShakeDuration;
-    public float vibrationTime;
-    public float leftJoystickVibrationSpeed;
-    public float rightJoystickVibrationSpeed;
+    public float vibrationDuration;
+    public float leftVibrationIntensity;
+    public float rightVibrationIntensity;
 
     [Header("Energy")]
     public float energyLosedRate;
@@ -34,6 +34,8 @@ public class GlobalWeapon : NetworkBehaviour
 
     [HideInInspector] public EnergySystem _energySystem;
     private Animator chestAnimator;
+    [HideInInspector] public CameraShaking _cameraShaking;
+    [HideInInspector] public GamepadVibration _gamepadVibration;
 
     public override void OnStartClient()
     {
@@ -41,6 +43,8 @@ public class GlobalWeapon : NetworkBehaviour
 
         _energySystem = GetComponentInParent<EnergySystem>();
         chestAnimator = transform.parent.GetChild(0).GetComponent<Animator>();
+        _cameraShaking = GetComponentInParent<MechaCamera>().cinecam.GetComponent<CameraShaking>();
+        _gamepadVibration = GetComponentInParent<GamepadVibration>();
     }
 
     public virtual void Shoot(bool isShooting, Vector3 aimPoint)

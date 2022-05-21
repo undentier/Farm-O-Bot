@@ -30,8 +30,10 @@ public class RegularWeapon : GlobalWeapon
             Invoke("ResetShot", weaponFireRate);
 
             //Place Camera Shake
+            _cameraShaking.ShakeCamera(camShakeIntensity, camShakeDuration);
 
             //Place Vibration
+            _gamepadVibration.VibrationWithTime(vibrationDuration, leftVibrationIntensity, rightVibrationIntensity);
 
             //Place MuzzleFlash
             Instantiate(muzzleFlash, startingPoint.position, startingPoint.rotation * Quaternion.Euler(0, -90, 0));

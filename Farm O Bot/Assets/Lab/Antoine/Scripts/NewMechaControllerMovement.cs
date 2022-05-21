@@ -47,22 +47,44 @@ public class NewMechaControllerMovement : NetworkBehaviour
     public Transform chest;
     public Transform lookAtReticule;
     //public Transform mechCameraRoot;
-    
 
     //Input
     private Vector2 inputMovement;
     private Vector2 inputLook;
 
+    [Header("Feedback")]
+    public float camShakeIntensityWalk;
+    public float camShakeDurationWalk;
+    public float camShakeFrequenceWalking;
+    public float walkVibrationDuration;
+    public float walkLeftVibrationIntensity;
+    public float walkRightVibrationIntensity;
+
+    [Space]
+    public float camShakeIntensityRun;
+    public float camShakeDurationRun;
+    public float camShakeFrequenceRunning;
+    private float camShakeFrequenceTimer;
+    public float runVibrationDuration;
+    public float runLeftVibrationIntensity;
+    public float runRightVibrationIntensity;
+
     //References
     private Rigidbody rb;
     private DefaultInputActions playerActions;
     private MechaAnimation mechaAnimationScript;
+    private EnergySystem _energySystem;
     private PlayerInput _playerInput;
     private CharacterController _characterController;
+    private CameraShaking _cameraShaking;
+    private GamepadVibration _gamepadVibration;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _cameraShaking = GetComponent<MechaCamera>().cinecam.GetComponent<CameraShaking>();
+        _energySystem = GetComponent<EnergySystem>();
+        _gamepadVibration = GetComponent<GamepadVibration>();
         rb = GetComponent<Rigidbody>();
         mechaAnimationScript = GetComponent<MechaAnimation>();
         playerActions = new DefaultInputActions();
@@ -135,6 +157,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
             lastMovementDirection.Normalize();
             turnTime = turnTimeInMovement;
             TurnLegsDependingChest();
+            ApplyCamShake();
         }
         else
         {
@@ -145,7 +168,46 @@ public class NewMechaControllerMovement : NetworkBehaviour
                 _characterController.Move((lastMovementDirection + gravityMovement) * decelerationSpeed * Time.deltaTime);
                 isRunning = false;
             }
-            else isMoving = false;
+            else
+            {
+                if (isMoving)
+                {
+                    isMoving = false;
+                    _cameraShaking.ShakeCamera(camShakeIntensityWalk, camShakeDurationWalk);
+                    if (!_energySystem.mechaIsFire) _gamepadVibration.VibrationWithTime(walkVibrationDuration, walkLeftVibrationIntensity, walkRightVibrationIntensity);
+                    camShakeFrequenceTimer = 0;
+                }
+            }
+        }
+    }
+
+    private void ApplyCamShake()
+    {
+        if (!isRunning)
+        {
+            if (camShakeFrequenceTimer < camShakeFrequenceWalking)
+            {
+                camShakeFrequenceTimer += Time.deltaTime;
+            }
+            else
+            {
+                _cameraShaking.ShakeCamera(camShakeIntensityWalk, camShakeDurationWalk);
+                if(!_energySystem.mechaIsFire) _gamepadVibration.VibrationWithTime(walkVibrationDuration, walkLeftVibrationIntensity, walkRightVibrationIntensity);
+                camShakeFrequenceTimer = 0;
+            }
+        }
+        else
+        {
+            if (camShakeFrequenceTimer < camShakeFrequenceRunning)
+            {
+                camShakeFrequenceTimer += Time.deltaTime;
+            }
+            else
+            {
+                _cameraShaking.ShakeCamera(camShakeIntensityRun, camShakeDurationRun);
+                if (!_energySystem.mechaIsFire) _gamepadVibration.VibrationWithTime(runVibrationDuration, runLeftVibrationIntensity, runRightVibrationIntensity);
+                camShakeFrequenceTimer = 0;
+            }
         }
     }
 
