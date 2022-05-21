@@ -24,13 +24,17 @@ public class RegularWeapon : GlobalWeapon
             aimDirection = (aimPoint - startingPoint.position).normalized;
 
             bulletsShot = bulletsPerShoot;
+            AnimationShoot();
             ShootOneBullet();
             base.AddEnergy();
             Invoke("ResetShot", weaponFireRate);
 
             //Place Camera Shake
+
             //Place Vibration
+
             //Place MuzzleFlash
+            Instantiate(muzzleFlash, startingPoint.position, startingPoint.rotation * Quaternion.Euler(0, -90, 0));
         }
         else
         {

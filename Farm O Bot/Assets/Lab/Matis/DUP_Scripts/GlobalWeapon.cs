@@ -8,7 +8,15 @@ public class GlobalWeapon : NetworkBehaviour
 {
     public string weaponName;
     public Transform startingPoint;
+    public bool leftWeapon = false;
     [HideInInspector] public Vector3 aimDirection;
+
+    [Header("Feedback")]
+    public GameObject muzzleFlash;
+    public float camShakeIntensity, camShakeDuration;
+    public float vibrationTime;
+    public float leftJoystickVibrationSpeed;
+    public float rightJoystickVibrationSpeed;
 
     [Header("Energy")]
     public float energyLosedRate;
@@ -25,12 +33,14 @@ public class GlobalWeapon : NetworkBehaviour
     private bool playOnce = true;
 
     [HideInInspector] public EnergySystem _energySystem;
+    private Animator chestAnimator;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         _energySystem = GetComponentInParent<EnergySystem>();
+        chestAnimator = transform.parent.GetChild(0).GetComponent<Animator>();
     }
 
     public virtual void Shoot(bool isShooting, Vector3 aimPoint)
@@ -62,6 +72,18 @@ public class GlobalWeapon : NetworkBehaviour
         playOnce = true;
     }
 
+    public virtual void AnimationShoot()
+    {
+        if (leftWeapon)
+        {
+            chestAnimator.SetTrigger("isShootingLeft");
+        }
+        else
+        {
+            chestAnimator.SetTrigger("isShootingRight");
+        }
+    }
+
     [ServerRpc]
     public void RpcShoot(bool isShooting, Vector3 aimPoint)
     {
@@ -72,6 +94,5 @@ public class GlobalWeapon : NetworkBehaviour
     private void RpcClientShoot(bool isShooting, Vector3 aimPoint)
     {
         Shoot(isShooting, aimPoint);
-        //else Shoot(false, aimPoint);
     }
 }
