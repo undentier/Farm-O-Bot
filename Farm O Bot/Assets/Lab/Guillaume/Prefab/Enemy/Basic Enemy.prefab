@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 8723229097116571392}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8723229097116571392}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -346,6 +346,7 @@ MonoBehaviour:
   - {fileID: 5141496985533322943}
   - {fileID: 4610638244731571517}
   - {fileID: 2499038010423358814}
+  - {fileID: 3124648919947598761}
   SceneTransformProperties:
     Position: {x: 28.6, y: 0.7, z: 83.3}
     Rotation: {x: 0, y: 0, z: 0, w: 1}

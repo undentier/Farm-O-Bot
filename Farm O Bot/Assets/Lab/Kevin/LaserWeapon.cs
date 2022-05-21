@@ -13,12 +13,12 @@ public class LaserWeapon : GlobalWeapon
     [Header("Laser")]
     [Range(0, 2)]
     public float laserWidth;
-    public Gradient laserColor;
+    public Material laserColor;
 
     private LineRenderer laserRenderer;
 
     private Vector3 randomDispersionDirection;
-    public List<Vector3> previousLaserDirection;
+    [HideInInspector] public List<Vector3> previousLaserDirection;
 
     public override void OnStartClient()
     {
@@ -32,10 +32,10 @@ public class LaserWeapon : GlobalWeapon
     private void SetLaserComponent()
     {
         laserRenderer = gameObject.AddComponent<LineRenderer>();
-        laserRenderer.enabled = false;
         laserRenderer.useWorldSpace = true;
         laserRenderer.startWidth = laserWidth;
-        laserRenderer.colorGradient = laserColor;
+        laserRenderer.material = laserColor;
+        laserRenderer.enabled = false;
     }
 
     public override void Shoot(bool isShooting, Vector3 aimPoint)
