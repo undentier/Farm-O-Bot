@@ -55,7 +55,7 @@ public class RegularWeapon : GlobalWeapon
         }
     }
 
-    Vector3 BulletSpread(Transform originalDirection)
+    private Vector3 BulletSpread(Transform originalDirection)
     {
         float randomX = Random.Range(-weaponDispersion * 0.1f, weaponDispersion * 0.1f);
         float randomY = Random.Range(-weaponDispersion * 0.1f, weaponDispersion * 0.1f);

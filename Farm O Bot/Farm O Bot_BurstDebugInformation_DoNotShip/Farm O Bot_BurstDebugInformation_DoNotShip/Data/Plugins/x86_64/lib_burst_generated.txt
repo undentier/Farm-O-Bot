@@ -167,10 +167,12 @@ Library: lib_burst_generated
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Cinemachine.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
+--root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\NaughtyAttributes.Test.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\FishNet.Generated.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.VisualEffectGraph.Runtime.dll
+--root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\NaughtyAttributes.Core.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\FishNet.Example.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll
@@ -351,10 +353,12 @@ Library: lib_burst_generated
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Cinemachine.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
+--root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\NaughtyAttributes.Test.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\FishNet.Generated.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.VisualEffectGraph.Runtime.dll
+--root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\NaughtyAttributes.Core.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\FishNet.Example.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 --root-assembly=D:\UNITY\Farm-O-Bot\Farm O Bot\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll

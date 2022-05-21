@@ -2985,15 +2985,16 @@ MonoBehaviour:
   weaponName: Laser
   startingPoint: {fileID: 3815007128555248623}
   aimDirection: {x: 0, y: 0, z: 0}
-  energyLosedRate: 0.8
+  energyLosedRate: 0.45
   coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
-  weaponDispersion: 0
+  weaponDispersion: 0.6
   canShoot: 1
   isFire: 0
   coolingDown: 0
   _energySystem: {fileID: 0}
+  dispersionRate: 0.4
   damagesRate: 0
   laserWidth: 0.3
   laserColor:
@@ -3025,6 +3026,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  previousLaserDirection: []
 --- !u!1 &3815007128570142544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,7 +3417,7 @@ MonoBehaviour:
   weaponName: Shootgun
   startingPoint: {fileID: 3815007128843780257}
   aimDirection: {x: 0, y: 0, z: 0}
-  energyLosedRate: 30
+  energyLosedRate: 40
   coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500

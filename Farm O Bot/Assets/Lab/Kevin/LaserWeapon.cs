@@ -5,6 +5,8 @@ using FishNet.Object;
 
 public class LaserWeapon : GlobalWeapon
 {
+    public float dispersionRate;
+    private float dispersionRateTimer;
     public float damagesRate;
     private float damagesTimer;
 
@@ -15,12 +17,16 @@ public class LaserWeapon : GlobalWeapon
 
     private LineRenderer laserRenderer;
 
+    private Vector3 randomDispersionDirection;
+    public List<Vector3> previousLaserDirection;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
 
         SetLaserComponent();
         damagesTimer = damagesRate;
+        previousLaserDirection.Add(Vector3.zero);
     }
 
     private void SetLaserComponent()
@@ -37,7 +43,7 @@ public class LaserWeapon : GlobalWeapon
         if (isShooting && !coolingDown)
         {
             isFire = true;
-            aimDirection = (aimPoint - startingPoint.position).normalized;
+            aimDirection = (LaserSpread(aimPoint) - startingPoint.position).normalized;
 
             DisplayLaser(aimPoint);
             LaserCast(aimDirection);
@@ -47,6 +53,9 @@ public class LaserWeapon : GlobalWeapon
         {
             isFire = false;
             laserRenderer.enabled = false;
+            dispersionRateTimer = 0;
+            previousLaserDirection[0] = (Vector3.zero);
+            if (previousLaserDirection.Count > 1) previousLaserDirection.RemoveAt(0);
         }
     }
 
@@ -56,13 +65,36 @@ public class LaserWeapon : GlobalWeapon
         {
             laserRenderer.SetPosition(0, startingPoint.position);
             laserRenderer.enabled = true;
-            laserRenderer.SetPosition(1, aimPoint);
+            laserRenderer.SetPosition(1, LaserSpread(aimPoint));
         }
         else
         {
             laserRenderer.enabled = false;
         }
     }
+
+    private Vector3 LaserSpread(Vector3 aimPoint)
+    {
+        if (dispersionRateTimer < dispersionRate)
+        {
+            dispersionRateTimer += Time.deltaTime;
+        }
+        else
+        {
+            dispersionRateTimer = 0;
+
+            float randomX = Random.Range(-weaponDispersion * 2f, weaponDispersion * 2f);
+            float randomY = Random.Range(-weaponDispersion * 2f, weaponDispersion * 2f);
+            randomDispersionDirection = new Vector3(randomX, randomY, 0);
+            previousLaserDirection.Add(randomDispersionDirection);
+            if (previousLaserDirection.Count > 2) previousLaserDirection.RemoveAt(0);
+        }
+
+        Vector3 laserDirection = aimPoint + randomDispersionDirection;
+        Vector3 nextLaserTarget = Vector3.Lerp(aimPoint + previousLaserDirection[0], laserDirection, dispersionRateTimer / dispersionRate);
+        return (nextLaserTarget);
+    }
+
 
     private void LaserCast(Vector3 dir)
     {
