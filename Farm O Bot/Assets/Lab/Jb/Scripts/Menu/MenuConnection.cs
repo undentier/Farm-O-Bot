@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Managing;
+using TMPro;
+using FishNet.Transporting.Tugboat;
+using UnityEngine.SceneManagement;
+using FishNet;
 
 public class MenuConnection : MonoBehaviour
 {
     [SerializeField]
     private NetworkManager networkManager;
+    [SerializeField]
+    private TMP_InputField ipInput;
+    [SerializeField]
+    private Tugboat tugboat;
+    [SerializeField]
+    private string sceneToLoad = "CleanSceneBoids";
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +34,15 @@ public class MenuConnection : MonoBehaviour
         if (networkManager == null)
             return;
 
-        networkManager.ServerManager.StopConnection(true);
-        networkManager.ServerManager.StartConnection();
+        
+        SceneManager.LoadScene(sceneToLoad);
+
+        InstanceFinder.ServerManager.StopConnection(true);
+        InstanceFinder.ServerManager.StartConnection();
+
+        tugboat.SetClientAddress("localhost");
+        InstanceFinder.ClientManager.StopConnection();
+        InstanceFinder.ClientManager.StartConnection();
 
     }
 
@@ -34,14 +51,14 @@ public class MenuConnection : MonoBehaviour
         if (networkManager == null)
             return;
 
-        networkManager.ClientManager.StopConnection();
-        networkManager.ClientManager.StartConnection();
+        SceneManager.LoadScene(sceneToLoad);
 
+        tugboat.SetClientAddress(ipInput.text);
+        InstanceFinder.ClientManager.StopConnection();
+        InstanceFinder.ClientManager.StartConnection();
 
     }
 
-    private void StartConnection()
-    {
-        
-    }
+
+
 }
