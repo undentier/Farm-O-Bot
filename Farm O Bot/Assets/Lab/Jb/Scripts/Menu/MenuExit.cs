@@ -30,10 +30,12 @@ public class MenuExit : MonoBehaviour
             if (openMenu)
             {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
 
             uiExitButton.SetActive(openMenu);

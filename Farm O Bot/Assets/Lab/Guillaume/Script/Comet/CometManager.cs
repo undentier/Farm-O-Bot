@@ -23,6 +23,7 @@ public class CometManager : NetworkBehaviour
     private GameObject actualComet;
 
     [HideInInspector] public GameObject clientPlayer;
+    private uint targetCompteur = 0;
 
     #endregion
 
@@ -46,6 +47,7 @@ public class CometManager : NetworkBehaviour
 
         playerInputScript.actions["SpawnComet"].started += Spawn;
         playerInputScript.actions["SpawnComet"].canceled += Spawn;
+
     }
 
     public void Spawn(InputAction.CallbackContext context)
@@ -89,5 +91,10 @@ public class CometManager : NetworkBehaviour
     private Transform FindTarget()
     {
         return allTargets[numOftarget];
+    }
+
+    private void OnDestroy()
+    {
+        clientPlayer.GetComponent<ObjectifFeedback>().DestroyAlert();
     }
 }

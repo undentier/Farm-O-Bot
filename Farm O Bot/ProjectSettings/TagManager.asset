@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Ground
   - Spawn
+  - Bison
   layers:
   - Default
   - TransparentFX

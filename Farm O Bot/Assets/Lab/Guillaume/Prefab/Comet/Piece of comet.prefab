@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 7355314588627608027}
   - component: {fileID: 5420770793106332651}
   - component: {fileID: 272568665048081243}
+  - component: {fileID: 1918351334660957017}
   m_Layer: 0
   m_Name: Piece of comet
   m_TagString: Untagged
@@ -274,6 +275,7 @@ MonoBehaviour:
   - {fileID: 8671199529386847693}
   trailParticle: {fileID: 2310762754760310369}
   target: {fileID: 0}
+  _objectifFeedback: {fileID: 0}
 --- !u!114 &272568665048081243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,47 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
+--- !u!114 &1918351334660957017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355314588627608029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 272568665048081243}
+  _networkObjectCache: {fileID: 0}
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 2
+  _extrapolation: 0
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 1
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1001 &2939269569548778822
 PrefabInstance:
   m_ObjectHideFlags: 0

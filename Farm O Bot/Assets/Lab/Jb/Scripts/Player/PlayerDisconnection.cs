@@ -17,8 +17,9 @@ public class PlayerDisconnection : NetworkBehaviour
         switch (obj.ConnectionState)
         {
             case FishNet.Transporting.LocalConnectionStates.Stopped:
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
                 break;
             case FishNet.Transporting.LocalConnectionStates.Starting:
                 break;
