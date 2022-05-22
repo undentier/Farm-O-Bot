@@ -9,24 +9,18 @@ using FishNet;
 
 public class MenuConnection : MonoBehaviour
 {
-    [SerializeField]
     private NetworkManager networkManager;
     [SerializeField]
     private TMP_InputField ipInput;
-    [SerializeField]
     private Tugboat tugboat;
     [SerializeField]
     private string sceneToLoad = "CleanSceneBoids";
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        networkManager = InstanceFinder.ServerManager.NetworkManager;
+        tugboat = networkManager.GetComponent<Tugboat>();
     }
 
     public void OnPressedHost()

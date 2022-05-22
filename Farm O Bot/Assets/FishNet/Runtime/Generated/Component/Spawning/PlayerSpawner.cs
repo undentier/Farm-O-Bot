@@ -99,8 +99,6 @@ namespace FishNet.Component.Spawning
                 }
             }
 
-            Debug.Log("Load");
-
 
             if (_playerPrefab == null)
             {

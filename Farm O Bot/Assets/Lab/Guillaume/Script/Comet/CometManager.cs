@@ -52,17 +52,26 @@ public class CometManager : NetworkBehaviour
     {
         if (context.started)
         {
-            SpawnPieceOfComet();
+            RpcSpawnPieceOfComec();
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RpcSpawnPieceOfComec()
+    {
+        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
+        ServerManager.Spawn(actualComet, null);
+
+        SpawnPieceOfComet(actualComet);
+
     }
 
 
     [ObserversRpc]
-    private void SpawnPieceOfComet()
+    private void SpawnPieceOfComet(GameObject comet)
     {
-        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
 
-        PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
+        PieceOfComet actualScript = comet.GetComponent<PieceOfComet>();
         actualScript.target = FindTarget();
         actualScript._objectifFeedback = clientPlayer.GetComponent<ObjectifFeedback>();
 
@@ -72,7 +81,7 @@ public class CometManager : NetworkBehaviour
             numOftarget = 0;
         }
 
-        clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(actualComet);
+        clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(comet);
     }
 
 

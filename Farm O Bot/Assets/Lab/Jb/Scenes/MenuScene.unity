@@ -1419,30 +1419,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
---- !u!114 &1083476237 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7443408887813606050, guid: 0b650fca685f2eb41a86538aa883e4c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1083476236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c95dfde7d73b54dbbdc23155d35d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1083476240 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1083476240, guid: 0b650fca685f2eb41a86538aa883e4c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1083476236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f48f002b825cbd45a19bd96d90f9edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1352382189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1575665907}
   - component: {fileID: 1575665908}
-  - component: {fileID: 1575665909}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1625,29 +1600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41fa683182521246beeba2151dfa3e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 1083476237}
   ipInput: {fileID: 720402267}
-  tugboat: {fileID: 1083476240}
   sceneToLoad: CleanSceneBoids
---- !u!114 &1575665909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575665906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23b6e6f9b08d74885e3707aa0d9bc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveObject: 1
-  _moveAllObjects: 0
-  _replaceScenes: 0
-  _scenes: []
-  _connectionOnly: 0
-  _automaticallyUnload: 1
-  _onTriggerEnter: 1
 --- !u!1 &1610503336
 GameObject:
   m_ObjectHideFlags: 0
