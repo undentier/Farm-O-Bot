@@ -295,4 +295,9 @@ public class NewMechaControllerMovement : NetworkBehaviour
         if (angle > 180f) return Mathf.Max(angle, 360 + from);
         return Mathf.Min(angle, to);
     }
+
+    public void ChangeSensitivity(float sens)
+    {
+        mouseSensibility = sens;
+    }
 }
