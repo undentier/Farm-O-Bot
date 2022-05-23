@@ -16,7 +16,7 @@ public class NewMechaControllerMovement : NetworkBehaviour
     [Range(0, 50)]
     public float decelerationSpeed;
     public float decelerationTime;
-    private float decelerationTimer;
+    [HideInInspector] public float decelerationTimer;
     private bool isMoving = false;
     private Vector3 movementDirection;
     private Vector3 gravityMovement;
@@ -75,9 +75,11 @@ public class NewMechaControllerMovement : NetworkBehaviour
     private MechaAnimation mechaAnimationScript;
     private EnergySystem _energySystem;
     private PlayerInput _playerInput;
-    private CharacterController _characterController;
+    [HideInInspector] public CharacterController _characterController;
     private CameraShaking _cameraShaking;
     private GamepadVibration _gamepadVibration;
+
+    [HideInInspector] public bool inPause = false;
 
     private void Start()
     {
@@ -98,22 +100,25 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     private void Update()
     {
-        if (IsOwner)
+        if (!inPause)
         {
-            ReadInput();
+            if (IsOwner)
+            {
+                ReadInput();
 
-            UseGravity();
-            MoveMecha();
-            RotateMechaChest();
-            if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
+                UseGravity();
+                MoveMecha();
+                RotateMechaChest();
+                if (clampChestRotationHorizontal && movementDirection.magnitude <= 0.2f) RotateMechaLegs();
 
-            AnimateMecha();
-        }
+                AnimateMecha();
+            }
 
-        if (!isMoving && IsOwner)
-        {
-            isRunning = false;
-        }
+            if (!isMoving && IsOwner)
+            {
+                isRunning = false;
+            }
+        } 
     }
 
     private void ReadInput()
@@ -303,6 +308,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
             rotationSpeedChest = 100 * sens * 3;
         }
 
-        mouseSensibility = sens * 3;
+        mouseSensibility = sens * 2;
     }
 }

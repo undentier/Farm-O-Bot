@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using FishNet.Object;
+using UnityEngine.EventSystems;
 
 public class MechaCamera : NetworkBehaviour
 {
@@ -16,6 +17,8 @@ public class MechaCamera : NetworkBehaviour
     public Color myMecha, otherMecha;
     public SpriteRenderer iconPlayer;
 
+    public GameObject _eventSystem;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -26,6 +29,7 @@ public class MechaCamera : NetworkBehaviour
             cinecam.gameObject.SetActive(true);
             cinecam.Follow = mechCameraRoot;
             minimapCamera.SetActive(true);
+            _eventSystem.SetActive(true);
 
             if (GameManager.instance.playerTransformList.Count > 1)
             {
@@ -38,6 +42,7 @@ public class MechaCamera : NetworkBehaviour
             cinecam.gameObject.SetActive(false);
             mainCamera.SetActive(false);
             minimapCamera.SetActive(false);
+            _eventSystem.SetActive(false);
         }
     }
 }
