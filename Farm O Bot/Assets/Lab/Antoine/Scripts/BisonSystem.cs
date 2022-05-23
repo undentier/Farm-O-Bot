@@ -122,6 +122,7 @@ public class BisonSystem : NetworkBehaviour
     {
         /*GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
         Destroy(particle, 5f);*/
+        herdScript.numberBisons--;
         Destroy(gameObject);
     }
 

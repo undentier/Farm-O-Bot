@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Spawn
   - Bison
+  - FxTemporaire
+  - BisonManager
   layers:
   - Default
   - TransparentFX
