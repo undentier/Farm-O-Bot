@@ -5,6 +5,7 @@ using System.Linq;
 using FishNet.Object;
 using FishNet;
 using FishNet.Connection;
+using FishNet.Object.Synchronizing;
 
 public class HerdMovement : NetworkBehaviour
 {
@@ -15,7 +16,7 @@ public class HerdMovement : NetworkBehaviour
 
     [Header("Herd")]
     public Transform zones;
-    public int numberBisons;
+    [SyncVar] public int numberBisons;
     public float herdRadius;
     public float herdMovingSpeed;
     public float herdMoveFrequence;

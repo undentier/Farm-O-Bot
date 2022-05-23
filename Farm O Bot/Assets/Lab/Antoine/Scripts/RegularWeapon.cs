@@ -30,7 +30,7 @@ public class RegularWeapon : GlobalWeapon
             Invoke("ResetShot", weaponFireRate);
 
             //Place Camera Shake
-            _cameraShaking.ShakeCamera(camShakeIntensity, camShakeDuration);
+            if(IsOwner) _cameraShaking.ShakeCamera(camShakeIntensity, camShakeDuration);
 
             //Place Vibration
             _gamepadVibration.VibrationWithTime(vibrationDuration, leftVibrationIntensity, rightVibrationIntensity);

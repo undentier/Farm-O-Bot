@@ -68,6 +68,7 @@ public class MenuExit : MonoBehaviour
     {
         _mechaControllerMovement.inPause = !enable;
         _mechaControllerMovement.decelerationTimer = _mechaControllerMovement.decelerationTime;
+        _mechaControllerMovement._characterController.Move(Vector3.zero);
         _mechaAiming.enabled = enable;
         _playerFire.enabled = enable;
         _buildSystem.enabled = enable;

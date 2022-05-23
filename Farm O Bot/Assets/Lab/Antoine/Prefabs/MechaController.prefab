@@ -136,7 +136,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7787935, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1909,6 +1909,7 @@ MonoBehaviour:
   runVibrationDuration: 0.1
   runLeftVibrationIntensity: 0.25
   runRightVibrationIntensity: 0.25
+  _characterController: {fileID: 0}
   inPause: 0
 --- !u!114 &3815007127822126872
 MonoBehaviour:
@@ -5184,12 +5185,12 @@ PrefabInstance:
     - target: {fileID: 4117861243493926781, guid: 5e0daf809f06ffd458d077c46112f23b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4117861243493926781, guid: 5e0daf809f06ffd458d077c46112f23b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -41
       objectReference: {fileID: 0}
     - target: {fileID: 4117861243493926781, guid: 5e0daf809f06ffd458d077c46112f23b,
         type: 3}

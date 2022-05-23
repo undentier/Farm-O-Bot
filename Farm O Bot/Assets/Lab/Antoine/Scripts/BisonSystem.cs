@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using FishNet.Object;
+using FishNet;
 
 public class BisonSystem : NetworkBehaviour
 {
@@ -118,12 +119,15 @@ public class BisonSystem : NetworkBehaviour
             Die();
         }
     }
+
+    [ServerRpc (RequireOwnership = false)]
     private void Die()
     {
         /*GameObject particle = Instantiate(deathParticleObj, transform.position, transform.rotation);
         Destroy(particle, 5f);*/
         herdScript.numberBisons--;
-        Destroy(gameObject);
+        InstanceFinder.ServerManager.Despawn(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     private void RandomMoveInsideCercle()

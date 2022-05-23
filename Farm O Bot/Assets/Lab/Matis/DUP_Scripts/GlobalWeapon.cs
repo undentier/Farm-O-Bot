@@ -43,7 +43,7 @@ public class GlobalWeapon : NetworkBehaviour
 
         _energySystem = GetComponentInParent<EnergySystem>();
         chestAnimator = transform.parent.GetChild(0).GetComponent<Animator>();
-        _cameraShaking = GetComponentInParent<MechaCamera>().cinecam.GetComponent<CameraShaking>();
+        if(IsOwner) _cameraShaking = GetComponentInParent<MechaCamera>().cinecam.GetComponent<CameraShaking>();
         _gamepadVibration = GetComponentInParent<GamepadVibration>();
     }
 

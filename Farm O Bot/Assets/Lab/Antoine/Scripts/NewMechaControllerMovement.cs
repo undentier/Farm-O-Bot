@@ -308,6 +308,6 @@ public class NewMechaControllerMovement : NetworkBehaviour
             rotationSpeedChest = 100 * sens * 3;
         }
 
-        mouseSensibility = sens * 2;
+        mouseSensibility = sens * 1.5f;
     }
 }
