@@ -29,18 +29,20 @@ public class EnemySysteme : NetworkBehaviour
 
     private void Start()
     {
-        target = GameManager.instance.bisonTransform;
         actualCooldown = 0f;
         startHp = hp;
     }
 
     private void Update()
     {
-        RefreshPathSysteme();
-
-        if (targetOnPlayer == false)
+        if (IsClient && IsServer)
         {
-            PlayerDetection();
+            RefreshPathSysteme();
+
+            if (targetOnPlayer == false)
+            {
+                PlayerDetection();
+            }
         }
     }
 
@@ -72,13 +74,17 @@ public class EnemySysteme : NetworkBehaviour
 
     private void PutBackEnemyInPool()
     {
-        target = GameManager.instance.bisonTransform;
+        if(target == null)
+        {
+            target = GameManager.instance.playerTransformList[0];
+        }
         hp = startHp;
         actualCooldown = 0f;
 
         PoolEnemyManager.instance.AddObjectToPool("Enemy", gameObject);
     }
     
+    [Server]
     private void PlayerDetection()
     {
         for (int i = 0; i < GameManager.instance.playerTransformList.Count; i++)
@@ -97,10 +103,10 @@ public class EnemySysteme : NetworkBehaviour
         }
     }
 
-    [ObserversRpc]
+    [Server]
     private void RefreshPathSysteme()
     {
-        if (actualCooldown > cooldown)
+        if (actualCooldown > cooldown && target != null)
         {
             selfAgent.SetDestination(target.position);
             actualCooldown = 0f;
@@ -108,7 +114,13 @@ public class EnemySysteme : NetworkBehaviour
         else
         {
             actualCooldown += Time.deltaTime;
+            if(target == null)
+            {
+                target = GameManager.instance.playerTransformList[0];
+            }
         }
     }
+
+
 
 }

@@ -87,6 +87,19 @@ namespace FishNet.Component.Spawning
         {
             if (!asServer)
                 return;
+
+            //Find spawn
+            GameObject[] allSpawn = GameObject.FindGameObjectsWithTag("Spawn");
+
+            if (allSpawn.Length > 0)
+            {
+                for (int i = 0; i < allSpawn.Length; i++)
+                {
+                    Spawns[i] = allSpawn[i].transform;
+                }
+            }
+
+
             if (_playerPrefab == null)
             {
                 Debug.LogWarning($"Player prefab is empty and cannot be spawned for connection {conn.ClientId}.");
@@ -115,6 +128,7 @@ namespace FishNet.Component.Spawning
         /// <param name="rot"></param>
         private void SetSpawn(Transform prefab, out Vector3 pos, out Quaternion rot)
         {
+
             //No spawns specified.
             if (Spawns.Length == 0)
             {

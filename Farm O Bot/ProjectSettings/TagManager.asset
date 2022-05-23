@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Ground
+  - Spawn
+  - Bison
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,6 @@ TagManager:
   - MiniMap
   - Map
   - Enemie
-  - 
-  - 
-  - 
   - 
   - 
   - 

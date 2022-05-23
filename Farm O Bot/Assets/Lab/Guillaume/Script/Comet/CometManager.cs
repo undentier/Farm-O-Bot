@@ -23,6 +23,7 @@ public class CometManager : NetworkBehaviour
     private GameObject actualComet;
 
     [HideInInspector] public GameObject clientPlayer;
+    private uint targetCompteur = 0;
 
     #endregion
 
@@ -46,23 +47,33 @@ public class CometManager : NetworkBehaviour
 
         playerInputScript.actions["SpawnComet"].started += Spawn;
         playerInputScript.actions["SpawnComet"].canceled += Spawn;
+
     }
 
     public void Spawn(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            SpawnPieceOfComet();
+            RpcSpawnPieceOfComec();
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RpcSpawnPieceOfComec()
+    {
+        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
+        ServerManager.Spawn(actualComet, null);
+
+        SpawnPieceOfComet(actualComet);
+
     }
 
 
     [ObserversRpc]
-    private void SpawnPieceOfComet()
+    private void SpawnPieceOfComet(GameObject comet)
     {
-        actualComet = Instantiate(cometPrefab, transform.position, transform.rotation);
 
-        PieceOfComet actualScript = actualComet.GetComponent<PieceOfComet>();
+        PieceOfComet actualScript = comet.GetComponent<PieceOfComet>();
         actualScript.target = FindTarget();
         actualScript._objectifFeedback = clientPlayer.GetComponent<ObjectifFeedback>();
 
@@ -72,7 +83,7 @@ public class CometManager : NetworkBehaviour
             numOftarget = 0;
         }
 
-        clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(actualComet);
+        clientPlayer.GetComponent<ObjectifFeedback>().SpawnAlert(comet);
     }
 
 
@@ -80,5 +91,10 @@ public class CometManager : NetworkBehaviour
     private Transform FindTarget()
     {
         return allTargets[numOftarget];
+    }
+
+    private void OnDestroy()
+    {
+        clientPlayer.GetComponent<ObjectifFeedback>().DestroyAlert();
     }
 }

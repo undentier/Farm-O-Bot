@@ -24,6 +24,7 @@ public class PieceOfComet : NetworkBehaviour
     public ParticleSystem trailParticle;
 
     [HideInInspector] public Transform target;
+    [HideInInspector] public Transform[] allTargets;
 
     private float actualTimer;
     private int numOfEnemySpawn;
@@ -33,18 +34,35 @@ public class PieceOfComet : NetworkBehaviour
 
     #endregion
 
-    private void Update()
+    private void Start()
     {
-        if (isGrounded == true)
+        if(IsServer && IsClient)
         {
-            if (!IsClientOnly)
+            GameObject[] targetObjects = GameObject.FindGameObjectsWithTag("Bison");
+            allTargets = new Transform[targetObjects.Length];
+
+            for(int i = 0; i < targetObjects.Length; i++)
             {
-                SpawnerSysteme();
+                allTargets[i] = targetObjects[i].transform;
             }
         }
-        else
+    }
+
+    private void Update()
+    {
+        if (IsServer && IsClient)
         {
-            MoveTowardTarget();
+            if (isGrounded == true)
+            {
+
+                SpawnerSysteme();
+
+            }
+            else
+            {
+                if(target != null)
+                    MoveTowardTarget();
+            }
         }
     }
 
@@ -58,6 +76,7 @@ public class PieceOfComet : NetworkBehaviour
             {
                 int random = Random.Range(0, spawnPoints.Length - 1);
                 GameObject actualEnemy = PoolEnemyManager.instance.SpawnFromPool("Enemy", spawnPoints[random].position, spawnPoints[random].rotation);
+                actualEnemy.GetComponent<EnemySysteme>().target = ChooseTarget(numOfEnemySpawn);
                 //GameObject actualEnemy = Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
                 InstanceFinder.ServerManager.Spawn(actualEnemy, Owner);
 
@@ -74,6 +93,11 @@ public class PieceOfComet : NetworkBehaviour
     {
         if (numOfEnemySpawn >= maxEnemyToSpawn)
         {
+            if (IsServer && IsClient)
+            {
+                InstanceFinder.ServerManager.Despawn(this.gameObject);
+            }
+
             Destroy(gameObject);
         }
     }
@@ -88,8 +112,18 @@ public class PieceOfComet : NetworkBehaviour
         else
         {
             isGrounded = true;
-            trailParticle.Stop();
-            _objectifFeedback.DestroyAlert();
+            
         }
+    }
+
+    private Transform ChooseTarget(int numb)
+    {
+        return allTargets[numb % allTargets.Length];
+    }
+
+    private void OnDestroy()
+    {
+        trailParticle.Stop();
+        _objectifFeedback.DestroyAlert();
     }
 }
