@@ -33,7 +33,7 @@ public class RegularWeapon : GlobalWeapon
             if(IsOwner) _cameraShaking.ShakeCamera(camShakeIntensity, camShakeDuration);
 
             //Place Vibration
-            _gamepadVibration.VibrationWithTime(vibrationDuration, leftVibrationIntensity, rightVibrationIntensity);
+            if (IsOwner) _gamepadVibration.VibrationWithTime(vibrationDuration, leftVibrationIntensity, rightVibrationIntensity);
 
             //Place MuzzleFlash
             Instantiate(muzzleFlash, startingPoint.position, startingPoint.rotation * Quaternion.Euler(0, -90, 0));
