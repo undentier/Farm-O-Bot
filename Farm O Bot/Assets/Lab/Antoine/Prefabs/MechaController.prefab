@@ -3064,18 +3064,18 @@ MonoBehaviour:
   weaponName: Burst
   startingPoint: {fileID: 3815007128555248623}
   leftWeapon: 0
-  aimDirection: {x: -0.06411385, y: -0.06481902, z: 0.99583524}
+  aimDirection: {x: -0.50361735, y: 0.0066283224, z: -0.8639014}
   muzzleFlash: {fileID: 100006, guid: b0a227fc2e558f241b1c747820ccc361, type: 3}
   camShakeIntensity: 2
   camShakeDuration: 0.1
   vibrationDuration: 0.1
   leftVibrationIntensity: 0.5
   rightVibrationIntensity: 0.5
-  energyLosedRate: 10
+  energyLosedRate: 12
   coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
-  weaponDispersion: 0.1
+  weaponDispersion: 0.4
   canShoot: 1
   isFire: 0
   coolingDown: 0
@@ -3085,7 +3085,7 @@ MonoBehaviour:
   weaponFireRate: 0.5
   bulletsPerShoot: 3
   timeBtwShots: 0.08
-  bulletPrefab: {fileID: 1535977597517077943, guid: 88c007c2fb993e44499cb2763cad75af,
+  bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
     type: 3}
   bulletSpeed: 40
   FireAlwaysPressed: 0
@@ -3571,14 +3571,14 @@ MonoBehaviour:
   weaponName: Machine gun
   startingPoint: {fileID: 3815007128843780257}
   leftWeapon: 1
-  aimDirection: {x: -0.316, y: -0.03600579, z: 0.9480757}
+  aimDirection: {x: -0.88747424, y: -0.060363602, z: -0.45688695}
   muzzleFlash: {fileID: 100006, guid: f47cb9d88f4bc6c4bb7441e962c2c1a5, type: 3}
   camShakeIntensity: 0.3
   camShakeDuration: 0.05
   vibrationDuration: 0.02
   leftVibrationIntensity: 0.13
   rightVibrationIntensity: 0.13
-  energyLosedRate: 1.5
+  energyLosedRate: 0.6
   coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
@@ -3614,14 +3614,14 @@ MonoBehaviour:
   weaponName: Shootgun
   startingPoint: {fileID: 3815007128843780257}
   leftWeapon: 1
-  aimDirection: {x: 0, y: 0, z: 0}
+  aimDirection: {x: -0.5281575, y: 0.00375961, z: -0.8491381}
   muzzleFlash: {fileID: 100006, guid: c888f0c922d622147bbdbe2ca794142b, type: 3}
   camShakeIntensity: 5
   camShakeDuration: 0.3
   vibrationDuration: 0.1
   leftVibrationIntensity: 1.5
   rightVibrationIntensity: 1.5
-  energyLosedRate: 35
+  energyLosedRate: 15
   coolingDownTime: 2
   weaponDamages: 1
   weaponRange: 500
@@ -3633,11 +3633,11 @@ MonoBehaviour:
   _cameraShaking: {fileID: 0}
   _gamepadVibration: {fileID: 0}
   weaponFireRate: 1
-  bulletsPerShoot: 6
+  bulletsPerShoot: 12
   timeBtwShots: 0
-  bulletPrefab: {fileID: 1535977597517077943, guid: 3c210822b3cbde74f960154dfd1316cc,
+  bulletPrefab: {fileID: 1535977597517077943, guid: 29bccea4b3d94b34f982736db3b7f5e1,
     type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 20
   FireAlwaysPressed: 0
 --- !u!1 &3815007128851389517
 GameObject:
