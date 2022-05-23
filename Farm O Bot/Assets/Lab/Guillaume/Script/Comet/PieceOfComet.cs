@@ -79,7 +79,7 @@ public class PieceOfComet : NetworkBehaviour
                 actualEnemy.GetComponent<EnemySysteme>().target = ChooseTarget(numOfEnemySpawn);
                 //GameObject actualEnemy = Instantiate(wichEnemy, spawnPoints[random].position, spawnPoints[random].rotation);
                 InstanceFinder.ServerManager.Spawn(actualEnemy, Owner);
-
+                Debug.Log("test");
                 numOfEnemySpawn += 1;
                 CheckIfLimitReach();
             }

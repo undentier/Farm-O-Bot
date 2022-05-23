@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ipInput: {fileID: 720402267}
-  sceneToLoad: CleanSceneBoids
+  sceneToLoad: CleanSceneAntoine
 --- !u!1 &1610503336
 GameObject:
   m_ObjectHideFlags: 0

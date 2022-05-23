@@ -136,7 +136,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780874, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -596,7 +596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7348568208676850609
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010672860228662859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 10
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -2253,6 +2253,7 @@ MonoBehaviour:
   - {fileID: 51060082238980771}
   - {fileID: 151926470}
   - {fileID: 3440859606219571136}
+  - {fileID: 3832371372151490293}
   - {fileID: 2748706879924596030}
   - {fileID: 6226245498340996479}
   - {fileID: 5329170669156416717}
@@ -2363,9 +2364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feef138e47ea9984a985bddeadfa24fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 151926469}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 151926469}
 --- !u!1 &3815007127832767112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,7 +2665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 18
+  _componentIndexCache: 19
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -3053,7 +3054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 16
+  _componentIndexCache: 17
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Burst
@@ -3096,7 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03dee492c87cca4ebc61e0b082295d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 17
+  _componentIndexCache: 18
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Laser
@@ -3169,7 +3170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 13
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -3369,7 +3370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   IgnoredParameters: []
@@ -3560,7 +3561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 14
+  _componentIndexCache: 15
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Machine gun
@@ -3603,7 +3604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db959eb75054942b74f19b94463477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 15
+  _componentIndexCache: 16
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   weaponName: Shootgun
@@ -3806,7 +3807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 12
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -3947,7 +3948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -4083,7 +4084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 11
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
   _synchronizeParent: 0
@@ -4680,6 +4681,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4219387590538828410}
     m_Modifications:
+    - target: {fileID: 9043198751652816757, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_text
+      value: 'Exit
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 9043198751973247595, guid: 7b2085145143b714baa95771227d8dbb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

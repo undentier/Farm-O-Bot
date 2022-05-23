@@ -41,8 +41,16 @@ public class PlayerFire : NetworkBehaviour
     {
         if (context.started && IsOwner)
         {
-            if (weaponLeftIndex < leftWeaponsList.Count - 1) weaponLeftIndex++;
-            else weaponLeftIndex = 0;
+            if (weaponLeftIndex < leftWeaponsList.Count - 1)
+            {
+                leftWeaponsList[weaponLeftIndex].RpcShoot(false, aimScript.aimPoint.position);
+                weaponLeftIndex++;
+            }
+            else
+            {
+                leftWeaponsList[weaponLeftIndex].RpcShoot(false, aimScript.aimPoint.position);
+                weaponLeftIndex = 0;
+            }
         }
     }
 
@@ -50,8 +58,16 @@ public class PlayerFire : NetworkBehaviour
     {
         if (context.started && IsOwner)
         {
-            if (weaponRightIndex < rightWeaponsList.Count - 1) weaponRightIndex++;
-            else weaponRightIndex = 0;
+            if (weaponRightIndex < rightWeaponsList.Count - 1)
+            {
+                rightWeaponsList[weaponRightIndex].RpcShoot(false, aimScript.aimPoint.position);
+                weaponRightIndex++;
+            }
+            else
+            {
+                rightWeaponsList[weaponRightIndex].RpcShoot(false, aimScript.aimPoint.position);
+                weaponRightIndex = 0;
+            }
         }
     }
 

@@ -96,5 +96,7 @@ public class CometManager : NetworkBehaviour
     private void OnDestroy()
     {
         clientPlayer.GetComponent<ObjectifFeedback>().DestroyAlert();
+        playerInputScript.actions["SpawnComet"].started -= Spawn;
+        playerInputScript.actions["SpawnComet"].canceled -= Spawn;
     }
 }
