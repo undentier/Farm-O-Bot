@@ -54,5 +54,8 @@ public class MenuConnection : MonoBehaviour
     }
 
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
