@@ -136,7 +136,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758621, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 151926469}
   _networkObjectCache: {fileID: 151926469}
-  mouseSensibility: 0.25
+  mouseSensibility: 0.75
   normalSpeed: 20
   boostedSpeed: 35
   decelerationSpeed: 7.5
@@ -4683,8 +4683,53 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
         type: 3}
+      propertyPath: m_Size
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
       propertyPath: m_Value
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.4198113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.4198113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3815007127822126875}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSensitivity
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NewMechaControllerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9043198751973247588, guid: 7b2085145143b714baa95771227d8dbb,
         type: 3}
@@ -4710,26 +4755,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3815007127822126875}
-    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeSensitivity
-      objectReference: {fileID: 0}
-    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NewMechaControllerMovement, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4419635011821404226, guid: 7b2085145143b714baa95771227d8dbb,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9043198752281642258, guid: 7b2085145143b714baa95771227d8dbb,
         type: 3}
@@ -4860,6 +4885,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117125842114526919, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117125842114526919, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117125842114526919, guid: 7b2085145143b714baa95771227d8dbb,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b2085145143b714baa95771227d8dbb, type: 3}

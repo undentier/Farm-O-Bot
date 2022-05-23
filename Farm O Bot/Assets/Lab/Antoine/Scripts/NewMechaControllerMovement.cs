@@ -298,6 +298,11 @@ public class NewMechaControllerMovement : NetworkBehaviour
 
     public void ChangeSensitivity(float sens)
     {
-        mouseSensibility = sens;
+        if (Gamepad.all.Count > 0)
+        {
+            rotationSpeedChest = 100 * sens * 3;
+        }
+
+        mouseSensibility = sens * 3;
     }
 }
